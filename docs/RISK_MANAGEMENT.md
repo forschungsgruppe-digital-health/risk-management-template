@@ -89,10 +89,34 @@ Dependabot or code-scanning alert may open (or comment on) a `risk` + `risk-cat:
 issue with a back-link (see `.github/workflows/risk-automation.yml`, optional). Triage such
 issues like any raised risk — score, own, decide.
 
-## 9. Where things live
+## 9. Mitigation lives in code AND documentation
+
+Risk mitigation is rarely just a task ticked off — it is a **design decision, an
+implementation, a requirement, or a documented concept**. The architecture documentation
+([arc42 v9](architecture/README.md)) is therefore part of the risk apparatus:
+
+- **[§11 Risks and Technical Debts](architecture/11_technical_risks.md)** holds the
+  architecture-level view of the register: only architecturally significant risks/debt,
+  each linking its register issue and its mitigation's home section. Scores, owners, and
+  status stay in the register — no duplication.
+- **[§9 Architecture Decisions](architecture/09_architecture_decisions.md)**: a decision
+  taken to reduce a risk cites the risk issue in its rationale; the issue links back.
+- **[§4 Solution Strategy](architecture/04_solution_strategy.md)** and
+  **[§8 Cross-cutting Concepts](architecture/08_concepts.md)**: where strategy- and
+  concept-level mitigations (e.g. security concepts) are written down.
+- **[§10 Quality Requirements](architecture/10_quality_requirements.md)**: quality
+  scenarios pin a mitigation down as a testable expectation, guarding against regression.
+
+Rule of thumb at triage: if the chosen mitigation changes *how the system is built*,
+record it in the architecture docs and cross-link both ways — closing the issue must not
+erase the knowledge.
+
+## 10. Where things live
 
 - **Register**: GitHub Issues labelled `risk` · board **Risk Register** (Projects v2) —
   fields: Likelihood, Impact, Score, Severity, Risk Status, Category, Owner, Review date.
 - **Method**: this document.
+- **Architecture documentation**: [`architecture/`](architecture/README.md) (arc42 v9,
+  per-section files; §11 = architecture-level risk view).
 - **Issue form**: `.github/ISSUE_TEMPLATE/risk.yml`.
 - Optional in-repo register: [`../RISKS.md`](../RISKS.md) (changes via PR + CODEOWNERS).

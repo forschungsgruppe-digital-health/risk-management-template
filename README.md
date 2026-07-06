@@ -15,6 +15,7 @@ workflow ships **inert until you configure it**.
 | Artifact | Purpose |
 |---|---|
 | [`docs/RISK_MANAGEMENT.md`](docs/RISK_MANAGEMENT.md) | The method: 5×5 scale with anchors, Score→Severity bands, response rules, lifecycle, roles, review cadence |
+| [`docs/architecture/`](docs/architecture/README.md) | [arc42 v9](https://arc42.org) architecture documentation, one file per section — §11 pre-wired to the register (risk mitigation lives in code **and** documentation); unmodified with-help edition vendored as reference |
 | [`.github/ISSUE_TEMPLATE/risk.yml`](.github/ISSUE_TEMPLATE/risk.yml) | Issue form for raising a risk (auto-labels `risk` + `risk:open`) |
 | [`RISKS.md`](RISKS.md) | Optional in-repo register (source of truth via PR + CODEOWNERS, if you prefer files over boards) |
 | [`.github/risk-labels.json`](.github/risk-labels.json) | Label set: `risk`, lifecycle, severity, delivery + security categories |
@@ -58,9 +59,14 @@ proposes diffs, and waits for your explicit approval at every gate.
 - **Human-gated** — the register lives where reviews happen (issues/PRs); automation only
   *feeds* it, never decides.
 - **Right-sized** — a 5×5 matrix, four severity bands, one board. No tooling ceremony.
+- **Mitigation is code + documentation** — architecturally significant mitigations are
+  recorded in the arc42 docs (§11 ↔ register, decisions in §9), not just closed as issues.
 
 ## License / reuse
 
 Add your organization's license before publishing anything from a repo created off this
-template. The template itself carries no license file by design — licensing is a per-project
-decision.
+template. The template itself carries no top-level license file by design — licensing is a
+per-project decision — with one exception: [`docs/architecture/`](docs/architecture/README.md)
+derives from the [arc42 template](https://github.com/arc42/arc42-template) and remains
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) (attribution + changes
+documented there; the architecture *content you write* into it is yours).
