@@ -45,6 +45,7 @@ jobs:
     if: vars.RISK_PROJECT_URL != '' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4 # for the SOUP cross-check against soup.yaml
       - name: Open register issues for critical/high Dependabot alerts
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -52,7 +53,7 @@ jobs:
         run: |
           set -euo pipefail
           alerts=$(gh api "repos/$REPO/dependabot/alerts?state=open&severity=critical,high&per_page=100" \
-            --jq '.[] | {number, severity: .security_advisory.severity, summary: .security_advisory.summary, url: .html_url}' 2>/dev/null || echo "")
+            --jq '.[] | {number, severity: .security_advisory.severity, summary: .security_advisory.summary, url: .html_url, pkg: .dependency.package.name}' 2>/dev/null || echo "")
           [ -z "$alerts" ] && { echo "No open critical/high alerts (or Dependabot disabled)."; exit 0; }
           echo "$alerts" | while IFS= read -r alert; do
             number=$(jq -r '.number' <<<"$alert")
@@ -64,9 +65,18 @@ jobs:
             severity=$(jq -r '.severity' <<<"$alert")
             summary=$(jq -r '.summary' <<<"$alert")
             url=$(jq -r '.url' <<<"$alert")
-            gh issue create --repo "$REPO" \
+            pkg=$(jq -r '.pkg' <<<"$alert")
+            issue_url=$(gh issue create --repo "$REPO" \
               --title "[RISK] Dependabot $severity: $summary" \
               --label "risk,risk:open,risk-cat:vulnerability" \
-              --body "$(printf 'Automated register entry for a %s Dependabot alert.\n\nAlert: %s\n\nTriage per docs/RISK_MANAGEMENT.md (score, owner, decide).\n\n<!-- %s -->' "$severity" "$url" "$marker")"
-            echo "opened issue for alert #$number"
+              --body "$(printf 'Automated register entry for a %s Dependabot alert.\n\nAlert: %s\nPackage: %s\n\nTriage per docs/RISK_MANAGEMENT.md (score, owner, decide).\n\n<!-- %s -->' "$severity" "$url" "$pkg" "$marker")")
+            echo "opened issue for alert #$number ($issue_url)"
+            # SOUP cross-check (docs/SOUP.md): alert on an inventoried component → flag
+            # the issue and prompt the anomaly + harm-risk assessment. Additive; skips
+            # silently when soup.yaml or the soup-anomaly label is absent.
+            if [ -f soup.yaml ] && grep -qE "^\s*-?\s*name:\s*[\"']?${pkg}[\"']?\s*(#.*)?$" soup.yaml; then
+              gh issue edit "$issue_url" --repo "$REPO" --add-label soup-anomaly 2>/dev/null || true
+              gh issue comment "$issue_url" --repo "$REPO" \
+                --body "\`$pkg\` is an inventoried SOUP component: update its known-anomalies impact assessment in \`soup.yaml\` (docs/SOUP.md). If the anomaly can affect patient safety, raise a linked **harm-risk** issue (docs/HARM_RISK.md)." || true
+            fi
           done

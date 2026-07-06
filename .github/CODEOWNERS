@@ -1,0 +1,9 @@
+# Conformance-critical files — set real owners, then uncomment, to enforce human
+# review (repo settings → branch protection → require review from Code Owners).
+# Shipped commented-out: placeholder teams would break the file's validation.
+#
+# /docs/adr/0001-mdsw-qualification.md  @YOUR-ORG/regulatory
+# /docs/standards/CONFORMANCE.md        @YOUR-ORG/regulatory
+# /docs/HARM_RISK.md                    @YOUR-ORG/safety
+# /soup.yaml                            @YOUR-ORG/safety
+# /.github/workflows/                   @YOUR-ORG/maintainers

@@ -1,0 +1,107 @@
+name: "Harm risk (ISO 14971)"
+description: "Raise a risk of HARM (safety) — kept separate from delivery risks. Follows the 14971 chain."
+title: "[HARM] <hazard, one line>"
+labels: ["harm-risk", "harm-risk:open"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Harm risks only** (injury/damage to health, incl. wrong or delayed clinical
+        decisions caused by the software). Delivery risks (schedule/scope/debt) use the
+        *Risk* form. Method: [`docs/HARM_RISK.md`](../../docs/HARM_RISK.md).
+  - type: textarea
+    id: hazard
+    attributes:
+      label: Hazard
+      description: Potential source of harm.
+      placeholder: e.g. questionnaire score displayed for the wrong patient
+    validations:
+      required: true
+  - type: textarea
+    id: sequence
+    attributes:
+      label: Foreseeable sequence of events
+      description: How normal use, reasonably foreseeable misuse, or a failure leads to the hazardous situation.
+    validations:
+      required: true
+  - type: textarea
+    id: situation
+    attributes:
+      label: Hazardous situation
+      description: Who is exposed to the hazard, and in what circumstances.
+    validations:
+      required: true
+  - type: textarea
+    id: harm
+    attributes:
+      label: Harm
+      description: The injury or damage to health that can result.
+    validations:
+      required: true
+  - type: dropdown
+    id: hazard-category
+    attributes:
+      label: Hazard category
+      options:
+        - data-integrity
+        - availability
+        - confidentiality
+        - clinical-misinterpretation
+        - interoperability
+        - usability
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity of harm (S)
+      description: "1 negligible · 2 minor · 3 serious (professional intervention) · 4 critical (permanent/life-threatening) · 5 catastrophic (death) — anchors in docs/HARM_RISK.md §3"
+      options: ["1", "2", "3", "4", "5"]
+    validations:
+      required: true
+  - type: dropdown
+    id: probability
+    attributes:
+      label: Probability of harm (P)
+      description: "1 remote … 5 frequent. If you can decompose, note P1 (hazardous situation occurs) × P2 (situation leads to harm) below."
+      options: ["1", "2", "3", "4", "5"]
+    validations:
+      required: true
+  - type: input
+    id: p1p2
+    attributes:
+      label: P1 × P2 decomposition (optional)
+      placeholder: "P1=2 (stale state on tab switch), P2=3 (score read during triage)"
+  - type: textarea
+    id: controls
+    attributes:
+      label: Risk control measure(s) — state the hierarchy tier per measure
+      description: "Tiers in mandatory order (14971 §7.1): 1 inherently safe design → 2 protective measures → 3 information for safety."
+      placeholder: |
+        1. (tier 1) bind patient context immutably per view — ADR-xxxx
+        2. (tier 2) patient banner with name/DOB on every clinical view
+    validations:
+      required: true
+  - type: textarea
+    id: residual
+    attributes:
+      label: Residual risk evaluation
+      description: Re-scored S × P after controls, judged against the acceptability matrix (docs/HARM_RISK.md §4).
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification plan (two per control)
+      description: "How you verify (1) the control is implemented and (2) it is effective."
+  - type: textarea
+    id: benefit-risk
+    attributes:
+      label: Benefit–risk note (only if residual risk stays above acceptability)
+  - type: input
+    id: links
+    attributes:
+      label: Design element / ADR / requirement the control lives in
+      placeholder: "docs/adr/0007-…, arc42 §8 concept, #123"
+  - type: input
+    id: owner
+    attributes:
+      label: Proposed owner

@@ -1,0 +1,39 @@
+# SOUP inventory (IEC 62304 §5.3.3–5.3.4, §7.1.3, §8.1.2) — method: docs/SOUP.md
+#
+# One entry per SOUP component the product relies on at runtime. Schema per entry:
+#   name:        package/product name as used by the ecosystem (matches SBOM/Dependabot)
+#   version:     unique version designator actually shipped
+#   publisher:   manufacturer / maintaining organization
+#   source:      canonical URL (registry or upstream repo)
+#   license:     SPDX identifier
+#   purpose:     why the product uses it
+#   requirements:
+#     functional:  what functionality is relied upon
+#     performance: performance characteristics relied upon (or "none beyond nominal")
+#   environment: required hardware/software context, if notable
+#   anomalies:   known bugs/CVEs relevant to the used functionality
+#     - id:                CVE/issue reference
+#       summary:           one line
+#       impact_assessment: effect on the relied-upon functions; safety-relevant? → harm-risk issue
+#       status:            open | mitigated (how) | not-affected (why)
+#
+# The entry below is an EXAMPLE — replace it with your product's real components.
+components:
+  - name: example-fhir-client            # EXAMPLE ENTRY — not a real dependency
+    version: 4.11.0
+    publisher: Example Org
+    source: https://registry.npmjs.org/example-fhir-client
+    license: MIT
+    purpose: FHIR R4 resource retrieval and search for all clinical views
+    requirements:
+      functional: correct FHIR search-parameter encoding; token propagation to the server
+      performance: none beyond nominal (interactive latency)
+    environment: browser runtime; requires fetch API
+    anomalies:
+      - id: EXAMPLE-2026-0001
+        summary: date-range search parameter mis-encoded for timezone offsets > +12h
+        impact_assessment: >
+          Affects search correctness only for timezone offsets not occurring in the
+          deployment region; displayed data unaffected. Not safety-relevant — no
+          harm-risk issue. Re-assess if deployed outside Europe.
+        status: not-affected (deployment region)

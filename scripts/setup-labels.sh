@@ -2,13 +2,15 @@
 # Create the risk-management label set on a repository — IDEMPOTENT and ADDITIVE:
 # existing labels are skipped (never recolored, never deleted).
 #
-# Usage: scripts/setup-labels.sh <owner>/<repo>
+# Usage: scripts/setup-labels.sh <owner>/<repo> [labels-file]
+#   default labels-file: .github/risk-labels.json (delivery risks)
+#   conformance layer:   scripts/setup-labels.sh <owner>/<repo> .github/conformance-labels.json
 # Needs: gh CLI authenticated with `repo` scope; jq.
 
 set -euo pipefail
 
-REPO="${1:?usage: setup-labels.sh <owner>/<repo>}"
-LABELS_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/.github/risk-labels.json"
+REPO="${1:?usage: setup-labels.sh <owner>/<repo> [labels-file]}"
+LABELS_FILE="${2:-"$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/.github/risk-labels.json"}"
 
 command -v jq >/dev/null || { echo "jq is required" >&2; exit 1; }
 [ -f "$LABELS_FILE" ] || { echo "labels file not found: $LABELS_FILE" >&2; exit 1; }

@@ -1,0 +1,18 @@
+[
+  { "name": "harm-risk", "color": "B60205", "description": "Harm-risk register entry, ISO 14971 (see docs/HARM_RISK.md)" },
+
+  { "name": "harm-risk:open", "color": "D93F0B", "description": "Lifecycle: raised / under evaluation" },
+  { "name": "harm-risk:controlled", "color": "0E8A16", "description": "Lifecycle: controls implemented, residual risk acceptable" },
+  { "name": "harm-risk:residual-accepted", "color": "FBCA04", "description": "Lifecycle: residual risk accepted via documented benefit-risk analysis" },
+  { "name": "harm-risk:closed", "color": "C2E0C6", "description": "Lifecycle: retired / no longer applicable" },
+
+  { "name": "hazard-cat:data-integrity", "color": "E99695", "description": "Hazard: wrong/corrupted/stale data" },
+  { "name": "hazard-cat:availability", "color": "E99695", "description": "Hazard: needed function/data unavailable" },
+  { "name": "hazard-cat:confidentiality", "color": "E99695", "description": "Hazard: health data disclosed" },
+  { "name": "hazard-cat:clinical-misinterpretation", "color": "E99695", "description": "Hazard: presentation invites wrong clinical conclusion" },
+  { "name": "hazard-cat:interoperability", "color": "E99695", "description": "Hazard: interface/mapping error distorts meaning" },
+  { "name": "hazard-cat:usability", "color": "E99695", "description": "Hazard: use error caused by the interface (IEC 62366-1)" },
+
+  { "name": "requirement", "color": "0052CC", "description": "Requirement issue — traceability anchor (see docs/TRACEABILITY.md)" },
+  { "name": "soup-anomaly", "color": "5319E7", "description": "Known anomaly affecting a SOUP component (see docs/SOUP.md)" }
+]

@@ -1,0 +1,32 @@
+name: sbom
+# Generate a Software Bill of Materials per release (IEC 62304/81001-5-1 evidence;
+# CRA Annex I readiness). Uses Syft via anchore/sbom-action — auto-detects the stack
+# (npm/maven/gradle/pip/go/…), so the template stays stack-agnostic.
+#
+# Default format: CycloneDX JSON. For SPDX, change SBOM_FORMAT to spdx-json.
+# Runs on published releases (attaches the SBOM as a release asset) and on manual
+# dispatch (uploads it as a workflow artifact) — otherwise inert.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write # attach the SBOM to the release
+
+env:
+  SBOM_FORMAT: cyclonedx-json
+
+jobs:
+  sbom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          format: ${{ env.SBOM_FORMAT }}
+          output-file: sbom-${{ github.event.release.tag_name || github.sha }}.cdx.json
+          upload-artifact: true
+          upload-release-assets: ${{ github.event_name == 'release' }}

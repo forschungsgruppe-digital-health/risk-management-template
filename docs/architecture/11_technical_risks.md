@@ -21,6 +21,10 @@ the register. It holds the **architecture-level view**:
   it: a decision in [§9](09_architecture_decisions.md), a strategy choice in
   [§4](04_solution_strategy.md), a concept in [§8](08_concepts.md), or a quality scenario
   guarding against regression in [§10](10_quality_requirements.md).
+- Risks of **harm** (safety) live in the separate ISO 14971 register
+  ([`docs/HARM_RISK.md`](../HARM_RISK.md), label `harm-risk`, board *Harm Risk File*);
+  list them here only when their control is architectural, linking both the harm-risk
+  issue and the controlling decision/concept.
 
 | Risk / Technical debt | Register issue | Architectural mitigation | Documented in |
 |---|---|---|---|

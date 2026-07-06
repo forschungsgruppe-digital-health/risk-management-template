@@ -12,6 +12,9 @@ watch) instead of silent drift. In scope: anything with an uncertain outcome tha
 matter — schedule, scope, dependencies, technical debt, people/resources, supply chain,
 vulnerabilities, secrets, compliance. Out of scope: routine bugs and tasks (use normal
 issues) — a risk is about *potential* future impact, not a defect that already occurred.
+Also out of scope: risks of **harm** (safety) — they follow ISO 14971 in the separate
+harm-risk register ([`HARM_RISK.md`](HARM_RISK.md)); a delivery risk may reference a
+harm risk, they are never merged.
 
 ## 2. Raising a risk
 
