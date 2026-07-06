@@ -1,0 +1,72 @@
+name: risk-automation
+# OPTIONAL security-detector bridge (see docs/RISK_MANAGEMENT.md §8) — INERT until you
+# configure it: every job is guarded by the repository variable RISK_PROJECT_URL.
+#
+# What it does when enabled:
+#   1. Adds `risk`-labelled issues to the Risk Register board (Projects v2).
+#   2. Opens a `risk` + `risk-cat:vulnerability` issue when a CRITICAL/HIGH Dependabot
+#      alert appears (back-linked; one issue per alert, deduped by marker).
+#
+# Permissions are minimal; adding to a Projects v2 board requires a token with the
+# `project` scope — the default GITHUB_TOKEN cannot do it, so job 1 uses the
+# actions/add-to-project action with a PAT/App token in RISK_PROJECT_TOKEN (org policy
+# decides; without the secret the job skips).
+
+on:
+  issues:
+    types: [labeled]
+  schedule:
+    - cron: "17 6 * * 1" # weekly Dependabot sweep (Mon 06:17 UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  security-events: read
+
+jobs:
+  add-to-board:
+    if: >-
+      vars.RISK_PROJECT_URL != '' &&
+      github.event_name == 'issues' &&
+      github.event.label.name == 'risk'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add issue to the Risk Register board
+        if: ${{ env.HAS_TOKEN == 'true' }}
+        uses: actions/add-to-project@v1.0.2
+        with:
+          project-url: ${{ vars.RISK_PROJECT_URL }}
+          github-token: ${{ secrets.RISK_PROJECT_TOKEN }}
+    env:
+      HAS_TOKEN: ${{ secrets.RISK_PROJECT_TOKEN != '' }}
+
+  dependabot-to-register:
+    if: vars.RISK_PROJECT_URL != '' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open register issues for critical/high Dependabot alerts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          alerts=$(gh api "repos/$REPO/dependabot/alerts?state=open&severity=critical,high&per_page=100" \
+            --jq '.[] | {number, severity: .security_advisory.severity, summary: .security_advisory.summary, url: .html_url}' 2>/dev/null || echo "")
+          [ -z "$alerts" ] && { echo "No open critical/high alerts (or Dependabot disabled)."; exit 0; }
+          echo "$alerts" | while IFS= read -r alert; do
+            number=$(jq -r '.number' <<<"$alert")
+            marker="dependabot-alert-$number"
+            if gh issue list --repo "$REPO" --label risk --search "$marker in:body" --json number --jq 'length' | grep -qv '^0$'; then
+              echo "issue for alert #$number exists — skip"
+              continue
+            fi
+            severity=$(jq -r '.severity' <<<"$alert")
+            summary=$(jq -r '.summary' <<<"$alert")
+            url=$(jq -r '.url' <<<"$alert")
+            gh issue create --repo "$REPO" \
+              --title "[RISK] Dependabot $severity: $summary" \
+              --label "risk,risk:open,risk-cat:vulnerability" \
+              --body "$(printf 'Automated register entry for a %s Dependabot alert.\n\nAlert: %s\n\nTriage per docs/RISK_MANAGEMENT.md (score, owner, decide).\n\n<!-- %s -->' "$severity" "$url" "$marker")"
+            echo "opened issue for alert #$number"
+          done

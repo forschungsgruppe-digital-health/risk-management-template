@@ -1,0 +1,79 @@
+name: "Risk"
+description: "Raise a project risk (delivery, technical, security, compliance)"
+title: "[RISK] <short risk title>"
+labels: ["risk", "risk:open"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the risk as **cause → uncertain event → consequence**. Scores follow the
+        5×5 method in `docs/RISK_MANAGEMENT.md` (Score = L × I; severity bands drive the
+        response). Triage happens on the **Risk Register** board.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: "Cause → uncertain event → consequence. What could happen, and why would it matter?"
+      placeholder: "Because <cause>, <event> may occur, which would lead to <consequence>."
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - "schedule"
+        - "scope"
+        - "dependency"
+        - "tech-debt"
+        - "resource"
+        - "supply-chain"
+        - "vulnerability"
+        - "secret"
+        - "compliance"
+    validations:
+      required: true
+  - type: dropdown
+    id: likelihood
+    attributes:
+      label: Likelihood (1–5)
+      description: "1 rare (<10%) · 2 unlikely (10–30%) · 3 possible (30–60%) · 4 likely (60–85%) · 5 almost certain (>85%)"
+      options: ["1", "2", "3", "4", "5"]
+    validations:
+      required: true
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact (1–5)
+      description: "1 negligible · 2 minor (days) · 3 moderate (milestone) · 4 major (deliverable) · 5 critical (project goals/legal/safety)"
+      options: ["1", "2", "3", "4", "5"]
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Proposed owner
+      description: "GitHub handle of who should drive mitigation (required for Critical/High at triage)"
+      placeholder: "@handle"
+  - type: textarea
+    id: triggers
+    attributes:
+      label: Triggers / early-warning signs
+      description: "What would tell us this is starting to materialize?"
+  - type: textarea
+    id: mitigation
+    attributes:
+      label: Mitigation actions
+      description: "At least one concrete action that reduces likelihood or impact."
+    validations:
+      required: true
+  - type: textarea
+    id: contingency
+    attributes:
+      label: Contingency plan
+      description: "What do we do if it happens anyway?"
+  - type: textarea
+    id: affected
+    attributes:
+      label: Affected issues / milestones / PRs
+      description: "Links to what this risk threatens."
