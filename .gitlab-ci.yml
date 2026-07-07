@@ -47,13 +47,19 @@ vuln-to-register:
       API="$CI_API_V4_URL/projects/$CI_PROJECT_ID"
       jq -c '.Results[]?.Vulnerabilities[]? | {id: .VulnerabilityID, sev: .Severity, pkg: .PkgName, title: (.Title // .VulnerabilityID)}' /tmp/trivy.json | sort -u | while read -r v; do
         id=$(echo "$v" | jq -r .id); sev=$(echo "$v" | jq -r .sev); pkg=$(echo "$v" | jq -r .pkg); title=$(echo "$v" | jq -r .title)
-        marker="trivy-vuln-$id-$pkg"
-        # dedup: one register issue per vulnerability+package (marker in the description)
-        hits=$(curl -sf --header "PRIVATE-TOKEN: $RISK_AUTOMATION_TOKEN" "$API/search?scope=issues&search=$marker" | jq 'length')
-        if [ "$hits" != "0" ]; then echo "issue for $marker exists — skip"; continue; fi
+        # dedup by LABEL LISTING + client-side match, NOT free-text /search: GitLab basic
+        # (PostgreSQL) issue search does no partial matching and mis-tokenizes hyphen/number
+        # compounds like CVE-2026-1234 (gitlab#375337), and pkg names carry /:+@ that would
+        # need encoding — both silently miss and re-open duplicates. Enumerating the
+        # vulnerability-category issues and matching id+pkg in the title is deterministic.
+        # (Reads the first 100 vuln issues — ample for a register; paginate if yours exceeds it.)
+        exists=$(curl -sf --header "PRIVATE-TOKEN: $RISK_AUTOMATION_TOKEN" --get "$API/issues" \
+          --data-urlencode "labels=risk-cat::vulnerability" --data-urlencode "state=all" --data "per_page=100" \
+          | jq --arg id "$id" --arg pkg "$pkg" '[.[] | select((.title | contains($id)) and (.title | contains($pkg)))] | length')
+        if [ "${exists:-0}" != "0" ]; then echo "issue for $id/$pkg exists — skip"; continue; fi
         curl -sf --header "PRIVATE-TOKEN: $RISK_AUTOMATION_TOKEN" -X POST "$API/issues" \
           --data-urlencode "title=[RISK] $sev $id in $pkg" \
           --data-urlencode "labels=risk,risk::open,risk-cat::vulnerability" \
-          --data-urlencode "description=Automated register entry for a $sev finding: **$title** (\`$pkg\`). Triage per docs/RISK_MANAGEMENT.md (score, owner, decide). If it can affect patient safety, raise a linked harm-risk issue (docs/HARM_RISK.md). <!-- $marker -->" >/dev/null
-        echo "opened issue for $marker"
+          --data-urlencode "description=Automated register entry for a $sev finding: **$title** (\`$pkg\`). Triage per docs/RISK_MANAGEMENT.md (score, owner, decide). If it can affect patient safety, raise a linked harm-risk issue (docs/HARM_RISK.md)." >/dev/null
+        echo "opened issue for $id/$pkg"
       done

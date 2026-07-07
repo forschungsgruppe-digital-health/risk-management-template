@@ -3,10 +3,11 @@
 # project's issue board with LABEL LISTS for both registers. IDEMPOTENT: existing
 # lists are skipped.
 #
-# Free tier: ONE board per project -> the delivery-risk and harm-risk lifecycle lists
-# sit side by side on the default board (Open/Closed columns are built in). With
-# Premium (multiple boards) you can split them into a "Risk Register" and a
-# "Harm Risk File" board manually — the lists below are the recipe either way.
+# This adds the lifecycle label lists to the project's DEFAULT board (delivery-risk +
+# harm-risk side by side; Open/Closed columns are built in). Multiple PROJECT boards are
+# available on Free (since GitLab 12.1), so you can instead create separate "Risk
+# Register" and "Harm Risk File" boards and move the harm-risk:: lists there — the lists
+# below are the recipe either way. (Only GROUP boards are capped at one on Free.)
 #
 # Usage: scripts/setup-boards-gitlab.sh <group/project>
 # Needs: glab authenticated; jq. Run setup-labels-gitlab.sh (both label files) FIRST.
@@ -56,5 +57,6 @@ Lists done. Working views (filter the board or the issue list):
   - Severity table:      filter label risk::sev-critical / risk::sev-high / …
   - Matrix walk (§7):    board as-is, sorted by weight (= Score, set via /weight at triage)
   - Residual audit:      filter label harm-risk::residual-accepted
-Premium option: create a second board ("Harm Risk File") and move the harm-risk:: lists there.
+Split option (Free too): create a second project board ("Harm Risk File") and move the
+harm-risk:: lists there — multiple project boards are available on Free.
 EOF

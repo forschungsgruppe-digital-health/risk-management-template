@@ -32,7 +32,9 @@
 
 ## Affected (deliverables, milestones, components)
 
-<!-- Score = L×I is set at triage as the issue WEIGHT (/weight <n>).
-     Severity label (risk::sev-*) is applied at triage per §4. -->
+<!-- At triage: Score = L×I. Record it here (Free) or as the issue weight `/weight <n>`
+     (Premium). Apply the severity label risk::sev-* per docs/RISK_MANAGEMENT.md §4. -->
+
+**Score (L×I):** <!-- filled at triage -->
 
 /label ~"risk" ~"risk::open"
