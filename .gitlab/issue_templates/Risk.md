@@ -33,7 +33,7 @@
 ## Affected (deliverables, milestones, components)
 
 <!-- At triage: Score = L×I. Record it here (Free) or as the issue weight `/weight <n>`
-     (Premium). Apply the severity label risk::sev-* per docs/RISK_MANAGEMENT.md §4. -->
+     (Premium). Apply the severity label risk-sev::* per docs/RISK_MANAGEMENT.md §4. -->
 
 **Score (L×I):** <!-- filled at triage -->
 

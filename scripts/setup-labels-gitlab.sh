@@ -3,9 +3,13 @@
 # IDEMPOTENT and ADDITIVE (existing labels are skipped, never recolored/deleted).
 #
 # Reads the SAME JSON files as the GitHub script and maps the canonical flat names
-# to GitLab SCOPED labels: the FIRST ':' becomes '::' (risk:open -> risk::open),
-# so lifecycle/severity/category values are mutually exclusive per scope — the
-# rule docs/RISK_MANAGEMENT.md §4/§5 only states, GitLab then enforces.
+# to GitLab SCOPED labels: the FIRST ':' becomes '::' (risk:open -> risk::open). This
+# yields DISTINCT scopes per axis — lifecycle (risk::), severity (risk-sev::), category
+# (risk-cat::), harm lifecycle (harm-risk::), hazard category (hazard-cat::) — so each
+# axis is single-value without collapsing the others (severity uses its own risk-sev
+# key precisely so a severity label does not evict the lifecycle label under one scope).
+# On Premium/Ultimate GitLab ENFORCES one value per scope; on Free the labels are plain
+# and the single-value rule stays a convention (docs/GITLAB.md § Labels).
 # Names without ':' (risk, harm-risk, requirement, soup-anomaly) stay unchanged.
 #
 # Usage: scripts/setup-labels-gitlab.sh <group/project> [labels-file]

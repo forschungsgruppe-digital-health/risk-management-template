@@ -55,7 +55,7 @@ cat <<'EOF'
 
 Fields done. Add the three VIEWS manually (Projects v2 views are not API-creatable):
   1. "Risk table (S×P)"      — Table layout, sort: Severity desc then Probability desc, filter: -Risk Status:Closed
-  2. "Uncontrolled"          — Table layout, filter: -Control-verification:"Verified effective" -Risk Status:Closed
+  2. "Uncontrolled"          — Table layout, filter: -"Control verification":"Verified effective" -Risk Status:Closed
   3. "Residual accepted (audit)" — Table layout, filter: Risk Status:"Residual accepted"
 
 Then (optional) enable the board's built-in auto-add workflow for issues labelled `harm-risk`,

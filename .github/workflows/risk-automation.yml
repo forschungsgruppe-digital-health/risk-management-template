@@ -5,12 +5,16 @@ name: risk-automation
 # What it does when enabled:
 #   1. Adds `risk`-labelled issues to the Risk Register board (Projects v2).
 #   2. Opens a `risk` + `risk-cat:vulnerability` issue when a CRITICAL/HIGH Dependabot
-#      alert appears (back-linked; one issue per alert, deduped by marker).
+#      alert appears (back-linked; one issue per alert).
 #
-# Permissions are minimal; adding to a Projects v2 board requires a token with the
-# `project` scope — the default GITHUB_TOKEN cannot do it, so job 1 uses the
-# actions/add-to-project action with a PAT/App token in RISK_PROJECT_TOKEN (org policy
-# decides; without the secret the job skips).
+# TOKENS (both are distinct grants the default GITHUB_TOKEN CANNOT provide):
+#   - job 1 (board): a PAT/App token with the Projects v2 `project` scope in
+#     RISK_PROJECT_TOKEN — without it the step skips.
+#   - job 2 (Dependabot sweep): a fine-grained PAT/App token with **Dependabot alerts:
+#     read** (+ Issues: read/write) in RISK_ALERTS_TOKEN — the `/dependabot/alerts` API is
+#     NOT covered by the workflow `permissions:` block, so the default token 403s. Without
+#     RISK_ALERTS_TOKEN the sweep skips; a real API error fails the job loudly (it does not
+#     silently report "no alerts").
 
 on:
   issues:
@@ -22,7 +26,6 @@ on:
 permissions:
   contents: read
   issues: write
-  security-events: read
 
 jobs:
   add-to-board:
@@ -48,17 +51,25 @@ jobs:
       - uses: actions/checkout@v4 # for the SOUP cross-check against soup.yaml
       - name: Open register issues for critical/high Dependabot alerts
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.RISK_ALERTS_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
-          alerts=$(gh api "repos/$REPO/dependabot/alerts?state=open&severity=critical,high&per_page=100" \
-            --jq '.[] | {number, severity: .security_advisory.severity, summary: .security_advisory.summary, url: .html_url, pkg: .dependency.package.name}' 2>/dev/null || echo "")
-          [ -z "$alerts" ] && { echo "No open critical/high alerts (or Dependabot disabled)."; exit 0; }
+          [ -n "${GH_TOKEN:-}" ] || { echo "RISK_ALERTS_TOKEN not set (needs Dependabot alerts: read) — sweep skipped."; exit 0; }
+          # Fail LOUDLY on a real API error; only an empty array means genuinely no alerts.
+          if ! raw=$(gh api "repos/$REPO/dependabot/alerts?state=open&severity=critical,high&per_page=100" 2>/tmp/gherr); then
+            echo "::error::Dependabot alerts API failed — RISK_ALERTS_TOKEN needs 'Dependabot alerts: read' (or Dependabot is disabled):"; cat /tmp/gherr; exit 1
+          fi
+          alerts=$(jq -c '.[] | {number, severity: .security_advisory.severity, summary: .security_advisory.summary, url: .html_url, pkg: .dependency.package.name}' <<<"$raw")
+          [ -z "$alerts" ] && { echo "No open critical/high Dependabot alerts."; exit 0; }
+          # Dedup by ENUMERATING existing vulnerability issues + client-side marker match —
+          # NOT `gh issue list --search`, whose tokenized full-text match is unreliable for
+          # hyphen/number markers (mirrors the .gitlab-ci.yml dedup rationale).
+          existing=$(gh issue list --repo "$REPO" --label risk-cat:vulnerability --state all --limit 200 --json body --jq '.')
           echo "$alerts" | while IFS= read -r alert; do
             number=$(jq -r '.number' <<<"$alert")
             marker="dependabot-alert-$number"
-            if gh issue list --repo "$REPO" --label risk --search "$marker in:body" --json number --jq 'length' | grep -qv '^0$'; then
+            if jq -e --arg m "$marker" 'any(.[]; .body | contains($m))' <<<"$existing" >/dev/null; then
               echo "issue for alert #$number exists — skip"
               continue
             fi

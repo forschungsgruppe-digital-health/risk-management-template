@@ -32,7 +32,7 @@ the official catalogues (iso.org, webstore.iec.ch), EU law via the stable ELI li
 |---|---|---|---|---|
 | [Regulation (EU) 2016/679 (GDPR)](https://eur-lex.europa.eu/eli/reg/2016/679/oj) | in force | lawful processing, DPIA where required | active | project-specific DPIA docs (add per project) |
 | ISO/IEC 27001 — *Information security management systems — Requirements* | 2022 | ISMS reference frame | active (reference) | this index |
-| ISO 27799 — *Health informatics — Information security management in health using ISO/IEC 27002* | 2016 — **caveat:** still based on ISO/IEC 27002:2013 controls; map to 27002:2022 numbering when using both | health-sector ISM guidance | active (reference) | this index |
+| ISO 27799 — *Health informatics — Information security controls in health based on ISO/IEC 27002* | **2025** (third ed.; based on ISO/IEC 27002:2022; cancels and replaces 27799:2016) | health-sector ISM guidance | active (reference) | this index |
 | IEC 81001-5-1 — *Health software and health IT systems safety, effectiveness and security — Part 5-1: Security — Activities in the product life cycle* | 2021 | secure development lifecycle for **health software regardless of MDSW status**; designed to plug into IEC 62304; FDA-recognized, referenced in German TI context | active | SBOM workflow, [`docs/SOUP.md`](../SOUP.md), vulnerability→register automation |
 
 ## 3. Conditional — German healthcare telematics infrastructure (iff the product integrates with TI/ePA)

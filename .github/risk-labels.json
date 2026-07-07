@@ -6,10 +6,10 @@
   { "name": "risk:accepted", "color": "FBCA04", "description": "Lifecycle: consciously accepted (rationale in the issue)" },
   { "name": "risk:closed", "color": "C2E0C6", "description": "Lifecycle: retired / no longer applicable" },
 
-  { "name": "risk:sev-critical", "color": "B60205", "description": "Severity: score >= 15 — act now, review every sprint" },
-  { "name": "risk:sev-high", "color": "D93F0B", "description": "Severity: score 10-14 — mitigation planned + owner" },
-  { "name": "risk:sev-medium", "color": "FBCA04", "description": "Severity: score 5-9 — monitor" },
-  { "name": "risk:sev-low", "color": "C2E0C6", "description": "Severity: score < 5 — accept & log" },
+  { "name": "risk-sev:critical", "color": "B60205", "description": "Severity: score >= 15 — act now, review every sprint" },
+  { "name": "risk-sev:high", "color": "D93F0B", "description": "Severity: score 10-14 — mitigation planned + owner" },
+  { "name": "risk-sev:medium", "color": "FBCA04", "description": "Severity: score 5-9 — monitor" },
+  { "name": "risk-sev:low", "color": "C2E0C6", "description": "Severity: score < 5 — accept & log" },
 
   { "name": "risk-cat:schedule", "color": "1D76DB", "description": "Category: schedule / timeline" },
   { "name": "risk-cat:scope", "color": "1D76DB", "description": "Category: scope / requirements" },

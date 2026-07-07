@@ -20,7 +20,7 @@ inline: scoped-label exclusivity **enforcement** (§ Labels), issue **weight** f
 | Labels | flat names with `:` (e.g. `risk:open`), created by `scripts/setup-labels.sh` (gh) | **scoped labels** `risk::open` etc., created by [`scripts/setup-labels-gitlab.sh`](../scripts/setup-labels-gitlab.sh) (glab) — the script maps `x:y` → `x::y`. On **Premium/Ultimate** scoped labels are mutually exclusive per scope, which *enforces* the lifecycle/severity single-value rule; on **Free** they are ordinary labels and the rule stays a manual convention (exactly as on GitHub) — the register works either way |
 | Score | Projects v2 number field | Score = L×I, recorded on the issue at triage. **Free:** in the issue description (the Risk template captures L and I) or a colon-free `score-<n>` label. **Premium/Ultimate:** the numeric issue **weight** (`/weight <n>`), which sorts/filters natively |
 | Board | Projects v2 board + custom fields (`scripts/setup-project-board.sh`) | **issue board** with label lists per lifecycle label ([`scripts/setup-boards-gitlab.sh`](../scripts/setup-boards-gitlab.sh)). **Multiple *project* boards are Free** (since 12.1), so run one combined board (delivery + harm lists side by side) or split into separate *Risk Register* / *Harm Risk File* boards — all on Free. (Only *group*-level boards are capped at one on Free; configurable/saved board *scopes* are Premium.) |
-| Matrix/severity views | Projects v2 views (manual recipe) | board filtered by `risk::sev-*` labels, or the issue list grouped by label; save as [board scopes] on Premium |
+| Matrix/severity views | Projects v2 views (manual recipe) | board filtered by `risk-sev::*` labels, or the issue list grouped by label; save as [board scopes] on Premium |
 | PR template + gate | `.github/pull_request_template.md` | [`.gitlab/merge_request_templates/Default.md`](../.gitlab/merge_request_templates/Default.md) |
 | CODEOWNERS | `.github/CODEOWNERS` | [`.gitlab/CODEOWNERS`](../.gitlab/CODEOWNERS) (GitLab reads root, `docs/`, or `.gitlab/` — **not** `.github/`); enforcement via protected-branch "Code owner approval" (Premium) |
 | CI: SBOM per release | `.github/workflows/sbom.yml` (release asset) | `sbom` job in [`.gitlab-ci.yml`](../.gitlab-ci.yml) — Syft, CycloneDX, runs on tags (job artifact; attach to a release with `release-cli` if you use GitLab releases) |
@@ -52,8 +52,12 @@ git push --mirror git@<your-gitlab-host>:<group>/<name>.git
 
 The method docs use the canonical flat names (`risk:open`); on GitLab they materialize as
 scoped labels (`risk::open`). Both spellings mean the same state — when a doc says "apply
-`risk:sev-high`", on GitLab that is `risk::sev-high`. Plain labels without a colon
+`risk-sev:high`", on GitLab that is `risk-sev::high`. Plain labels without a colon
 (`risk`, `harm-risk`, `requirement`, `soup-anomaly`) are identical on both platforms.
+Note the deliberate split: severity is `risk-sev:*` (→ `risk-sev::*`), a **separate scope**
+from the lifecycle `risk:*` (→ `risk::*`), so that on Premium a severity label and a
+lifecycle label coexist instead of evicting each other under one `risk::` scope — do not
+merge them back into `risk:sev-*`.
 One caveat: scoped labels — their mutual-exclusivity **semantics** and their two-tone
 chip display alike — are a **Premium/Ultimate** feature on *all* GitLab instances
 (GitLab.com, self-managed, and Dedicated); there is no Free-tier exception. On **Free**,

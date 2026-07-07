@@ -54,7 +54,7 @@ add_list "harm-risk::residual-accepted"
 cat <<'EOF'
 
 Lists done. Working views (filter the board or the issue list):
-  - Severity table:      filter label risk::sev-critical / risk::sev-high / …
+  - Severity table:      filter label risk-sev::critical / risk-sev::high / …
   - Matrix walk (§7):    board as-is, sorted by weight (= Score, set via /weight at triage)
   - Residual audit:      filter label harm-risk::residual-accepted
 Split option (Free too): create a second project board ("Harm Risk File") and move the

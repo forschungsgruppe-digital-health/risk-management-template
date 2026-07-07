@@ -55,7 +55,7 @@ If `REPO` or `PROJECT_OWNER` is missing, stop and ask before anything else.
 Propose (then, once approved, create idempotently):
 
 **Labels** (skip existing, don't recolor):
-- `risk` (`#B60205`); lifecycle `risk:open`, `risk:mitigated`, `risk:accepted`, `risk:closed`; severity `risk:sev-critical|high|medium|low`.
+- `risk` (`#B60205`); lifecycle `risk:open`, `risk:mitigated`, `risk:accepted`, `risk:closed`; severity `risk-sev:critical|high|medium|low`.
 - Category labels per `RISK_FOCUS`:
   - delivery: `risk-cat:schedule|scope|dependency|tech-debt|resource`
   - security: `risk-cat:supply-chain|vulnerability|secret|compliance`
@@ -82,7 +82,7 @@ Present each item as an explicit diff and list which require org/admin rights yo
 - Security detectors: ensure Dependabot, CodeQL code scanning, secret scanning are enabled — or print the exact settings path for the user to toggle if you lack rights. Never assume you can flip org-level features.
 - `.github/dependency-review.yml` + dependency-review action on PRs.
 - `.github/workflows/risk-automation.yml`: add `risk`-labeled issues to the board; open/comment a `risk` + `risk-cat:vulnerability` issue on **critical/high** Dependabot or code-scanning alerts with a back-link; optional weekly Critical/High summary.
-- Minimal permissions (`contents: read`, `issues: write`, `security-events: read`; project scope via PAT/GitHub App only if org policy requires — flag this, don't silently add secrets).
+- Minimal permissions (`contents: read`, `issues: write`). Two grants the workflow `permissions:` block CANNOT provide each need their own PAT/App-token secret — flag this, don't silently add secrets: **Dependabot alerts: read** (the `/dependabot/alerts` API is covered by neither the default token nor `security-events: read`) for the Dependabot sweep, and the Projects v2 `project` scope for board-add. (`security-events: read` covers only *code-scanning* alerts, if you also read those.)
 - **Branch protection: propose only, never apply without its own explicit confirmation inside this gate.**
 
 **GATE 3 — wait for `APPROVE GATE 3`.** This gate is never auto-approved by `MODE = apply`.

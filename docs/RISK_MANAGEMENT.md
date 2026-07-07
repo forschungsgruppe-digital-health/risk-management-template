@@ -56,7 +56,7 @@ mitigation action. Anyone can raise a risk; triage happens on the board.
 | **Medium** | 5–9 | Monitor: watch triggers, revisit at the regular review; mitigate opportunistically |
 | **Low** | < 5 | Accept & log; re-check only when triggers fire or context changes |
 
-Apply the matching `risk:sev-*` label and set the board's `Severity` field at triage.
+Apply the matching `risk-sev:*` label and set the board's `Severity` field at triage.
 
 ## 5. Lifecycle
 
