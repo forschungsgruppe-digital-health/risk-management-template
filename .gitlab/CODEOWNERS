@@ -1,0 +1,10 @@
+# GitLab CODEOWNERS — mirrors .github/CODEOWNERS (GitLab reads root, docs/, or .gitlab/,
+# NOT .github/). Uncomment + set real owners, then enable "Code owner approval" on the
+# protected branch (Premium) to make the review blocking.
+#
+# [Conformance-critical]
+# /docs/adr/0001-mdsw-qualification.md  @your-group/regulatory
+# /docs/standards/CONFORMANCE.md        @your-group/regulatory
+# /docs/HARM_RISK.md                    @your-group/safety
+# /soup.yaml                            @your-group/safety
+# /.gitlab-ci.yml                       @your-group/maintainers

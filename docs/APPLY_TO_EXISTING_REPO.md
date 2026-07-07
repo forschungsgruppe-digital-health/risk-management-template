@@ -1,7 +1,10 @@
 # Applying this template to an EXISTING repository
 
 Three ways in, by decreasing automation. All are **additive**: nothing existing is
-overwritten; collisions are skipped or merged per the rules below.
+overwritten; collisions are skipped or merged per the rules below. The steps below are
+GitHub-worded (`gh`, Projects v2, Actions); applying to a **GitLab** repo uses the same
+file sets plus the GitLab twins (`.gitlab/`, `*-gitlab.sh` scripts, `.gitlab-ci.yml`) —
+mapping in [`GITLAB.md`](GITLAB.md).
 
 | Path | When |
 |---|---|

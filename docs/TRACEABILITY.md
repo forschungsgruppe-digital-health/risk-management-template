@@ -21,7 +21,8 @@ One requirement per issue — bundles break the chain.
 ## Reconstruction & advisory check
 
 [`scripts/traceability-matrix.sh <owner>/<repo>`](../scripts/traceability-matrix.sh)
-emits a Markdown matrix: requirement → cross-referenced PRs → whether those PRs touch
+(gh-based; on GitLab query MRs per requirement label instead — see
+[`GITLAB.md`](GITLAB.md)) emits a Markdown matrix: requirement → cross-referenced PRs → whether those PRs touch
 test files — flagging requirements with **no linked test** (⚠). It is **advisory** (always
 exits 0): at template stage the gap list is review input, not a merge blocker. Projects
 that reach class-B/C ambitions wire it into CI as a warning first, then a gate.

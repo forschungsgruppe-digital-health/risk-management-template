@@ -138,3 +138,5 @@ feedback and incident reports from pilot/production use are triaged into this re
   (`scripts/setup-labels.sh <owner>/<repo> .github/conformance-labels.json`).
 - **Method:** this document · delivery risks: [`RISK_MANAGEMENT.md`](RISK_MANAGEMENT.md)
   · standards context: [`standards/CONFORMANCE.md`](standards/CONFORMANCE.md).
+- **On GitLab:** `.gitlab/issue_templates/Harm Risk.md` + scoped `harm-risk::*` labels +
+  board lists — mapping in [`GITLAB.md`](GITLAB.md).

@@ -123,3 +123,5 @@ erase the knowledge.
   per-section files; §11 = architecture-level risk view).
 - **Issue form**: `.github/ISSUE_TEMPLATE/risk.yml`.
 - Optional in-repo register: [`../RISKS.md`](../RISKS.md) (changes via PR + CODEOWNERS).
+- **On GitLab:** same register, platform equivalents per [`GITLAB.md`](GITLAB.md) —
+  scoped labels (`risk::open`), issue-board lists, Score as issue weight.

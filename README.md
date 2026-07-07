@@ -1,9 +1,11 @@
 # Risk Management Template
 
-A **GitHub template repository** for standing up lightweight, GitHub-native risk management
-on any software project: a risk register as **Issues + a Projects v2 board**, a **5×5
+A **template repository** for standing up lightweight, platform-native risk management
+on any software project: a risk register as **issues + labels + a board**, a **5×5
 likelihood × impact** method, severity-banded response rules, and optional security
-automation — all additive, idempotent, and reviewable.
+automation — all additive, idempotent, and reviewable. GitHub-first (issue forms,
+Projects v2, Actions), **with full GitLab equivalents** (description templates, scoped
+labels, issue-board lists, GitLab CI) — see [`docs/GITLAB.md`](docs/GITLAB.md).
 
 Derived from a gated, human-in-the-loop setup prompt (see
 [`docs/SETUP_PROMPT.md`](docs/SETUP_PROMPT.md)): nothing here mutates a repository behind
@@ -24,6 +26,7 @@ workflow ships **inert until you configure it**.
 | [`.github/workflows/risk-automation.yml`](.github/workflows/risk-automation.yml) | Optional automation: auto-add `risk` issues to the board, open a risk issue for critical/high Dependabot alerts — **inert until configured** |
 | [`docs/SETUP_PROMPT.md`](docs/SETUP_PROMPT.md) | The original agent-executable, gate-approved setup prompt (dry-run by default) — use it to retrofit an *existing* repo instead of templating |
 | [`docs/APPLY_TO_EXISTING_REPO.md`](docs/APPLY_TO_EXISTING_REPO.md) | How to apply the template to an **existing** repo: agent skill, gated prompts, or manual copy — with collision rules and a verify checklist |
+| [`docs/GITLAB.md`](docs/GITLAB.md) | **GitLab support**: the full GitHub↔GitLab mapping + [`.gitlab/`](.gitlab/) issue/MR templates & CODEOWNERS, [scoped-label](scripts/setup-labels-gitlab.sh) + [board-list](scripts/setup-boards-gitlab.sh) scripts (glab), and the inert-until-configured [`.gitlab-ci.yml`](.gitlab-ci.yml) (SBOM on tags, scheduled Trivy→register) |
 | [`skills/apply-risk-management/`](skills/apply-risk-management/SKILL.md) | Portable [Agent Skill](https://agentskills.io) that performs that retrofit (inventory → proposed diff → additive apply) |
 
 ### Conformance-readiness layer (optional)
@@ -66,6 +69,13 @@ verified 2026-07.
    the board URL and enable the `risk-automation` workflow. It stays a no-op without it.
 5. Read [`docs/RISK_MANAGEMENT.md`](docs/RISK_MANAGEMENT.md) with your team; agree on owners
    and the review cadence; raise the first risks via the issue form.
+
+### On GitLab
+
+No template button there — import the repo (**New project → Import → Repository by URL**),
+then run the `*-gitlab.sh` twins of the setup scripts. The register semantics are
+identical; labels materialize as **scoped labels** (`risk::open`), Score = issue weight.
+Full mapping + tier notes: [`docs/GITLAB.md`](docs/GITLAB.md).
 
 ### For an EXISTING project
 
