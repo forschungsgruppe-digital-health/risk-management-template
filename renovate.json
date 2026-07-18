@@ -1,0 +1,9 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Renovate keeps the .gitlab-ci.yml Docker images (anchore/syft, aquasec/trivy) current. GitHub Actions are managed by Dependabot (.github/dependabot.yml), so the github-actions manager is disabled here to avoid duplicate PRs. Inert until the Renovate app is enabled. See docs/adr/0003-supply-chain-pinning.md.",
+  "extends": ["config:recommended"],
+  "github-actions": { "enabled": false },
+  "gitlabci": { "enabled": true },
+  "commitMessagePrefix": "chore(ci):",
+  "schedule": ["before 9am on monday"]
+}

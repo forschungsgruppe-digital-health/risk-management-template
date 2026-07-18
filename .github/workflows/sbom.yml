@@ -24,9 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Generate SBOM
-        # Pinned for a reproducible SBOM. Keep current via Dependabot/Renovate; ideally
-        # move to a full commit-SHA pin. A ':latest'/'@v0' generator cannot be reproducible.
-        uses: anchore/sbom-action@v0.24.0
+        # SHA-pinned for a reproducible SBOM; Dependabot bumps the SHA + the `# vX` comment
+        # (ADR-0003). A ':latest'/'@v0' generator could not be reproducible.
+        uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610 # v0.24.0
         with:
           format: ${{ env.SBOM_FORMAT }}
           output-file: sbom-${{ github.event.release.tag_name || github.sha }}.cdx.json

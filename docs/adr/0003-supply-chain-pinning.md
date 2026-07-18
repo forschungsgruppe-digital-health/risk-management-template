@@ -31,8 +31,10 @@ with the repo's own SBOM/SOUP supply-chain thesis.
 ## Consequences
 
 - Good: reproducible SBOM/scan generators; supply-chain upgrades arrive as reviewable PRs.
-- **GitLab gap (accepted):** Dependabot does not read `.gitlab-ci.yml` image tags, so
-  `anchore/syft` and `aquasec/trivy` there must be bumped by **Renovate** (or manually) on
-  the GitLab side — keep the two platforms in parity (`docs/GITLAB.md`).
-- Further hardening available later: SHA-pin the GitHub Actions (not just version tags), as
-  already done for `actions/checkout`.
+- **GitLab side:** Dependabot does not read `.gitlab-ci.yml` image tags, so a
+  [`renovate.json`](../../renovate.json) (gitlabci manager; the github-actions manager is
+  disabled to avoid overlap with Dependabot) keeps `anchore/syft` and `aquasec/trivy`
+  current — inert until the Renovate app is enabled. Keep the two platforms in parity
+  (`docs/GITLAB.md`).
+- The GitHub Actions are **SHA-pinned** (not just version tags) — `actions/checkout` and
+  `anchore/sbom-action`; Dependabot updates the pinned SHA together with the `# vX` comment.
