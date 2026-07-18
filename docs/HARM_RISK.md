@@ -96,7 +96,11 @@ matrix, but keep the conservative choice as the starting default.
 2. **Protective measures** — in the product or its environment (validation checks,
    confirmation steps, monitoring, alarms).
 3. **Information for safety** — instructions, warnings, training. Weakest tier; never
-   the first resort.
+   the first resort. When such a control depends on the user being *told* something, that
+   information must reach the accompanying information / IFU — flag the issue
+   `disclose-in-ifu` so it is not lost between the register and the product's
+   documentation (part of the §8 residual-risk disclosure recorded in
+   [`HARM_RISK_REPORT.md`](HARM_RISK_REPORT.md)).
 
 Each control states its tier in the issue. Controls that change the architecture are
 recorded as ADRs and appear in [arc42 §11](arc42/11_technical_risks.md).

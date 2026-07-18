@@ -18,6 +18,8 @@ ISO/IEC/IEEE 29148:2018 (singular, verifiable, unambiguous).
 | Requirement → **implementation** | the implementing PR declares `Closes #<n>` (GitHub keyword — creates the cross-reference) |
 | Implementation → **test** | the PR that closes a requirement contains (or links) the verifying tests; name tests so the requirement is findable (e.g. `REQ-42` in the test name or a `Verifies: #42` line in the PR body) |
 | Requirement ↔ **risk** | a requirement mitigating a registered risk links the `risk`/`harm-risk` issue and vice versa |
+| **SOUP** → requirement | a `soup.yaml` entry names the requirement its use is justified by (`req:` field) — closing the IEC 62304 §5.3.3 / §7.1.3 loop |
+| **risk control** → test | a harm-risk control's *effectiveness* verification (§7.2) links its test/PR inside the issue; a delivery-risk mitigation likewise |
 
 One requirement per issue — bundles break the chain.
 
@@ -29,6 +31,9 @@ One requirement per issue — bundles break the chain.
 test files — flagging requirements with **no linked test** (⚠). It is **advisory** (always
 exits 0): at template stage the gap list is review input, not a merge blocker. Projects
 that reach class-B/C ambitions wire it into CI as a warning first, then a gate.
+The script traces **requirement → PR → test** only; the **SOUP → requirement** edge lives
+in `soup.yaml` (`req:`) and the **control → test** edge inside each harm-risk issue — query
+those directly (or extend the script) when a full class-C matrix is needed.
 
 ## PR-side duties
 

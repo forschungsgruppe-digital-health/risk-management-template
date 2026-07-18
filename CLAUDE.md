@@ -12,7 +12,7 @@
   `apply-risk-management` (this repo's own), plus the shared FGDH toolkit `arc42-generator`,
   `docs-auditor`, `release-manager`, `branching-strategist`, `dependency-scanner`, `security-scanner`,
   `security-reviewer`, `template-updater`, `grilling`, `grill-me`.
-- **Architecture docs** live at `docs/arc42/` (arc42 v9, one file per section, §11 pre-wired to the risk
+- **Architecture docs** live at `docs/arc42/` (arc42 v9.0, one file per section, §11 pre-wired to the risk
   register). Change them via `arc42-generator`, using `docs-auditor` as the quality gate — never break
   the arc42 ↔ `RISK_MANAGEMENT.md` touchpoints, and keep the harm-risk register separate.
 - **GitHub ↔ GitLab parity:** any change to one platform's templates/labels/CI must be mirrored on the

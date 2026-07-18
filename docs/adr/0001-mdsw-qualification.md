@@ -1,4 +1,4 @@
-# 0001 — Medical-device-software (MDSW) qualification
+# 0001 — Medical device software (MDSW) qualification
 
 - **Status:** accepted — **living**, re-evaluated at the triggers below (this ADR is never
   "done"; it records the *current* qualification decision)

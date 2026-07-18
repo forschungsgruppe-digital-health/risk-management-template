@@ -157,13 +157,11 @@ acceptability, not hazard identification.
 8. `CONFORMANCE_EXTENSION_PROMPT.md` — 27799:2016→2025 + `iff MDSW`/`deferred-to-manufacturer` terminology. *(A2, A5)*
 9. **Deferred-backlog batch (standards on hand, clause-verified):** ISO 14971 §9 risk-management-report stub (`docs/HARM_RISK_REPORT.md`); §5.2/§5.3 intended-use & safety-characteristics hazard-ID anchor in `HARM_RISK.md` §2 (TR 24971 Annex A/B); IEC 62304 process-coverage map (`docs/standards/IEC-62304-COVERAGE.md`); `requirement.yml` issue template. *(B4, B7, B8-partial, B10-partial)*
 
-**Deferred backlog (larger additive work — recommend as follow-up issues):**
-- GSPR (MDR Annex I) conformity-checklist artifact. *(B5)*
-- Overall benefit-risk + residual-risk-disclosure operationalization; structured residual S/P + §7.6 completeness fields in the harm-risk form. *(B8)*
-- SOUP→requirement and control→test traceability edges surfaced in the matrix. *(B10)*
-- SOUP functional-anomaly review + change-on-version-bump re-evaluation cadence. *(B9)*
-- MDR Art. 15 PRRC in the transfer split; UDI design-vs-registration split. *(B10)*
-- Cosmetic terminology sweep (MDSW hyphenation, arc42 v9/v9.0, GitHub ↔ GitLab). *(A3)*
-- GitLab "full equivalents" headline softening. *(A4)*
+10. **Second follow-up batch (clears the rest of the backlog):** GSPR (MDR Annex I) checklist (`docs/standards/GSPR-CHECKLIST.md`); structured residual S/P + §7.6 completeness + `disclose-in-ifu` fields in the harm-risk form (+ label); SOUP→requirement (`soup.yaml` `req:`) & control→test edges in `TRACEABILITY.md`; SOUP functional-anomaly + change-on-version-bump cadence (`SOUP.md`); MDR Art. 15 PRRC + UDI design-vs-registration split (`CONFORMANCE_TRANSFER.md`); cosmetic terminology sweep (arc42 v9.0, "medical device software", GitHub ↔ GitLab); GitLab "full equivalents" headline softened; **AI-Act dates corrected** (enacted dates operative; Digital Omnibus signed 8 Jul 2026, awaiting OJ — verified 2026-07-19); **Dependabot** (`.github/dependabot.yml`) + **ADR-0003** pin the CI generators and keep them current (bumped to sbom-action v0.24.0 / syft v1.48.0 / trivy v0.72.0). *(B5, B8, B9, B10, A3, A4)*
+
+**Deferred backlog:** cleared. Remaining truly-optional future hardening: SHA-pin (not just
+version-pin) the GitHub Actions; a Renovate config for the GitLab-CI images; wiring the
+traceability edges into the matrix script (vs documented); a mobile-platform GSPR 17.3 note
+if the product goes mobile.
 
 **One item for your confirmation:** the AI Act Digital-Omnibus deferral dates (2027-12-02 / 2028-08-02) rest on a June-2026 development past the assistant's knowledge cutoff; applied as a **hedged** note, not a hard replacement — please confirm against the OJ before treating as final.

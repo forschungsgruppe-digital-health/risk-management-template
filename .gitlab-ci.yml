@@ -17,7 +17,7 @@ stages: [report]
 sbom:
   stage: report
   image:
-    name: anchore/syft:v1.18.1 # pin for a reproducible SBOM — keep current via Renovate/Dependabot
+    name: anchore/syft:v1.48.0 # pinned for a reproducible SBOM — bump via Renovate (Dependabot doesn't read .gitlab-ci.yml)
     entrypoint: [""]
   rules:
     - if: $CI_COMMIT_TAG
@@ -33,7 +33,7 @@ sbom:
 vuln-to-register:
   stage: report
   image:
-    name: aquasec/trivy:0.58.1 # pin for reproducibility — keep current via Renovate/Dependabot
+    name: aquasec/trivy:0.72.0 # pinned for reproducibility — bump via Renovate (Dependabot doesn't read .gitlab-ci.yml)
     entrypoint: [""]
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule" && $RISK_AUTOMATION_ENABLED == "1"

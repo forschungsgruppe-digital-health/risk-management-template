@@ -42,7 +42,7 @@ cp -n /tmp/rmt/.github/workflows/sbom.yml .github/workflows/
 cp -n /tmp/rmt/.github/pull_request_template.md .github/   # MERGE by hand if one exists
 cp -n /tmp/rmt/.github/CODEOWNERS .github/                 # MERGE by hand if one exists
 
-# 4. Architecture docs (arc42 v9, §11 risk-wired) — optional
+# 4. Architecture docs (arc42 v9.0, §11 risk-wired) — optional
 cp -rn /tmp/rmt/docs/arc42/ docs/arc42/
 
 # 5. Activate (idempotent)

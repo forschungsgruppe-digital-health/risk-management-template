@@ -1,4 +1,4 @@
-# Architecture documentation (arc42 v9)
+# Architecture documentation (arc42 v9.0)
 
 Risk mitigation lives in **code and documentation**: design decisions, cross-cutting
 concepts, and quality scenarios are how architectural risks actually get reduced — and

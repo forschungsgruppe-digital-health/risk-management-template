@@ -1,0 +1,12 @@
+version: 2
+# Keep the pinned CI action(s) current — the SBOM/security generators the audit pinned for
+# reproducibility (see docs/adr/0003-supply-chain-pinning.md). GitHub Actions only: the
+# GitLab-CI Docker images (anchore/syft, aquasec/trivy in .gitlab-ci.yml) are NOT read by
+# Dependabot — bump those with Renovate on the GitLab side (docs/GITLAB.md).
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore(ci)"

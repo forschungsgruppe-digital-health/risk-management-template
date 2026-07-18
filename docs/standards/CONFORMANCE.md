@@ -22,7 +22,7 @@ timeline are moving targets — re-check them at the review cadence.
 | Standard | Edition | Role | Status | Evidenced in |
 |---|---|---|---|---|
 | ISO/IEC/IEEE 16085 — *Systems and software engineering — Life cycle processes — Risk management* | 2021 | frame for the risk process (both registers) | active | [`docs/RISK_MANAGEMENT.md`](../RISK_MANAGEMENT.md), [`docs/HARM_RISK.md`](../HARM_RISK.md) |
-| ISO/IEC/IEEE 42010 — *Software, systems and enterprise — Architecture description* | 2022 | architecture-description frame; arc42 is the concrete template | active | [`docs/arc42/`](../arc42/README.md) (arc42 v9) |
+| ISO/IEC/IEEE 42010 — *Software, systems and enterprise — Architecture description* | 2022 | architecture-description frame; arc42 is the concrete template | active | [`docs/arc42/`](../arc42/README.md) (arc42 v9.0) |
 | ISO/IEC/IEEE 29148 — *Systems and software engineering — Life cycle processes — Requirements engineering* | 2018 | requirement quality + the `requirement` issue convention | active | [`docs/TRACEABILITY.md`](../TRACEABILITY.md) |
 | ISO/IEC 25010 — *SQuaRE — Product quality model* | **2023** (2011 withdrawn; quality-in-use now ISO/IEC 25019:2023) | quality vocabulary for arc42 §1/§10 | active | [`docs/arc42/10_quality_requirements.md`](../arc42/10_quality_requirements.md) |
 | ISO/IEC/IEEE 12207 — *Software life cycle processes* | 2017 | life-cycle frame (software) | active (reference) | this index |
@@ -49,7 +49,7 @@ timeline are moving targets — re-check them at the review cadence.
 
 | Standard / Regulation | Edition | Role | Status | Evidence prepared in |
 |---|---|---|---|---|
-| [Regulation (EU) 2017/745 (MDR)](https://eur-lex.europa.eu/eli/reg/2017/745/oj) | in force | qualification (Art. 2(1)) + classification (**Annex VIII Rule 11**) + GSPR Annex I | iff MDSW | [ADR-0001](../adr/0001-mdsw-qualification.md) |
+| [Regulation (EU) 2017/745 (MDR)](https://eur-lex.europa.eu/eli/reg/2017/745/oj) | in force | qualification (Art. 2(1)) + classification (**Annex VIII Rule 11**) + GSPR Annex I ([checklist](GSPR-CHECKLIST.md)) | iff MDSW | [ADR-0001](../adr/0001-mdsw-qualification.md) |
 | MDCG 2019-11 **rev. 1 (17 June 2025)** — *Guidance on qualification and classification of software — MDR/IVDR* ([direct PDF](https://health.ec.europa.eu/document/download/b45335c5-1679-4c71-a91c-fc7a4d37f12b_en?filename=mdcg_2019_11_en.pdf)) | rev. 1 covers AI-based software, modules, EHR/EHDS interplay | the decision aid ADR-0001 walks | active (drives the living ADR) | [ADR-0001](../adr/0001-mdsw-qualification.md) |
 | MDCG 2020-1 — *Guidance on clinical evaluation (MDR) / performance evaluation (IVDR) of medical device software* | 2020 (March) | clinical-evaluation frame for MDSW | iff MDSW (execution deferred-to-manufacturer) | — |
 | MDCG 2019-16 — *Guidance on cybersecurity for medical devices* | rev. 1 (July 2020) | operationalizes the Annex I §17 cybersecurity GSPR; complements IEC 81001-5-1 | iff MDSW | SBOM workflow, [`docs/SOUP.md`](../SOUP.md), vulnerability→register automation |
@@ -68,7 +68,7 @@ timeline are moving targets — re-check them at the review cadence.
 | Regulation | Key dates | Applies | Status |
 |---|---|---|---|
 | [Regulation (EU) 2024/2847 — Cyber Resilience Act](https://eur-lex.europa.eu/eli/reg/2024/2847/oj) | in force 2024-12-10; **vulnerability-reporting obligations 2026-09-11**; main obligations **2027-12-11** | to commercial placement of products with digital elements — **iff the product is *not* MDR-covered** (MDR/IVDR devices are excluded); a post-project market placement lands inside its window | watch |
-| [Regulation (EU) 2024/1689 — AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) | staged: GPAI 2025-08-02; Annex-III high-risk 2026-08-02 → **deferred to 2027-12-02**; Art. 6(1) product-linked high-risk 2027-08-02 → **deferred to 2028-08-02** (both per the 2026 *Digital Omnibus* — confirm against the OJ) | iff AI components are added; MDSW + third-party conformity assessment ⇒ high-risk via Art. 6(1) | watch (trigger listed in ADR-0001) |
+| [Regulation (EU) 2024/1689 — AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) | staged: GPAI 2025-08-02; Annex-III high-risk **2026-08-02**; Art. 6(1) product-linked high-risk **2027-08-02** — these are the *enacted, still-operative* dates. The 2026 *Digital Omnibus* (signed 8 Jul 2026, **awaiting OJ publication — not yet in force**) will defer them to **2027-12-02** and **2028-08-02** respectively once published | iff AI components are added; MDSW + third-party conformity assessment ⇒ high-risk via Art. 6(1) | watch (trigger listed in ADR-0001) |
 | [Regulation (EU) 2025/327 — European Health Data Space](https://eur-lex.europa.eu/eli/reg/2025/327/oj) | in force 2025-03-26; general application 2027-03-26; **EHR-system obligations (priority category 1: patient summary, ePrescription/eDispensation) 2029-03-26** | iff the product is or embeds an **EHR system** processing priority-category data → self-assessed conformity, technical documentation, EU declaration | watch |
 | DiGA fast-track (Germany) — § 33a SGB V, DiGAV (BfArM) | available now | optional reimbursement pathway; **requires** MDSW class I/IIa | optional (evaluated at ADR-0001 flip) |
 

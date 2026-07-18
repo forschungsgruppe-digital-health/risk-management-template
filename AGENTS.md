@@ -11,8 +11,9 @@ file wins.
   software project — a risk register as **issues + labels + a board**, a **5×5 likelihood × impact**
   method with severity bands + response rules, and optional security automation. Everything is
   **additive, idempotent, and reviewable**.
-- **Platforms:** **GitHub-first** (issue forms, Projects v2, Actions) **with full GitLab equivalents**
-  (description/MR templates, scoped labels, issue-board lists, GitLab CI) — see `docs/GITLAB.md`.
+- **Platforms:** **GitHub-first** (issue forms, Projects v2, Actions) **with GitLab equivalents**
+  (description/MR templates, scoped labels, issue-board lists, GitLab CI — functional parity on Free;
+  a few enforcement conveniences are Premium) — see `docs/GITLAB.md`.
 - **Conformance-readiness layer (optional):** capture-now/defer-certification for software that may be
   placed on the market later (MDR / IEC 62304 / ISO 14971 / CRA / EHDS); standards editions are dated and
   verified (see `docs/standards/CONFORMANCE.md`).

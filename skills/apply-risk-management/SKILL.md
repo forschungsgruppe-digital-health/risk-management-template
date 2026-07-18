@@ -21,7 +21,7 @@ propose before you mutate.
 - `TARGET`: <owner/repo> of the existing repository (must have a local clone or `gh` access)
 - `TEMPLATE`: <owner>/risk-management-template (source; clone shallow to a temp dir)
 - `LAYERS`: any of `base` (delivery-risk register — always recommended),
-  `conformance` (MDR/62304 readiness), `architecture` (arc42 v9, §11 risk-wired)
+  `conformance` (MDR/62304 readiness), `architecture` (arc42 v9.0, §11 risk-wired)
 - `PROJECT_OWNER`: org/user that owns the Projects v2 boards
 - `MODE`: `plan` (default) or `apply` — see **Modes** below. `plan` is a dry-run: it
   produces the full proposed changeset and a real scratch-clone preview but makes **zero**

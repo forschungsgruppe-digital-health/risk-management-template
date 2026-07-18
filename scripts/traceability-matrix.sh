@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Emit an ADVISORY traceability matrix (Markdown): requirement issue → cross-referenced
 # PRs → do those PRs touch test files? Flags requirements with no linked test.
+# Scope: requirement → PR → test only. The SOUP → requirement edge lives in soup.yaml
+# (req:) and the risk-control → test edge inside each harm-risk issue (docs/TRACEABILITY.md).
 # Always exits 0 — a gap is review input, not a failure (docs/TRACEABILITY.md).
 #
 # Usage: scripts/traceability-matrix.sh <owner>/<repo>
