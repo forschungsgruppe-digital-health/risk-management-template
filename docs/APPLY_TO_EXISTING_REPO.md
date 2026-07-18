@@ -43,7 +43,7 @@ cp -n /tmp/rmt/.github/pull_request_template.md .github/   # MERGE by hand if on
 cp -n /tmp/rmt/.github/CODEOWNERS .github/                 # MERGE by hand if one exists
 
 # 4. Architecture docs (arc42 v9, §11 risk-wired) — optional
-cp -rn /tmp/rmt/docs/architecture/ docs/architecture/
+cp -rn /tmp/rmt/docs/arc42/ docs/arc42/
 
 # 5. Activate (idempotent)
 ./scripts/setup-labels.sh <owner>/<your-repo>
@@ -67,7 +67,7 @@ in `.github/CODEOWNERS`, and link `docs/RISK_MANAGEMENT.md` from your README.
 | a PR template | **merge**: append the *Traceability* + *Conformance gate* sections |
 | `CODEOWNERS` | **merge**: append the conformance-critical entries |
 | CI workflows named `risk-automation.yml`/`sbom.yml` | do **not** overwrite — wire the equivalent steps into yours per [`CONFORMANCE_EXTENSION_PROMPT.md`](CONFORMANCE_EXTENSION_PROMPT.md) Phase E3 |
-| architecture docs | keep yours; optionally adopt only [§11's register hook](architecture/11_technical_risks.md) |
+| architecture docs | keep yours; optionally adopt only [§11's register hook](arc42/11_technical_risks.md) |
 | a `Risk Register` / `Harm Risk File` board | the board scripts detect by title and skip creation, then only add missing fields |
 
 ## Verify (any path)
