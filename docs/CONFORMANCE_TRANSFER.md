@@ -18,9 +18,12 @@ sense, TBD via the dissemination/exploitation plan — adopts it.
 - **SOUP inventory** ([`SOUP.md`](SOUP.md), [`soup.yaml`](../soup.yaml)) and the
   **per-release SBOMs** (release assets from
   [`sbom.yml`](../.github/workflows/sbom.yml)).
-- **Traceability** ([`TRACEABILITY.md`](TRACEABILITY.md)) — reconstructable from Git;
-  matrix via the advisory script.
+- **Traceability** ([`TRACEABILITY.md`](TRACEABILITY.md)) — reconstructable from the
+  project forge (issues + PRs, exported with the boards at transfer); matrix via the
+  advisory script.
 - **Qualification history** — every re-evaluation recorded in ADR-0001.
+- **GSPR checklist** ([`standards/GSPR-CHECKLIST.md`](standards/GSPR-CHECKLIST.md)) — the
+  software-side MDR Annex I evidence, pre-staged for the manufacturer's technical file.
 
 ## Provenance & IP hygiene (do this while contributions happen)
 
@@ -40,8 +43,13 @@ sense, TBD via the dissemination/exploitation plan — adopts it.
 Deliberately **not** maintained here (organizational, not repo artifacts):
 
 - **ISO 13485:2016** quality management system (incl. EN A11:2021 mapping)
-- Notified-body engagement, **CE marking**, declaration of conformity, UDI/EUDAMED
-  registration
+- The **person responsible for regulatory compliance** (MDR Art. 15 / "PRRC") — an
+  organizational role a research project cannot pre-provision
+- Notified-body engagement, **CE marking**, declaration of conformity, and the **UDI
+  registration act** (Basic UDI-DI in EUDAMED). *Design-side* UDI/labelling (the UDI
+  carrier, electronic-IFU content per ISO 20417 / EN ISO 15223-1) is prepared *with* the
+  product — see the labelling rows in [`standards/CONFORMANCE.md`](standards/CONFORMANCE.md)
+  §4 — only the *registration* is manufacturer-side.
 - **Clinical evaluation** execution per MDR Art. 61 / MDCG 2020-1 (the repo carries the
   inputs: intended purpose, risk file, verification evidence)
 - **Summative usability validation** per IEC 62366-1 (formative notes may live here)

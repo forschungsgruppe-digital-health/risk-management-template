@@ -1,0 +1,46 @@
+name: "Requirement"
+description: "Capture a requirement as the traceability anchor (REQ-<issue#>). See docs/TRACEABILITY.md."
+title: "[REQ] <one-line requirement>"
+labels: ["requirement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **One requirement per issue** — bundles break the traceability chain. Write it
+        singular, verifiable, and unambiguous (ISO/IEC/IEEE 29148:2018). Method:
+        [`docs/TRACEABILITY.md`](../../docs/TRACEABILITY.md).
+  - type: textarea
+    id: requirement
+    attributes:
+      label: Requirement
+      description: What the system shall do — singular and testable.
+      placeholder: "The system shall <observable behaviour> so that <intent>."
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How we will know it is met — the verification target.
+    validations:
+      required: true
+  - type: dropdown
+    id: verification-method
+    attributes:
+      label: Planned verification method
+      options:
+        - test
+        - analysis
+        - inspection
+        - demonstration
+    validations:
+      required: true
+  - type: input
+    id: links
+    attributes:
+      label: Linked design / risk / SOUP
+      placeholder: "ADR/arc42 §, #<risk or harm-risk issue>, soup.yaml component"
+  - type: input
+    id: owner
+    attributes:
+      label: Owner

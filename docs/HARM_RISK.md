@@ -31,6 +31,15 @@ delivery risk may *reference* a harm risk (and vice versa); they are never merge
 
 ## 2. The 14971 chain — what a harm-risk issue captures
 
+**Start from the intended use (14971 §5.2–5.3).** Identify hazards *systematically*, not
+opportunistically: begin from the product's **intended use and reasonably foreseeable
+misuse** ([ADR-0001](adr/0001-mdsw-qualification.md) states the intended purpose; arc42 §1
+the goals) and its **characteristics related to safety**. Work the question checklist in
+**ISO/TR 24971 Annex A** (A.2.1–A.2.37 — users, use environment, data in/out, alarms,
+interoperability, autonomy…) to surface hazards; the supporting techniques in **Annex B**
+(PHA, FTA, FMEA, HAZOP…) help where a hazard is non-obvious. Each hazard then runs the
+chain:
+
 `hazard → foreseeable sequence of events → hazardous situation → harm`
 
 - **Hazard** — potential source of harm (e.g. *wrong-patient data displayed*).
@@ -54,11 +63,12 @@ The [harm-risk issue form](../.github/ISSUE_TEMPLATE/harm-risk.yml) enforces thi
 | 5 | Catastrophic — patient death |
 
 **Probability (P)** — of the harm occurring. Score it either as a single P (1 = remote …
-5 = frequent) or decomposed per ISO/TR 24971 as **P1 × P2**:
+5 = frequent) or decomposed per ISO/TR 24971 §5.5.2 as **P1 × P2**:
 P1 = probability of the hazardous situation occurring; P2 = probability that the
-hazardous situation leads to harm. Record P1/P2 in the issue when known — for software,
-P1 is often the only estimable part (a software failure's probability is convention-
-ally set to 1 when it cannot be estimated; then S and P2 carry the evaluation).
+hazardous situation leads to harm. Record P1/P2 in the issue when known — for software the
+failure probability (**P1**) usually cannot be meaningfully estimated, so per the TR 24971
+conservative convention it is set to **1** (worst case); severity and **P2** then carry
+the evaluation.
 
 ## 4. Acceptability matrix (example — adopt consciously)
 
@@ -68,11 +78,16 @@ ally set to 1 when it cannot be estimated; then S and P2 carry the evaluation).
 | 4 | acceptable | investigate | reduce | reduce | reduce |
 | 3 | acceptable | investigate | investigate | reduce | reduce |
 | 2 | acceptable | acceptable | investigate | investigate | reduce |
-| 1 | acceptable | acceptable | acceptable | investigate | investigate |
+| 1 | acceptable | acceptable | acceptable | investigate | reduce |
 
 `reduce` = risk control required; `investigate` = control if practicable, justify if
 not; `acceptable` = document and monitor. Acceptance of any risk with S ≥ 4 is the
 project lead's call, recorded in the issue.
+
+**Severity floor (recommended default).** A catastrophic-harm hazard (**S 5**) is `reduce`
+at *every* probability — a remote-but-fatal hazard is never merely "investigate". Consider
+extending the same floor to **S 4**. Adjust the floor consciously with the rest of the
+matrix, but keep the conservative choice as the starting default.
 
 ## 5. Risk control — hierarchy is mandatory (14971 §7.1, in this order)
 
@@ -81,10 +96,23 @@ project lead's call, recorded in the issue.
 2. **Protective measures** — in the product or its environment (validation checks,
    confirmation steps, monitoring, alarms).
 3. **Information for safety** — instructions, warnings, training. Weakest tier; never
-   the first resort.
+   the first resort. When such a control depends on the user being *told* something, that
+   information must reach the accompanying information / IFU — flag the issue
+   `disclose-in-ifu` so it is not lost between the register and the product's
+   documentation (part of the §8 residual-risk disclosure recorded in
+   [`HARM_RISK_REPORT.md`](HARM_RISK_REPORT.md)).
 
 Each control states its tier in the issue. Controls that change the architecture are
 recorded as ADRs and appear in [arc42 §11](arc42/11_technical_risks.md).
+
+**New risks from the controls themselves (14971 §7.5).** Every control must be checked for
+hazards it *introduces or shifts* — e.g. a "re-fetch on focus" control adds a
+stale-data/race window; an alarm adds alarm fatigue; a confirmation step adds
+click-through habituation. Re-run §2–§4 on the *controlled* design: capture any net-new
+hazardous situation as its own harm-risk (or a noted sub-entry), score it, and control it.
+A harm-risk is **not closable** until its controls are confirmed to create no new
+uncontrolled hazard. The [issue form](../.github/ISSUE_TEMPLATE/harm-risk.yml) has a
+required field for this analysis ("none identified", with a rationale, is a valid answer).
 
 ## 6. Verification — twice per control (14971 §7.2)
 
@@ -102,7 +130,8 @@ After controls: re-score (residual S/P), evaluate against §4. If still not acce
 and further control is not practicable, a documented **benefit–risk analysis**
 (14971 §7.4) decides — recorded in the issue, accepted by the project lead
 (`harm-risk:residual-accepted`). Review the **overall** residual risk of all harm risks
-together before each release (14971 §8).
+together before each release (14971 §8), and record that release review + sign-off in the
+[risk management report](HARM_RISK_REPORT.md) (14971 §9).
 
 Lifecycle labels: `harm-risk:open` → (controls in progress = board status `Controlling`)
 → `harm-risk:controlled` → `harm-risk:residual-accepted` (only via benefit–risk) →

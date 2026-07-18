@@ -83,10 +83,27 @@ body:
     validations:
       required: true
   - type: textarea
+    id: new-risks
+    attributes:
+      label: New/changed risks introduced by the controls (14971 §7.5)
+      description: "Does any control above create or shift a hazard (e.g. a re-fetch adds a stale-data/race window; an alarm adds alarm fatigue)? Analyse the controlled design and capture any net-new hazardous situation — as its own harm-risk or noted + scored here. 'None identified', with a one-line rationale, is a valid answer."
+    validations:
+      required: true
+  - type: dropdown
+    id: residual-severity
+    attributes:
+      label: Residual severity (S) — after controls
+      options: ["1", "2", "3", "4", "5"]
+  - type: dropdown
+    id: residual-probability
+    attributes:
+      label: Residual probability (P) — after controls
+      options: ["1", "2", "3", "4", "5"]
+  - type: textarea
     id: residual
     attributes:
-      label: Residual risk evaluation
-      description: Re-scored S × P after controls, judged against the acceptability matrix (docs/HARM_RISK.md §4).
+      label: Residual risk evaluation (rationale)
+      description: Re-scored S × P after controls, judged against the acceptability matrix (docs/HARM_RISK.md §4). Set the two dropdowns above to mirror the board's Residual severity/probability fields.
   - type: textarea
     id: verification
     attributes:
@@ -96,6 +113,18 @@ body:
     id: benefit-risk
     attributes:
       label: Benefit–risk note (only if residual risk stays above acceptability)
+  - type: checkboxes
+    id: completeness
+    attributes:
+      label: Completeness of risk control (14971 §7.6)
+      options:
+        - label: All hazardous situations for this hazard have been considered and every risk-control activity is complete.
+  - type: checkboxes
+    id: disclose
+    attributes:
+      label: Disclosure (14971 §8)
+      options:
+        - label: A tier-3 "information for safety" control here must surface in the accompanying information / IFU — I will apply the `disclose-in-ifu` label.
   - type: input
     id: links
     attributes:

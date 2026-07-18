@@ -4,8 +4,9 @@ A **template repository** for standing up lightweight, platform-native risk mana
 on any software project: a risk register as **issues + labels + a board**, a **5×5
 likelihood × impact** method, severity-banded response rules, and optional security
 automation — all additive, idempotent, and reviewable. GitHub-first (issue forms,
-Projects v2, Actions), **with full GitLab equivalents** (description templates, scoped
-labels, issue-board lists, GitLab CI) — see [`docs/GITLAB.md`](docs/GITLAB.md).
+Projects v2, Actions), **with GitLab equivalents** (description templates, scoped
+labels, issue-board lists, GitLab CI — functional parity on Free; a few enforcement
+conveniences are Premium) — see [`docs/GITLAB.md`](docs/GITLAB.md).
 
 Derived from a gated, human-in-the-loop setup prompt (see
 [`docs/SETUP_PROMPT.md`](docs/SETUP_PROMPT.md)): nothing here mutates a repository behind
@@ -17,7 +18,7 @@ workflow ships **inert until you configure it**.
 | Artifact | Purpose |
 |---|---|
 | [`docs/RISK_MANAGEMENT.md`](docs/RISK_MANAGEMENT.md) | The method: 5×5 scale with anchors, Score→Severity bands, response rules, lifecycle, roles, review cadence |
-| [`docs/arc42/`](docs/arc42/README.md) | [arc42 v9](https://arc42.org) architecture documentation, one file per section — §11 pre-wired to the register (risk mitigation lives in code **and** documentation); unmodified with-help edition vendored as reference |
+| [`docs/arc42/`](docs/arc42/README.md) | [arc42 v9.0](https://arc42.org) architecture documentation, one file per section — §11 pre-wired to the register (risk mitigation lives in code **and** documentation); unmodified with-help edition vendored as reference |
 | [`.github/ISSUE_TEMPLATE/risk.yml`](.github/ISSUE_TEMPLATE/risk.yml) | Issue form for raising a risk (auto-labels `risk` + `risk:open`) |
 | [`RISKS.md`](RISKS.md) | Optional in-repo register (source of truth via PR + CODEOWNERS, if you prefer files over boards) |
 | [`.github/risk-labels.json`](.github/risk-labels.json) | Label set: `risk`, lifecycle, severity, delivery + security categories |
@@ -26,7 +27,7 @@ workflow ships **inert until you configure it**.
 | [`.github/workflows/risk-automation.yml`](.github/workflows/risk-automation.yml) | Optional automation: auto-add `risk` issues to the board, open a risk issue for critical/high Dependabot alerts — **inert until configured** |
 | [`docs/SETUP_PROMPT.md`](docs/SETUP_PROMPT.md) | The original agent-executable, gate-approved setup prompt (dry-run by default) — use it to retrofit an *existing* repo instead of templating |
 | [`docs/APPLY_TO_EXISTING_REPO.md`](docs/APPLY_TO_EXISTING_REPO.md) | How to apply the template to an **existing** repo: agent skill, gated prompts, or manual copy — with collision rules and a verify checklist |
-| [`docs/GITLAB.md`](docs/GITLAB.md) | **GitLab support**: the full GitHub↔GitLab mapping + [`.gitlab/`](.gitlab/) issue/MR templates & CODEOWNERS, [scoped-label](scripts/setup-labels-gitlab.sh) + [board-list](scripts/setup-boards-gitlab.sh) scripts (glab), and the inert-until-configured [`.gitlab-ci.yml`](.gitlab-ci.yml) (SBOM on tags, scheduled Trivy→register) |
+| [`docs/GITLAB.md`](docs/GITLAB.md) | **GitLab support**: the full GitHub ↔ GitLab mapping + [`.gitlab/`](.gitlab/) issue/MR templates & CODEOWNERS, [scoped-label](scripts/setup-labels-gitlab.sh) + [board-list](scripts/setup-boards-gitlab.sh) scripts (glab), and the inert-until-configured [`.gitlab-ci.yml`](.gitlab-ci.yml) (SBOM on tags, scheduled Trivy→register) |
 | [`skills/apply-risk-management/`](skills/apply-risk-management/SKILL.md) | Portable [Agent Skill](https://agentskills.io) that performs that retrofit (inventory → proposed diff → additive apply) |
 
 ### Conformance-readiness layer (optional)
@@ -39,7 +40,7 @@ verified 2026-07.
 | Artifact | Purpose |
 |---|---|
 | [`docs/standards/CONFORMANCE.md`](docs/standards/CONFORMANCE.md) | Tiered standards & regulatory index (active / conditional / iff-MDSW / deferred / watch) with verified editions — incl. MDR + MDCG 2019-11 rev. 1, IEC 62304 (+ Ed. 2 timeline), CRA, AI Act, EHDS |
-| [`docs/adr/`](docs/adr/README.md) | MADR-style ADR mechanism + [ADR-0001](docs/adr/0001-mdsw-qualification.md): the **living** medical-device-software qualification decision with feature-gate re-evaluation triggers |
+| [`docs/adr/`](docs/adr/README.md) | MADR-style ADR mechanism + [ADR-0001](docs/adr/0001-mdsw-qualification.md): the **living** medical device software qualification decision with feature-gate re-evaluation triggers |
 | [`docs/HARM_RISK.md`](docs/HARM_RISK.md) | ISO 14971 harm-risk method — separate register: [`harm-risk.yml`](.github/ISSUE_TEMPLATE/harm-risk.yml) form, [labels](.github/conformance-labels.json), [board script](scripts/setup-harm-risk-board.sh) |
 | [`docs/SOUP.md`](docs/SOUP.md) + [`soup.yaml`](soup.yaml) | IEC 62304 SOUP inventory (identification, relied-upon requirements, known-anomaly impact assessments) |
 | [`.github/workflows/sbom.yml`](.github/workflows/sbom.yml) | Per-release SBOM (Syft, CycloneDX default) attached as release asset — inert until a release is published |

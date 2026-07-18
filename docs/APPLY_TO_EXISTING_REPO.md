@@ -8,7 +8,7 @@ mapping in [`GITLAB.md`](GITLAB.md).
 
 | Path | When |
 |---|---|
-| **A. Agent skill** ([`skills/apply-risk-management/SKILL.md`](../skills/apply-risk-management/SKILL.md)) | you use Claude Code / Codex / Cursor or another agent that reads Agent Skills — the skill inventories your repo, proposes the diff, and applies what you approve |
+| **A. Agent skill** ([`skills/apply-risk-management/SKILL.md`](../skills/apply-risk-management/SKILL.md)) | you use Claude Code / Codex / Cursor or another agent that reads Agent Skills — the skill inventories your repo and previews the full changeset via a throwaway scratch clone (`MODE = plan`, the zero-mutation default), then applies what you approve (`MODE = apply`) |
 | **B. Gated prompts** ([`SETUP_PROMPT.md`](SETUP_PROMPT.md), then [`CONFORMANCE_EXTENSION_PROMPT.md`](CONFORMANCE_EXTENSION_PROMPT.md)) | you want an agent but with explicit per-gate approval tokens (dry-run by default) |
 | **C. Manual copy** (below) | no agent — plain `git` + `gh` |
 
@@ -42,7 +42,7 @@ cp -n /tmp/rmt/.github/workflows/sbom.yml .github/workflows/
 cp -n /tmp/rmt/.github/pull_request_template.md .github/   # MERGE by hand if one exists
 cp -n /tmp/rmt/.github/CODEOWNERS .github/                 # MERGE by hand if one exists
 
-# 4. Architecture docs (arc42 v9, §11 risk-wired) — optional
+# 4. Architecture docs (arc42 v9.0, §11 risk-wired) — optional
 cp -rn /tmp/rmt/docs/arc42/ docs/arc42/
 
 # 5. Activate (idempotent)

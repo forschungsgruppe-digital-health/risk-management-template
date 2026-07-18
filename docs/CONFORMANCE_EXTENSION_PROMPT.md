@@ -95,19 +95,20 @@ If `REPO`/`PROJECT_OWNER` missing, stop and ask.
   influencing treatment, AI/ML decision input). Mark status `accepted` but explicitly
   `living / re-evaluated at feature gates`.
 - **Standards conformance index** `docs/standards/CONFORMANCE.md`: a table with columns
-  *Standard | Edition | Role | Status (active / conditional / iff-MDSW /
+  *Standard | Edition | Role | Status (active / conditional / iff MDSW /
   deferred-to-manufacturer / watch) | Where evidenced in repo*. Seed it tiered:
   - *Active now:* ISO/IEC/IEEE 16085:2021 (risk process), ISO/IEC/IEEE 42010:2022 +
     arc42 (architecture), ISO/IEC/IEEE 29148:2018 (requirements), ISO/IEC 25010:2023
-    (quality vocabulary); GDPR + ISO/IEC 27001:2022 / ISO 27799:2016 baseline;
+    (quality vocabulary); GDPR + ISO/IEC 27001:2022 / ISO 27799:2025 baseline;
     ISO/IEC/IEEE 12207:2017 / 15288:2023 as life-cycle frame; IEC 81001-5-1:2021
     (secure health-software lifecycle — applies to health software regardless of MDSW
     status).
   - *German-TI-driven (independent of MDSW, iff the product integrates):* gematik
     specifications (ISiK, ePA), BSI TR-03161 (parts 1–3), BSI C5:2020.
-  - *Activated iff MDSW = yes:* IEC 62304:2006+A1:2015 (Ed. 2 publication expected from
-    2026-08 — monitor), ISO 14971:2019 (+ ISO/TR 24971:2020), IEC 62366-1:2015+A1:2020,
+  - *Activated iff MDSW = yes:* IEC 62304:2006+A1:2015 (Ed. 2 at Committee Draft —
+    forecast ~2028, monitor), ISO 14971:2019 (+ ISO/TR 24971:2020), IEC 62366-1:2015+A1:2020,
     IEC 82304-1:2016, IEC 80001-1:2021, MDCG 2020-1 (clinical evaluation of MDSW),
+    MDCG 2019-16 rev.1 (cybersecurity), ISO 20417:2026 + EN ISO 15223-1:2021 (labelling/IFU),
     ISO 13485:2016 (marked *deferred-to-manufacturer — organizational QMS, not a repo
     artifact*).
   - *Watch (EU horizontal product law):* Cyber Resilience Act (EU) 2024/2847 (main
@@ -164,7 +165,8 @@ The 62304 evidence most costly to backfill. Touches CI, so quarantined.
   the existing workflow additively — do not rewrite it.
 - **Traceability conventions** `docs/TRACEABILITY.md`: define the linking model
   requirement issue (`requirement` label) ⇒ design/ADR ⇒ implementing PR/commit ⇒ test,
-  using issue references and PR keywords so the chain is reconstructable from Git.
+  using issue references and PR keywords so the chain is reconstructable from the project
+  forge (issues + PRs + cross-references, exported at transfer alongside the git history).
   Optionally add a CI check that flags a merged requirement with no linked test, and/or
   a script that emits a traceability matrix artifact. Keep checks advisory (warn), not
   blocking, at template stage.

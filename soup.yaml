@@ -10,6 +10,8 @@
 #   requirements:
 #     functional:  what functionality is relied upon
 #     performance: performance characteristics relied upon (or "none beyond nominal")
+#   req:         (optional) the requirement issue this component's use is justified by —
+#                e.g. "#42" — so SOUP -> requirement is traceable (docs/TRACEABILITY.md)
 #   environment: required hardware/software context, if notable
 #   anomalies:   known bugs/CVEs relevant to the used functionality
 #     - id:                CVE/issue reference
@@ -28,6 +30,7 @@ components:
     requirements:
       functional: correct FHIR search-parameter encoding; token propagation to the server
       performance: none beyond nominal (interactive latency)
+    req: "#0"                              # EXAMPLE — requirement issue justifying this dependency
     environment: browser runtime; requires fetch API
     anomalies:
       - id: EXAMPLE-2026-0001
