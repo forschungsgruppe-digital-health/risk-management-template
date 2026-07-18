@@ -48,7 +48,7 @@ jobs:
     if: vars.RISK_PROJECT_URL != '' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4 # for the SOUP cross-check against soup.yaml
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4 — for the SOUP cross-check against soup.yaml
       - name: Open register issues for critical/high Dependabot alerts
         env:
           GH_TOKEN: ${{ secrets.RISK_ALERTS_TOKEN }}

@@ -31,6 +31,10 @@
 | **17.3** | Software for mobile computing platforms designed for the platform's features + external use factors | [RA] | project design notes (iff mobile) | [RA] |
 | **17.4** | Minimum requirements set out: **IT hardware, IT-network characteristics, IT-security measures** incl. protection against unauthorised access | [RA] | IEC 81001-5-1; MDCG 2019-16; security-review docs | [RA] |
 
+> **GSPR 17.3 (mobile):** if the product runs on a mobile computing platform, add the
+> platform-specific design evidence — screen size / contrast ratio, and external factors
+> such as varying light or noise in the use environment. Otherwise mark 17.3 not applicable.
+
 ## Chapter III — Information supplied with the device
 
 | GSPR | Requirement (paraphrase) | Applicable? | Evidence / where in repo | Met? |

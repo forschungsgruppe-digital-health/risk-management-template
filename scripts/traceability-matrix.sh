@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Emit an ADVISORY traceability matrix (Markdown): requirement issue → cross-referenced
 # PRs → do those PRs touch test files? Flags requirements with no linked test.
-# Scope: requirement → PR → test only. The SOUP → requirement edge lives in soup.yaml
-# (req:) and the risk-control → test edge inside each harm-risk issue (docs/TRACEABILITY.md).
+# Covers: requirement → PR → test (via gh) AND SOUP → requirement (from soup.yaml `req:`).
+# The risk-control → test edge lives inside each harm-risk issue (docs/TRACEABILITY.md).
 # Always exits 0 — a gap is review input, not a failure (docs/TRACEABILITY.md).
 #
 # Usage: scripts/traceability-matrix.sh <owner>/<repo>
@@ -42,6 +42,30 @@ gh issue list --repo "$REPO" --label requirement --state all --limit 200 \
     echo "| REQ-$num — $title | $state | $pr_list | no | ⚠ no linked test |"
   fi
 done
+
+# --- SOUP → requirement coverage (advisory; reads local soup.yaml if present) ---
+if [ -f soup.yaml ]; then
+  echo
+  echo "## SOUP → requirement (from soup.yaml \`req:\`)"
+  echo
+  echo "| SOUP component | Requirement | Status |"
+  echo "|---|---|---|"
+  awk '
+    function emit() {
+      if (name == "") return
+      if (req == "") printf "| %s | — | ⚠ no linked requirement |\n", name
+      else printf "| %s | %s | ✓ |\n", name, req
+    }
+    /^[[:space:]]*-[[:space:]]*name:/ {
+      emit()
+      name=$0; sub(/^[[:space:]]*-[[:space:]]*name:[[:space:]]*/,"",name); sub(/[[:space:]]+#.*/,"",name); gsub(/"/,"",name); req=""; next
+    }
+    /^[[:space:]]*req:/ {
+      req=$0; sub(/^[[:space:]]*req:[[:space:]]*/,"",req); sub(/[[:space:]]+#.*/,"",req); gsub(/"/,"",req)
+    }
+    END { emit() }
+  ' soup.yaml
+fi
 
 echo
 echo "_Advisory only (docs/TRACEABILITY.md) — generated $(date -u +%Y-%m-%d)_"
