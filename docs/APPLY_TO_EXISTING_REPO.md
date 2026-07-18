@@ -8,7 +8,7 @@ mapping in [`GITLAB.md`](GITLAB.md).
 
 | Path | When |
 |---|---|
-| **A. Agent skill** ([`skills/apply-risk-management/SKILL.md`](../skills/apply-risk-management/SKILL.md)) | you use Claude Code / Codex / Cursor or another agent that reads Agent Skills — the skill inventories your repo, proposes the diff, and applies what you approve |
+| **A. Agent skill** ([`skills/apply-risk-management/SKILL.md`](../skills/apply-risk-management/SKILL.md)) | you use Claude Code / Codex / Cursor or another agent that reads Agent Skills — the skill inventories your repo and previews the full changeset via a throwaway scratch clone (`MODE = plan`, the zero-mutation default), then applies what you approve (`MODE = apply`) |
 | **B. Gated prompts** ([`SETUP_PROMPT.md`](SETUP_PROMPT.md), then [`CONFORMANCE_EXTENSION_PROMPT.md`](CONFORMANCE_EXTENSION_PROMPT.md)) | you want an agent but with explicit per-gate approval tokens (dry-run by default) |
 | **C. Manual copy** (below) | no agent — plain `git` + `gh` |
 
