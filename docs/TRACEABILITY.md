@@ -1,7 +1,10 @@
 # Traceability — requirement → design → implementation → test
 
-The linking model that makes the chain reconstructable **from Git alone** — lightweight
-now, and the backbone of IEC 62304 §5.1.1(c)/§7.3 evidence if the product qualifies as
+The linking model that makes the chain reconstructable **from the project forge** — the
+issues, PRs, and their cross-references, **not** a bare `git clone`: at MDR transfer the
+Issues + Projects boards must be exported alongside the git history (see
+[`CONFORMANCE_TRANSFER.md`](CONFORMANCE_TRANSFER.md)). Lightweight now, and the backbone of
+IEC 62304 §5.1.1(c)/§7.3 evidence if the product qualifies as
 MDSW (class B/C makes this granularity mandatory; see
 [`standards/CONFORMANCE.md`](standards/CONFORMANCE.md)). Requirement quality follows
 ISO/IEC/IEEE 29148:2018 (singular, verifiable, unambiguous).
@@ -10,7 +13,7 @@ ISO/IEC/IEEE 29148:2018 (singular, verifiable, unambiguous).
 
 | Link | Convention |
 |---|---|
-| **Requirement** | issue labelled `requirement`; ID = the issue number (cite as `REQ-<n>`); acceptance criteria in the issue body |
+| **Requirement** | issue raised with the [Requirement form](../.github/ISSUE_TEMPLATE/requirement.yml) (label `requirement`); ID = the issue number (cite as `REQ-<n>`); acceptance criteria in the issue body |
 | Requirement → **design** | the issue links the ADR / arc42 section that realizes it ([`docs/adr/`](adr/README.md), [`docs/arc42/`](arc42/README.md)) |
 | Requirement → **implementation** | the implementing PR declares `Closes #<n>` (GitHub keyword — creates the cross-reference) |
 | Implementation → **test** | the PR that closes a requirement contains (or links) the verifying tests; name tests so the requirement is findable (e.g. `REQ-42` in the test name or a `Verifies: #42` line in the PR body) |

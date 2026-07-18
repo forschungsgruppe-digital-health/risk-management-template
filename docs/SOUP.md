@@ -3,7 +3,7 @@
 **SOUP** (IEC 62304 §3.29): software not developed for this product under a known
 life-cycle process — in practice, every third-party/open-source component the product
 *relies on at runtime*. IEC 62304 requires, per SOUP item: identification (title,
-manufacturer/publisher, **unique version designator** — §8.1.2), the **functional and
+manufacturer/publisher, and the **unique SOUP designator** (version is the usual choice) — §8.1.2), the **functional and
 performance requirements** the product relies on (§5.3.3), required hardware/software
 (§5.3.4), and evaluation of **published anomaly lists** (§7.1.3).
 

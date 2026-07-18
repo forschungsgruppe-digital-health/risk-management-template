@@ -43,7 +43,7 @@ mitigation action. Anyone can raise a risk; triage happens on the board.
 | 2 | Minor — days of rework or small scope trim; internally visible |
 | 3 | Moderate — milestone slips or meaningful scope loss; stakeholder-visible |
 | 4 | Major — deliverable/deadline at risk; external commitments affected |
-| 5 | Critical — project goals, funding, legal, or safety in question |
+| 5 | Critical — project goals, funding, or legal exposure in question (patient-safety risk is never scored here — it goes to the harm-risk register) |
 
 **Score = L × I** (1–25), set at triage (Projects v2 has no computed fields).
 

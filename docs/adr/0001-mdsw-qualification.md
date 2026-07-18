@@ -80,9 +80,16 @@ Re-evaluate this ADR (and record the result here) **before merging** any feature
 
 Procedure: raise a `risk` issue referencing this ADR → walk MDCG 2019-11 rev. 1 decision
 steps → update *Current decision* (+ date, deciders) → if the answer flips to **yes**,
-activate the MDSW tier in [`CONFORMANCE.md`](../standards/CONFORMANCE.md), classify per
-MDR Annex VIII Rule 11, and evaluate the German **DiGA** fast-track (§ 33a SGB V /
-DiGAV; requires MDSW class I or IIa) if reimbursement in Germany is a goal.
+activate the MDSW tier in [`CONFORMANCE.md`](../standards/CONFORMANCE.md) and classify per
+**MDR Annex VIII Rule 11**: decision-support / diagnostic-or-therapeutic software is
+**class IIa** by default, **IIb** if it may cause serious deterioration of health or a
+surgical intervention, **III** if it may cause death or an irreversible deterioration of
+health; software intended to monitor physiological processes is **IIa**, **IIb** where
+variations could result in immediate danger; **all other** software is **class I**. Record
+the resulting **device class** — which is *distinct* from the IEC 62304 **software safety
+class** (A/B/C) decided in [ADR-0002](0002-software-safety-classification.md). Then
+evaluate the German **DiGA** fast-track (§ 33a SGB V / DiGAV; requires MDSW class I or IIa)
+if reimbursement in Germany is a goal.
 
 The PR template asks the trigger question on every pull request; `CODEOWNERS` (once
 owners are set) forces human review of changes to this file.

@@ -83,6 +83,13 @@ body:
     validations:
       required: true
   - type: textarea
+    id: new-risks
+    attributes:
+      label: New/changed risks introduced by the controls (14971 §7.5)
+      description: "Does any control above create or shift a hazard (e.g. a re-fetch adds a stale-data/race window; an alarm adds alarm fatigue)? Analyse the controlled design and capture any net-new hazardous situation — as its own harm-risk or noted + scored here. 'None identified', with a one-line rationale, is a valid answer."
+    validations:
+      required: true
+  - type: textarea
     id: residual
     attributes:
       label: Residual risk evaluation

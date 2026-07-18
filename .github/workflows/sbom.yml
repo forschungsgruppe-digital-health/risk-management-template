@@ -22,9 +22,11 @@ jobs:
   sbom:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Generate SBOM
-        uses: anchore/sbom-action@v0
+        # Pinned for a reproducible SBOM. Keep current via Dependabot/Renovate; ideally
+        # move to a full commit-SHA pin. A ':latest'/'@v0' generator cannot be reproducible.
+        uses: anchore/sbom-action@v0.17.9
         with:
           format: ${{ env.SBOM_FORMAT }}
           output-file: sbom-${{ github.event.release.tag_name || github.sha }}.cdx.json

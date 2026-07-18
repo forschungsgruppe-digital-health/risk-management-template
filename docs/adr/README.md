@@ -14,3 +14,4 @@ architecture-level view lives in [arc42 §11](../arc42/11_technical_risks.md).
 | ADR | Title | Status |
 |---|---|---|
 | [0001](0001-mdsw-qualification.md) | Medical-device-software qualification (living) | accepted — living, re-evaluated at feature gates |
+| [0002](0002-software-safety-classification.md) | Software safety classification — IEC 62304 §4.3 (living) | accepted — living, re-evaluated with ADR-0001 |
