@@ -13,8 +13,8 @@ sense, TBD via the dissemination/exploitation plan — adopts it.
 - **Harm-risk file** ([`HARM_RISK.md`](HARM_RISK.md)) — the 14971 chain per risk,
   controls with both verifications, residual-risk and benefit–risk records.
 - **Design history**: ADRs ([`adr/`](adr/README.md)) and the arc42 architecture
-  documentation ([`architecture/`](architecture/README.md)), risk-linked via
-  [§11](architecture/11_technical_risks.md).
+  documentation ([`arc42/`](arc42/README.md)), risk-linked via
+  [§11](arc42/11_technical_risks.md).
 - **SOUP inventory** ([`SOUP.md`](SOUP.md), [`soup.yaml`](../soup.yaml)) and the
   **per-release SBOMs** (release assets from
   [`sbom.yml`](../.github/workflows/sbom.yml)).

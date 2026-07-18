@@ -20,9 +20,9 @@ the official catalogues (iso.org, webstore.iec.ch), EU law via the stable ELI li
 | Standard | Edition | Role | Status | Evidenced in |
 |---|---|---|---|---|
 | ISO/IEC/IEEE 16085 — *Systems and software engineering — Life cycle processes — Risk management* | 2021 | frame for the risk process (both registers) | active | [`docs/RISK_MANAGEMENT.md`](../RISK_MANAGEMENT.md), [`docs/HARM_RISK.md`](../HARM_RISK.md) |
-| ISO/IEC/IEEE 42010 — *Software, systems and enterprise — Architecture description* | 2022 | architecture-description frame; arc42 is the concrete template | active | [`docs/architecture/`](../architecture/README.md) (arc42 v9) |
+| ISO/IEC/IEEE 42010 — *Software, systems and enterprise — Architecture description* | 2022 | architecture-description frame; arc42 is the concrete template | active | [`docs/arc42/`](../arc42/README.md) (arc42 v9) |
 | ISO/IEC/IEEE 29148 — *Systems and software engineering — Life cycle processes — Requirements engineering* | 2018 | requirement quality + the `requirement` issue convention | active | [`docs/TRACEABILITY.md`](../TRACEABILITY.md) |
-| ISO/IEC 25010 — *SQuaRE — Product quality model* | **2023** (2011 withdrawn; quality-in-use now ISO/IEC 25019:2023) | quality vocabulary for arc42 §1/§10 | active | [`docs/architecture/10_quality_requirements.md`](../architecture/10_quality_requirements.md) |
+| ISO/IEC 25010 — *SQuaRE — Product quality model* | **2023** (2011 withdrawn; quality-in-use now ISO/IEC 25019:2023) | quality vocabulary for arc42 §1/§10 | active | [`docs/arc42/10_quality_requirements.md`](../arc42/10_quality_requirements.md) |
 | ISO/IEC/IEEE 12207 — *Software life cycle processes* | 2017 | life-cycle frame (software) | active (reference) | this index |
 | ISO/IEC/IEEE 15288 — *System life cycle processes* | **2023** (replaced 2015) | life-cycle frame (system) | active (reference) | this index |
 

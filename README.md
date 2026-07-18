@@ -17,7 +17,7 @@ workflow ships **inert until you configure it**.
 | Artifact | Purpose |
 |---|---|
 | [`docs/RISK_MANAGEMENT.md`](docs/RISK_MANAGEMENT.md) | The method: 5×5 scale with anchors, Score→Severity bands, response rules, lifecycle, roles, review cadence |
-| [`docs/architecture/`](docs/architecture/README.md) | [arc42 v9](https://arc42.org) architecture documentation, one file per section — §11 pre-wired to the register (risk mitigation lives in code **and** documentation); unmodified with-help edition vendored as reference |
+| [`docs/arc42/`](docs/arc42/README.md) | [arc42 v9](https://arc42.org) architecture documentation, one file per section — §11 pre-wired to the register (risk mitigation lives in code **and** documentation); unmodified with-help edition vendored as reference |
 | [`.github/ISSUE_TEMPLATE/risk.yml`](.github/ISSUE_TEMPLATE/risk.yml) | Issue form for raising a risk (auto-labels `risk` + `risk:open`) |
 | [`RISKS.md`](RISKS.md) | Optional in-repo register (source of truth via PR + CODEOWNERS, if you prefer files over boards) |
 | [`.github/risk-labels.json`](.github/risk-labels.json) | Label set: `risk`, lifecycle, severity, delivery + security categories |
@@ -47,6 +47,20 @@ verified 2026-07.
 | [`docs/CONFORMANCE_TRANSFER.md`](docs/CONFORMANCE_TRANSFER.md) | What transfers to the future manufacturer vs what stays manufacturer-side (QMS, CE, clinical evaluation); DCO/IP hygiene; handover checklist |
 | [`.github/pull_request_template.md`](.github/pull_request_template.md) + [`CODEOWNERS`](.github/CODEOWNERS) | The per-PR qualification-trigger gate + human review of conformance-critical files |
 | [`docs/CONFORMANCE_EXTENSION_PROMPT.md`](docs/CONFORMANCE_EXTENSION_PROMPT.md) | Gated agent prompt to retrofit this layer onto an existing risk-managed repo |
+
+## Agent toolkit
+
+Agent context is canonical in [`AGENTS.md`](AGENTS.md) (Claude Code reads it via [`CLAUDE.md`](CLAUDE.md),
+which imports `@AGENTS.md`). Beyond this
+repo's own [`apply-risk-management`](skills/apply-risk-management/SKILL.md) skill, it now carries the
+**shared FGDH agent toolkit** from the
+[`arc42-project-template`](https://github.com/forschungsgruppe-digital-health/arc42-project-template) —
+`arc42-generator`, `docs-auditor`, `release-manager`, `branching-strategist`, `dependency-scanner`,
+`security-scanner`, `security-reviewer`, `template-updater`, `grilling`/`grill-me` (see
+[`skills/SKILLS_SETUP.md`](skills/SKILLS_SETUP.md)). This repo **tracks that template** via
+[`.arc42-template.json`](.arc42-template.json): the monthly `template-sync-check` workflow flags newer
+releases and the `template-updater` skill reconciles the shared tooling while preserving this repo's
+risk-management, conformance, and GitLab specialization.
 
 ## Using this template
 
@@ -106,7 +120,7 @@ checklist.
 
 Add your organization's license before publishing anything from a repo created off this
 template. The template itself carries no top-level license file by design — licensing is a
-per-project decision — with one exception: [`docs/architecture/`](docs/architecture/README.md)
+per-project decision — with one exception: [`docs/arc42/`](docs/arc42/README.md)
 derives from the [arc42 template](https://github.com/arc42/arc42-template) and remains
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) (attribution + changes
 documented there; the architecture *content you write* into it is yours).

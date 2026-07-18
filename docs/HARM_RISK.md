@@ -84,7 +84,7 @@ project lead's call, recorded in the issue.
    the first resort.
 
 Each control states its tier in the issue. Controls that change the architecture are
-recorded as ADRs and appear in [arc42 §11](architecture/11_technical_risks.md).
+recorded as ADRs and appear in [arc42 §11](arc42/11_technical_risks.md).
 
 ## 6. Verification — twice per control (14971 §7.2)
 

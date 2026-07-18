@@ -19,7 +19,7 @@
 
 <Chosen option and why — the rationale future readers will need. If this decision was
 taken to reduce a registered risk, cite the risk issue here (and link this ADR from the
-issue and from [arc42 §11](../architecture/11_technical_risks.md)).>
+issue and from [arc42 §11](../arc42/11_technical_risks.md)).>
 
 ## Consequences
 

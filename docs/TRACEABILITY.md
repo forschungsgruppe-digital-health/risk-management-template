@@ -11,7 +11,7 @@ ISO/IEC/IEEE 29148:2018 (singular, verifiable, unambiguous).
 | Link | Convention |
 |---|---|
 | **Requirement** | issue labelled `requirement`; ID = the issue number (cite as `REQ-<n>`); acceptance criteria in the issue body |
-| Requirement → **design** | the issue links the ADR / arc42 section that realizes it ([`docs/adr/`](adr/README.md), [`docs/architecture/`](architecture/README.md)) |
+| Requirement → **design** | the issue links the ADR / arc42 section that realizes it ([`docs/adr/`](adr/README.md), [`docs/arc42/`](arc42/README.md)) |
 | Requirement → **implementation** | the implementing PR declares `Closes #<n>` (GitHub keyword — creates the cross-reference) |
 | Implementation → **test** | the PR that closes a requirement contains (or links) the verifying tests; name tests so the requirement is findable (e.g. `REQ-42` in the test name or a `Verifies: #42` line in the PR body) |
 | Requirement ↔ **risk** | a requirement mitigating a registered risk links the `risk`/`harm-risk` issue and vice versa |
