@@ -24,7 +24,8 @@ file wins.
   risk register** (risk mitigation lives in code *and* docs). Vendors the unmodified arc42 with-help
   edition under `docs/arc42/arc42-reference/` (CC BY-SA).
 - `docs/adr/` — Architecture Decision Records (MADR-style; the ADR ↔ arc42 §9/§11 link is a core feature).
-- `docs/RISK_MANAGEMENT.md` · `RISKS.md` — the method + the optional in-repo register.
+- `docs/RISK_MANAGEMENT.md` · `RISKS.md` — the method + the optional in-repo register;
+  `docs/RECIPES.md` — the situation cookbook (13 recipes; operationalizes the methods, adds no rules).
 - `docs/HARM_RISK.md` — the **harm-risk** register (ISO 14971 style), **kept separate from the delivery
   register**; `docs/HARM_RISK_REPORT.md` — the §9 per-release review record.
 - `docs/SOUP.md` · `soup.yaml` — Software of Unknown Provenance (IEC 62304);
