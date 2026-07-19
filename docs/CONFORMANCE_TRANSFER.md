@@ -65,5 +65,6 @@ Deliberately **not** maintained here (organizational, not repo artifacts):
 4. Walk ADR-0001 with the manufacturer's regulatory function — the qualification
    decision and its trigger history are the entry point to everything else.
 5. Agree which `watch`-tier obligations ([CONFORMANCE.md §5](standards/CONFORMANCE.md#5-watch--eu-horizontal-product-law-applicability-window-approaching))
-   fall due before their launch date: CRA (2027-12-11) if not MDR-covered, EHDS EHR
-   obligations (2029-03-26) if applicable.
+   fall due before their launch date: CRA (2027-12-11) if not MDR-covered — incl. taking
+   over the **CVD policy** ([`SECURITY.md`](../SECURITY.md)) and CRA Annex I Part II
+   vulnerability handling — and EHDS EHR obligations (2029-03-26) if applicable.

@@ -17,7 +17,9 @@
 
 1. **The risk-management plan was implemented as planned.**
    <Evidence: every planned activity in [`HARM_RISK.md`](HARM_RISK.md) §1 executed; every
-   open harm-risk in a defined lifecycle state; link a board snapshot / issue query.>
+   open harm-risk in a defined lifecycle state; link the release's register export
+   (`harm-risk-register-<tag>.json`, attached by
+   [`register-export.yml`](../.github/workflows/register-export.yml)) or a board snapshot.>
    - Conclusion: <implemented / exceptions listed>
 
 2. **The overall residual risk is acceptable** (14971 §8) — judged against the criteria in

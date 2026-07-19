@@ -1,0 +1,42 @@
+name: register-export
+# Per-release snapshot of the risk registers (ISO 14971 §9 / risk-management-file
+# evidence): serializes all `risk` and `harm-risk` issues to JSON and attaches them to
+# the release, next to the SBOM. The HARM_RISK_REPORT.md "board snapshot" evidence slot
+# points at these assets. Inert otherwise — runs only on published releases or manual
+# dispatch. Enabling: nothing to configure; delete the file to opt out.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write # attach the export to the release
+  issues: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Export risk registers
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name || github.sha }}
+        run: |
+          FIELDS="number,title,state,labels,body,createdAt,closedAt,comments"
+          gh issue list --repo "$GITHUB_REPOSITORY" --label risk --state all --limit 1000 \
+            --json "$FIELDS" > "risk-register-$TAG.json"
+          gh issue list --repo "$GITHUB_REPOSITORY" --label harm-risk --state all --limit 1000 \
+            --json "$FIELDS" > "harm-risk-register-$TAG.json"
+          echo "risk: $(jq length "risk-register-$TAG.json") issues · harm-risk: $(jq length "harm-risk-register-$TAG.json") issues"
+      - name: Attach to release
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ github.event.release.tag_name }}" risk-register-*.json harm-risk-register-*.json --clobber
+      - name: Upload as artifact (manual runs)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b # v4.5.0
+        with:
+          name: register-export
+          path: "*-register-*.json"
