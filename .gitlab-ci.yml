@@ -45,12 +45,17 @@ register-export:
     - |
       [ -n "${RISK_AUTOMATION_TOKEN:-}" ] || { echo "RISK_AUTOMATION_TOKEN not set — register export skipped (set the project access token to enable)."; exit 0; }
       API="$CI_API_V4_URL/projects/$CI_PROJECT_ID"
+      # Reads the first 100 issues per label — ample for most registers; if yours exceeds
+      # it the job WARNS below (paginate with page=2.. and jq -s 'add' if you need more).
       for LBL in risk harm-risk; do
         curl -sf --header "PRIVATE-TOKEN: $RISK_AUTOMATION_TOKEN" --get "$API/issues" \
           --data-urlencode "labels=$LBL" --data-urlencode "state=all" --data "per_page=100" \
           > "${LBL}-register-${CI_COMMIT_TAG}.json"
-        echo "$LBL: $(jq length "${LBL}-register-${CI_COMMIT_TAG}.json") issues"
+        N=$(jq length "${LBL}-register-${CI_COMMIT_TAG}.json")
+        echo "$LBL: $N issues"
+        [ "$N" -ge 100 ] && echo "WARNING: $LBL export hit the 100-issue page limit — snapshot may be TRUNCATED; paginate to get the full register."
       done
+      true
   artifacts:
     paths:
       - "*-register-*.json"

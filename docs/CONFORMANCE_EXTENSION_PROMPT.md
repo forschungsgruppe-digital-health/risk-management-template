@@ -171,6 +171,9 @@ The 62304 evidence most costly to backfill. Touches CI, so quarantined.
   stack-appropriate tooling (a Syft-based action auto-detects ecosystems); publish the
   SBOM as a release asset so each tagged release carries its bill of materials. Minimal
   permissions.
+- **Register export** in CI (`.github/workflows/register-export.yml`): per-release JSON
+  snapshots of both registers as release assets (the 14971 §9 evidence). If a same-named
+  workflow exists, wire the export steps into it instead of overwriting.
 - **Wire into existing risk-automation:** a critical/high Dependabot or code-scanning
   alert on a SOUP component should open/comment a `risk` + `risk-cat:vulnerability`
   issue (delivery side) **and** flag the corresponding SOUP anomaly entry for review; if

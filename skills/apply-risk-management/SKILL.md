@@ -45,8 +45,8 @@ concept, two entry points.
 
 1. **Inventory the target** (read-only): existing `risk*`/`harm-risk*` labels, issue
    templates, PR template, CODEOWNERS, `docs/adr/` numbering, architecture docs, CI
-   workflows named `risk-automation.yml`/`sbom.yml`, boards titled "Risk Register" /
-   "Harm Risk File" (`gh project list --owner`). Report what exists.
+   workflows named `risk-automation.yml`/`sbom.yml`/`register-export.yml`, boards titled
+   "Risk Register" / "Harm Risk File" (`gh project list --owner`). Report what exists.
 2. **Clone the template** shallow to a temp dir; read `docs/APPLY_TO_EXISTING_REPO.md`
    (file manifest per layer + collision rules — that file is canonical, do not restate
    it from memory).

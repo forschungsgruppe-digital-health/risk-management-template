@@ -37,7 +37,7 @@ jobs:
     steps:
       - name: Add issue to the Risk Register board
         if: ${{ env.HAS_TOKEN == 'true' }}
-        uses: actions/add-to-project@v2.0.0
+        uses: actions/add-to-project@5afcf98fcd03f1c2f92c3c83f58ae24323cc57fd # v2.0.0
         with:
           project-url: ${{ vars.RISK_PROJECT_URL }}
           github-token: ${{ secrets.RISK_PROJECT_TOKEN }}
@@ -48,7 +48,8 @@ jobs:
     if: vars.RISK_PROJECT_URL != '' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4 — for the SOUP cross-check against soup.yaml
+      # checkout is needed for the SOUP cross-check against soup.yaml
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - name: Open register issues for critical/high Dependabot alerts
         env:
           GH_TOKEN: ${{ secrets.RISK_ALERTS_TOKEN }}
