@@ -84,10 +84,10 @@ risk-management, conformance, and GitLab specialization.
    ```bash
    ./scripts/setup-labels.sh <owner>/<name>
    ```
-3. **Create the board** (Projects v2 + fields; views are added manually — the script prints
-   the recipe):
+3. **Create the board** (Projects v2 + fields; the second argument links it to your repo;
+   views are added manually — the script prints the recipe):
    ```bash
-   ./scripts/setup-project-board.sh <owner>
+   ./scripts/setup-project-board.sh <owner> <owner>/<name>
    ```
 4. Optionally **enable the automation**: set the repository variable `RISK_PROJECT_URL` to
    the board URL and enable the `risk-automation` workflow. It stays a no-op without it.

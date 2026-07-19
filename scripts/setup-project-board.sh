@@ -2,7 +2,9 @@
 # Create the "Risk Register" Projects v2 board + its custom fields — IDEMPOTENT:
 # skips creation if a project of that name already exists under the owner.
 #
-# Usage: scripts/setup-project-board.sh <owner> [project-title]
+# Usage: scripts/setup-project-board.sh <owner> [owner/repo] [project-title]
+#   If an owner/repo is given, the project is LINKED to that repository (it then
+#   appears in the repo's Projects tab). Re-linking is a harmless no-op.
 # Needs: gh CLI with the `project` scope (gh auth refresh -s project).
 #
 # NOTE: Projects v2 VIEWS cannot be created via the API — the script prints the
@@ -10,8 +12,9 @@
 
 set -euo pipefail
 
-OWNER="${1:?usage: setup-project-board.sh <owner> [title]}"
-TITLE="${2:-Risk Register}"
+OWNER="${1:?usage: setup-project-board.sh <owner> [owner/repo] [title]}"
+REPO=""
+if [[ "${2:-}" == */* ]]; then REPO="$2"; TITLE="${3:-Risk Register}"; else TITLE="${2:-Risk Register}"; fi
 
 if gh project list --owner "$OWNER" --limit 100 --format json \
   | grep -Fq "\"title\":\"$TITLE\""; then
@@ -48,6 +51,14 @@ field "Risk Status" SINGLE_SELECT "Open,Mitigating,Mitigated,Accepted,Closed"
 field "Category"    SINGLE_SELECT "schedule,scope,dependency,tech-debt,resource,supply-chain,vulnerability,secret,compliance,other"
 field "Owner"       TEXT
 field "Review date" DATE
+
+if [ -n "$REPO" ]; then
+  if gh project link "$PROJECT_NUMBER" --owner "$OWNER" --repo "$REPO" >/dev/null 2>&1; then
+    echo "linked project to $REPO (visible in the repo's Projects tab)"
+  else
+    echo "note: link to $REPO not confirmed (already linked, or missing scope/permission)"
+  fi
+fi
 
 cat <<'EOF'
 

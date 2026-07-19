@@ -49,11 +49,11 @@ cp -n /tmp/rmt/.github/CODEOWNERS .github/                 # MERGE by hand if on
 # 4. Architecture docs (arc42 v9.0, §11 risk-wired) — optional
 mkdir -p docs/arc42 && cp -rn /tmp/rmt/docs/arc42/. docs/arc42/
 
-# 5. Activate (idempotent)
+# 5. Activate (idempotent; the 2nd board arg links the project to your repo)
 ./scripts/setup-labels.sh <owner>/<your-repo>
 ./scripts/setup-labels.sh <owner>/<your-repo> .github/conformance-labels.json
-./scripts/setup-project-board.sh <owner>
-./scripts/setup-harm-risk-board.sh <owner>
+./scripts/setup-project-board.sh <owner> <owner>/<your-repo>
+./scripts/setup-harm-risk-board.sh <owner> <owner>/<your-repo>
 ```
 
 Then: set the repo variable `RISK_PROJECT_URL` (activates the inert automation), fill in
