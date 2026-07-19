@@ -33,9 +33,10 @@ file wins.
   register, no third register) + CVD-policy stub.
 - `docs/TRACEABILITY.md`, `docs/CONFORMANCE_*`, `docs/standards/` — conformance apparatus.
 - `docs/SETUP_PROMPT.md`, `docs/APPLY_TO_EXISTING_REPO.md` — retrofit an existing repo (prompt or skill).
-- `.github/` (issue forms incl. `requirement.yml` + `config.yml`, labels, `risk-automation.yml`,
-  `sbom.yml`, `dependabot.yml`) · `renovate.json` · `.gitlab/` + `.gitlab-ci.yml` (GitLab twins) ·
-  `scripts/` (idempotent `gh`/`glab` setup).
+- `.github/` (issue forms: risk, harm-risk, requirement, soup-anomaly, field-feedback + `config.yml`;
+  labels; `risk-automation.yml`, `sbom.yml`, `register-export.yml`, `dependabot.yml`) · `renovate.json`
+  · `.gitlab/` + `.gitlab-ci.yml` (GitLab twins) · `scripts/` (idempotent `gh`/`glab` setup;
+  board scripts take `[owner/repo]` to link the project).
 - `skills/` — agent skills (see catalog); `AGENTS.md` is canonical, wired via `.claude/.codex` symlinks.
 
 ## Conventions

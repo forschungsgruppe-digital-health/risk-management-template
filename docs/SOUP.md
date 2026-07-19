@@ -28,7 +28,9 @@ while the product is not qualified as MDSW ([ADR-0001](adr/0001-mdsw-qualificati
 - **Published functional anomalies (§7.1.3, the rest):** the Dependabot sweep is not the
   whole §7.1.3 duty. At the regular risk review, and **on every SOUP version bump**, review
   each component's published anomaly / errata list at the upstream source (bug tracker,
-  release notes — not just CVEs) and record the evaluation in the entry's `anomalies`.
+  release notes — not just CVEs) and record the evaluation in the entry's `anomalies` —
+  the structured record is the [SOUP-anomaly issue form](../.github/ISSUE_TEMPLATE/soup-anomaly.yml)
+  (GitLab: `SOUP Anomaly.md`).
 - **Change evaluation on version bump (§6 / §7.4):** when a SOUP version moves, re-run the
   anomaly check for the new version **and** re-confirm the relied-upon functional &
   performance requirements (§5.3.3) still hold *before* merge.

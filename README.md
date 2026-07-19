@@ -8,6 +8,10 @@ Projects v2, Actions), **with GitLab equivalents** (description templates, scope
 labels, issue-board lists, GitLab CI — functional parity on Free; a few enforcement
 conveniences are Premium) — see [`docs/GITLAB.md`](docs/GITLAB.md).
 
+> **See it applied:** [`risk-management-template-example`](https://github.com/forschungsgruppe-digital-health/risk-management-template-example)
+> is a browsable child repo — the applied artifact set, filled synthetic register entries
+> (risk / harm-risk / requirement), and the two linked Projects v2 boards.
+
 Derived from a gated, human-in-the-loop setup prompt (see
 [`docs/SETUP_PROMPT.md`](docs/SETUP_PROMPT.md)): nothing here mutates a repository behind
 your back; the scripts are idempotent and skip what already exists. Shipped automation

@@ -37,7 +37,8 @@ cp -n /tmp/rmt/docs/HARM_RISK.md /tmp/rmt/docs/HARM_RISK_REPORT.md /tmp/rmt/docs
       /tmp/rmt/docs/CONFORMANCE_TRANSFER.md docs/
 cp -n /tmp/rmt/SECURITY.md .                             # CVD policy stub — MERGE if one exists
 cp -n /tmp/rmt/soup.yaml .
-cp -n /tmp/rmt/.github/ISSUE_TEMPLATE/harm-risk.yml /tmp/rmt/.github/ISSUE_TEMPLATE/requirement.yml .github/ISSUE_TEMPLATE/
+cp -n /tmp/rmt/.github/ISSUE_TEMPLATE/harm-risk.yml /tmp/rmt/.github/ISSUE_TEMPLATE/requirement.yml \
+      /tmp/rmt/.github/ISSUE_TEMPLATE/soup-anomaly.yml /tmp/rmt/.github/ISSUE_TEMPLATE/field-feedback.yml .github/ISSUE_TEMPLATE/
 cp -n /tmp/rmt/.github/conformance-labels.json .github/
 cp -n /tmp/rmt/scripts/setup-harm-risk-board.sh /tmp/rmt/scripts/traceability-matrix.sh scripts/
 cp -n /tmp/rmt/.github/workflows/sbom.yml /tmp/rmt/.github/workflows/register-export.yml .github/workflows/
@@ -78,8 +79,8 @@ your README.
 
 ## Verify (any path)
 
-- [ ] `risk` + `harm-risk` + `requirement` issue forms selectable under *New issue*
-- [ ] both label sets exist (`gh label list | grep -E '^(risk|harm-risk|hazard-cat|requirement|soup|disclose-in-ifu)'`)
+- [ ] `risk` + `harm-risk` + `requirement` + `soup-anomaly` + `field-feedback` issue forms selectable under *New issue*
+- [ ] both label sets exist (`gh label list | grep -E '^(risk|harm-risk|hazard-cat|requirement|soup|disclose-in-ifu|field-feedback)'`)
 - [ ] boards exist with their fields; views added per the scripts' printed recipes
 - [ ] a test `risk` issue lands on the board (auto-add or `RISK_PROJECT_URL` + workflow)
 - [ ] ADR-0001 reflects **your** product's qualification answer, with a real date

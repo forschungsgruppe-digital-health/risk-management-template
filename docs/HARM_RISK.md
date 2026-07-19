@@ -155,7 +155,9 @@ Lifecycle labels: `harm-risk:open` → (controls in progress = board status `Con
 Automated detectors feed this register the same way they feed the delivery register: a
 security alert on a SOUP component with potential safety impact prompts a linked
 `harm-risk` issue (see [`SOUP.md`](SOUP.md) and the risk-automation workflow). User
-feedback and incident reports from pilot/production use are triaged into this register.
+feedback and incident reports from pilot/production use arrive via the
+[field-feedback form](../.github/ISSUE_TEMPLATE/field-feedback.yml) (GitLab:
+`Field Feedback.md`, label `field-feedback`) and are triaged into this register.
 
 ## 9. Example entry (obviously artificial)
 

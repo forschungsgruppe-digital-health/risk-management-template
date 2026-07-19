@@ -1,0 +1,53 @@
+name: "Field feedback / incident"
+description: "Production & post-production information intake (ISO 14971 §10) — user feedback, pilot findings, incidents."
+title: "[FEEDBACK] <one line>"
+labels: ["field-feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The **§10 intake**: anything observed in pilot/production use — user feedback,
+        complaints, incidents, monitoring alerts. Triage decides where it goes: a
+        [harm-risk](../../docs/HARM_RISK.md) (possible patient impact), a delivery
+        [risk](../../docs/RISK_MANAGEMENT.md), a SOUP anomaly, or a plain bug. This form
+        only captures — it never replaces the register entries. Security vulnerabilities
+        reported from outside follow `SECURITY.md` (CVD), not this form.
+  - type: dropdown
+    id: source
+    attributes:
+      label: Source
+      options:
+        - user / clinician feedback
+        - pilot observation
+        - incident / complaint
+        - monitoring or alert
+        - other (state below)
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What was observed
+      description: "What happened / was reported, when, and in which context. Use synthetic identifiers only — never real patient data."
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Affected version / release
+  - type: dropdown
+    id: safety
+    attributes:
+      label: Possible safety relevance?
+      description: "If yes or unclear, triage raises a linked harm-risk issue — that analysis happens there, not here."
+      options:
+        - "no"
+        - "unclear — triage decides"
+        - "yes — harm-risk issue raised (link below)"
+    validations:
+      required: true
+  - type: input
+    id: links
+    attributes:
+      label: Links
+      placeholder: "#<harm-risk / risk / bug issue created at triage>"
