@@ -41,11 +41,31 @@
      1. (tier 1) bind patient context immutably per view — ADR-xxxx
      2. (tier 2) patient banner with name/DOB on every clinical view -->
 
+## New/changed risks introduced by the controls (14971 §7.5)
+
+<!-- REQUIRED. Does any control above create or shift a hazard (e.g. a re-fetch adds a
+     stale-data/race window; an alarm adds alarm fatigue)? Analyse the controlled design;
+     capture net-new hazardous situations as their own harm-risk or scored here.
+     "None identified", with a one-line rationale, is a valid answer. -->
+
 ## Residual risk evaluation
 
-<!-- Re-scored S × P after controls, judged against the acceptability matrix (§4). -->
+<!-- Re-scored S × P after controls, judged against the acceptability matrix (§4).
+     State the residual values explicitly:
+     Residual severity (S, 1–5): · Residual probability (P, 1–5): -->
 
 ## Verification plan (TWO per control — implemented + effective, §6)
+
+## Completeness of risk control (14971 §7.6)
+
+<!-- Confirm: all hazardous situations for this hazard considered; every risk-control
+     activity complete. -->
+
+## Disclosure (14971 §8)
+
+<!-- If a tier-3 "information for safety" control here must surface in the accompanying
+     information / IFU, apply the disclose-in-ifu label:
+     /label ~"disclose-in-ifu" -->
 
 ## Benefit–risk note (only if residual risk stays above acceptability)
 

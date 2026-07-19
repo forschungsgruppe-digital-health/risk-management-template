@@ -94,6 +94,15 @@ If `REPO`/`PROJECT_OWNER` missing, stop and ask.
   touching clinical decision support, alerting on values, risk scores, care-plan logic
   influencing treatment, AI/ML decision input). Mark status `accepted` but explicitly
   `living / re-evaluated at feature gates`.
+- **Living safety-classification ADR** `docs/adr/NNNN-software-safety-classification.md`
+  (IEC 62304 §4.3, AMD1:2015 risk-based Class A/B/C definitions; default "N/A while not
+  MDSW", provisional class + item decomposition recorded now, binding on the
+  qualification flip; explicitly distinct from the MDR Annex VIII device class).
+- **GSPR checklist** `docs/standards/GSPR-CHECKLIST.md`: the software-relevant MDR
+  Annex I rows (Ch. I 1–5, 8; 14.2(d); 17.1–17.4; 23.1/23.4) mapped to repo evidence,
+  determinations marked [NEEDS RA INPUT].
+- **62304 coverage map** `docs/standards/IEC-62304-COVERAGE.md`: clause-level
+  covered / partial / not-yet status per §4.3–§9 so deferral is explicit, never silent.
 - **Standards conformance index** `docs/standards/CONFORMANCE.md`: a table with columns
   *Standard | Edition | Role | Status (active / conditional / iff MDSW /
   deferred-to-manufacturer / watch) | Where evidenced in repo*. Seed it tiered:
@@ -124,17 +133,21 @@ Keep this **separate** from the delivery-risk register so patient-harm risk is n
 conflated with schedule/scope risk.
 
 - **Labels:** `harm-risk`, lifecycle `harm-risk:open|controlled|residual-accepted|closed`,
-  and `hazard-cat:*` (e.g. `data-integrity`, `availability`, `confidentiality`,
-  `clinical-misinterpretation`, `interoperability`, `usability`).
+  `hazard-cat:*` (e.g. `data-integrity`, `availability`, `confidentiality`,
+  `clinical-misinterpretation`, `interoperability`, `usability`), and `disclose-in-ifu`
+  (information-for-safety controls that must surface in the accompanying information).
 - **Issue form** `.github/ISSUE_TEMPLATE/harm-risk.yml` (auto-applies `harm-risk` +
   `harm-risk:open`) capturing the 14971 chain: hazard; foreseeable sequence of events;
   hazardous situation; harm; **Severity (S)** 1–5 with anchors; **Probability** (support
   P1 = probability of the hazardous situation, P2 = probability it leads to harm, or a
   single P if the team prefers) with anchors; risk-control measure(s) following the
   14971 §7.1 hierarchy (inherently safe design ⇒ protective measures ⇒ information for
-  safety); **residual risk** evaluation; **two verifications** (control implemented;
-  control effective — §7.2); benefit–risk note; links to the design element/ADR/
-  requirement the control lives in.
+  safety); a **required §7.5 field** — new/changed risks introduced by the controls
+  ("'None identified', with a rationale, is a valid answer"); **residual risk** evaluation
+  with structured residual S/P dropdowns mirroring the board; **two verifications**
+  (control implemented; control effective — §7.2); a **§7.6 completeness** confirmation;
+  a **§8 disclosure** item wired to `disclose-in-ifu`; benefit–risk note; links to the
+  design element/ADR/requirement the control lives in.
 - **Register target** per `HARM_REGISTER_TARGET`: a distinct **"Harm Risk File"** board
   (fields: Severity, Probability, Residual severity/probability, Risk Status, Hazard
   category, Control verification, Owner, Review date) with views *Risk table (S×P)*,
@@ -163,6 +176,12 @@ The 62304 evidence most costly to backfill. Touches CI, so quarantined.
   issue (delivery side) **and** flag the corresponding SOUP anomaly entry for review; if
   it can affect patient safety, prompt creation of a linked `harm-risk` issue. Extend
   the existing workflow additively — do not rewrite it.
+- **Requirement issue form** `.github/ISSUE_TEMPLATE/requirement.yml` (auto-applies the
+  `requirement` label; fields: requirement statement, acceptance criteria, verification
+  method, linked design/risk/SOUP) — the traceability anchor.
+- **Supply-chain pinning** per an ADR (`NNNN-supply-chain-pinning`): pin CI
+  actions/images (SHA/version), keep them current via `.github/dependabot.yml`
+  (github-actions ecosystem) + `renovate.json` (gitlabci manager, if GitLab CI exists).
 - **Traceability conventions** `docs/TRACEABILITY.md`: define the linking model
   requirement issue (`requirement` label) ⇒ design/ADR ⇒ implementing PR/commit ⇒ test,
   using issue references and PR keywords so the chain is reconstructable from the project
@@ -188,6 +207,9 @@ Present every file and workflow diff; list anything needing org/admin rights.
   decision support / influencing diagnosis or treatment? If yes, link/trigger a re-eval
   of the MDSW qualification ADR" — and a CODEOWNERS entry so changes to
   `docs/adr/NNNN-mdsw-qualification.md` and `CONFORMANCE.md` require review.
+- **§9 release-review stub** `docs/HARM_RISK_REPORT.md`: the risk-management-report
+  template (three §9 conclusions + overall benefit–risk + sign-off), referenced from the
+  harm-risk method's release review.
 - **Verify & report:** open one example `harm-risk` issue and triage it on its board;
   add one example SOUP entry with a known-anomaly assessment; confirm the SBOM workflow
   runs. Final report: created vs skipped, manual actions (org security features,
