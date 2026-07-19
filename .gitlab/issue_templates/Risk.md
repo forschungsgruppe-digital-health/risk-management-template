@@ -11,7 +11,7 @@
 
 <!-- pick ONE and adjust the /label quick action below accordingly:
      schedule | scope | dependency | tech-debt | resource |
-     supply-chain | vulnerability | secret | compliance -->
+     supply-chain | vulnerability | secret | compliance | other (state it) -->
 
 ## Likelihood (1–5)
 
@@ -27,6 +27,8 @@
 ## Triggers / early-warning signals
 
 ## Mitigation action(s) — REQUIRED (at least one)
+
+<!-- "None known yet — to be proposed at triage", with a one-line why, is a valid answer. -->
 
 ## Contingency (if it materializes anyway)
 

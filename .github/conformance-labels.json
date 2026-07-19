@@ -15,5 +15,5 @@
 
   { "name": "requirement", "color": "0052CC", "description": "Requirement issue — traceability anchor (see docs/TRACEABILITY.md)" },
   { "name": "soup-anomaly", "color": "5319E7", "description": "Known anomaly affecting a SOUP component (see docs/SOUP.md)" },
-  { "name": "disclose-in-ifu", "color": "FEF2C0", "description": "Harm-risk with an information-for-safety control that must surface in the accompanying information / IFU (ISO 14971 §8 disclosure)" }
+  { "name": "disclose-in-ifu", "color": "FEF2C0", "description": "Information-for-safety control to surface in the accompanying information/IFU (ISO 14971 §8)" }
 ]

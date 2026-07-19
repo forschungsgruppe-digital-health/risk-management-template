@@ -46,7 +46,7 @@ field "Probability"          SINGLE_SELECT "1,2,3,4,5"
 field "Residual severity"    SINGLE_SELECT "1,2,3,4,5"
 field "Residual probability" SINGLE_SELECT "1,2,3,4,5"
 field "Risk Status"          SINGLE_SELECT "Open,Controlling,Controlled,Residual accepted,Closed"
-field "Hazard category"      SINGLE_SELECT "data-integrity,availability,confidentiality,clinical-misinterpretation,interoperability,usability"
+field "Hazard category"      SINGLE_SELECT "data-integrity,availability,confidentiality,clinical-misinterpretation,interoperability,usability,other"
 field "Control verification" SINGLE_SELECT "None,Implemented,Verified effective"
 field "Owner"                TEXT
 field "Review date"          DATE

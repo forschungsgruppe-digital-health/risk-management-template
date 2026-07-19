@@ -9,6 +9,9 @@
 # Needs: gh CLI (repo scope); jq.
 
 set -euo pipefail
+# Advisory contract: exit 0 even if gh/jq fail mid-run (auth, network, rate limit) —
+# a truncated matrix with a warning beats a red advisory job.
+trap 'echo "::warning:: tool error — matrix may be incomplete"; exit 0' ERR
 
 REPO="${1:?usage: traceability-matrix.sh <owner>/<repo>}"
 TEST_PATTERN='(^|/)(test|tests|spec|__tests__)/|\.(test|spec)\.[jt]sx?$|Test\.java$|_test\.(go|py)$|\.cy\.[jt]s$'

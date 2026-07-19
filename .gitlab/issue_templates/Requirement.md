@@ -13,7 +13,7 @@
 
 ## Planned verification method
 
-<!-- pick one: test | analysis | inspection | demonstration -->
+<!-- pick one: test | analysis | inspection | demonstration | tbd (decided at triage) -->
 
 ## Linked design / risk / SOUP
 

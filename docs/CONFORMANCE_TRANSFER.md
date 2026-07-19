@@ -11,7 +11,13 @@ sense, TBD via the dissemination/exploitation plan — adopts it.
 - **Delivery-risk register** + method ([`RISK_MANAGEMENT.md`](RISK_MANAGEMENT.md)) —
   issues, board, decisions.
 - **Harm-risk file** ([`HARM_RISK.md`](HARM_RISK.md)) — the 14971 chain per risk,
-  controls with both verifications, residual-risk and benefit–risk records.
+  controls with both verifications, residual-risk and benefit–risk records — plus the
+  per-release **§9 review reports** ([`HARM_RISK_REPORT.md`](HARM_RISK_REPORT.md)) and
+  **register exports** (release assets).
+- **Security-risk method + CVD policy** ([`SECURITY_RISK.md`](SECURITY_RISK.md),
+  [`SECURITY.md`](../SECURITY.md)) and the **62304 coverage map**
+  ([`standards/IEC-62304-COVERAGE.md`](standards/IEC-62304-COVERAGE.md)) — the
+  covered/partial/not-yet split the manufacturer walks at adoption.
 - **Design history**: ADRs ([`adr/`](adr/README.md)) and the arc42 architecture
   documentation ([`arc42/`](arc42/README.md)), risk-linked via
   [§11](arc42/11_technical_risks.md).
@@ -27,8 +33,9 @@ sense, TBD via the dissemination/exploitation plan — adopts it.
 
 ## Provenance & IP hygiene (do this while contributions happen)
 
-- **License:** the repo must carry a `LICENSE` before anything is published; the
-  template deliberately ships none (per-project decision). Verify compatibility of all
+- **License:** without a `LICENSE`, no reuse rights are granted and downstream
+  adoption/transfer is legally blocked — add one before publishing (a per-project
+  decision; the template deliberately ships none). Verify compatibility of all
   SOUP licenses (`soup.yaml` license column, SBOM) with the chosen outbound license.
 - **Contribution provenance:** enable **DCO sign-off** (`git commit -s` + the DCO check)
   so every contribution carries a certified origin — lightweight and sufficient for
@@ -64,6 +71,9 @@ Deliberately **not** maintained here (organizational, not repo artifacts):
 3. Re-run the traceability matrix; attach it to the handover record.
 4. Walk ADR-0001 with the manufacturer's regulatory function — the qualification
    decision and its trigger history are the entry point to everything else.
+4b. Confirm a completed [`HARM_RISK_REPORT.md`](HARM_RISK_REPORT.md) exists for the last
+   release, and walk the `not-yet` rows of
+   [`IEC-62304-COVERAGE.md`](standards/IEC-62304-COVERAGE.md) with the manufacturer.
 5. Agree which `watch`-tier obligations ([CONFORMANCE.md §5](standards/CONFORMANCE.md#5-watch--eu-horizontal-product-law-applicability-window-approaching))
    fall due before their launch date: CRA (2027-12-11) if not MDR-covered — incl. taking
    over the **CVD policy** ([`SECURITY.md`](../SECURITY.md)) and CRA Annex I Part II

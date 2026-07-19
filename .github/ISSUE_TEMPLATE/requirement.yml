@@ -33,6 +33,7 @@ body:
         - analysis
         - inspection
         - demonstration
+        - tbd (decided at triage)
     validations:
       required: true
   - type: input

@@ -51,7 +51,8 @@ chain:
 - **Harm** — injury/damage to health (physical or psychological), including harm from
   wrong or delayed clinical decisions based on the software.
 
-The [harm-risk issue form](../.github/ISSUE_TEMPLATE/harm-risk.yml) enforces this chain.
+The [harm-risk issue form](../.github/ISSUE_TEMPLATE/harm-risk.yml) scaffolds this chain
+(required fields).
 
 ## 3. Scoring — severity × probability
 
@@ -121,8 +122,9 @@ hazards it *introduces or shifts* — e.g. a "re-fetch on focus" control adds a
 stale-data/race window; an alarm adds alarm fatigue; a confirmation step adds
 click-through habituation. Re-run §2–§4 on the *controlled* design: capture any net-new
 hazardous situation as its own harm-risk (or a noted sub-entry), score it, and control it.
-A harm-risk is **not closable** until its controls are confirmed to create no new
-uncontrolled hazard. The [issue form](../.github/ISSUE_TEMPLATE/harm-risk.yml) has a
+Per this method a harm-risk is **not closable** until its controls are confirmed to
+create no new uncontrolled hazard (14971 §7.6: risk control is not complete until all
+activities — including this §7.5 evaluation — are done). The [issue form](../.github/ISSUE_TEMPLATE/harm-risk.yml) has a
 required field for this analysis ("none identified", with a rationale, is a valid answer).
 
 ## 6. Verification — twice per control (14971 §7.2)
@@ -176,7 +178,10 @@ feedback and incident reports from pilot/production use are triaged into this re
 - **Issue form:** [`.github/ISSUE_TEMPLATE/harm-risk.yml`](../.github/ISSUE_TEMPLATE/harm-risk.yml)
   · labels: [`.github/conformance-labels.json`](../.github/conformance-labels.json)
   (`scripts/setup-labels.sh <owner>/<repo> .github/conformance-labels.json`).
+- **Release review report:** [`HARM_RISK_REPORT.md`](HARM_RISK_REPORT.md) (14971 §9 — one
+  per release, three conclusions + sign-off; evidence: the release's register export).
 - **Method:** this document · delivery risks: [`RISK_MANAGEMENT.md`](RISK_MANAGEMENT.md)
+  · security risks: [`SECURITY_RISK.md`](SECURITY_RISK.md)
   · standards context: [`standards/CONFORMANCE.md`](standards/CONFORMANCE.md).
 - **On GitLab:** `.gitlab/issue_templates/Harm Risk.md` + scoped `harm-risk::*` labels +
   board lists — mapping in [`GITLAB.md`](GITLAB.md).

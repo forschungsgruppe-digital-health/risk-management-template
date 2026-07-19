@@ -24,7 +24,7 @@
 
 <!-- pick ONE and adjust the /label quick action below:
      data-integrity | availability | confidentiality |
-     clinical-misinterpretation | interoperability | usability -->
+     clinical-misinterpretation | interoperability | usability | other (state it) -->
 
 ## Severity of harm S (1–5)
 
@@ -39,7 +39,8 @@
 
 <!-- 1 inherently safe design → 2 protective measures → 3 information for safety, e.g.
      1. (tier 1) bind patient context immutably per view — ADR-xxxx
-     2. (tier 2) patient banner with name/DOB on every clinical view -->
+     2. (tier 2) patient banner with name/DOB on every clinical view
+     "To be determined at evaluation" is a valid answer for a newly identified hazard. -->
 
 ## New/changed risks introduced by the controls (14971 §7.5)
 
