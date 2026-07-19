@@ -19,7 +19,7 @@
 | 3 | A risk-management **system** — plan → analysis → control → review, continuously updated | [RA] | HARM_RISK.md §1–§10; HARM_RISK_REPORT.md | [RA] |
 | 4 | Risk-control measures in the safety priority order (inherently safe design → protective → information for safety) | [RA] | HARM_RISK.md §5 (14971 §7.1) | [RA] |
 | 5 | Reduce risks related to **use error** (ergonomics, intended users & environment) | [RA] | usability (IEC 62366-1); `hazard-cat:usability` | [RA] |
-| 8 | All known & foreseeable risks and undesirable side-effects minimised & acceptable vs benefit | [RA] | overall residual risk (HARM_RISK.md §8; HARM_RISK_REPORT.md) | [RA] |
+| 8 | All known & foreseeable risks and undesirable side-effects minimised & acceptable vs benefit | [RA] | overall residual risk ([HARM_RISK.md](../HARM_RISK.md) §7 — 14971 §8; [HARM_RISK_REPORT.md](../HARM_RISK_REPORT.md)) | [RA] |
 
 ## Chapter II — Design & manufacture (software-relevant)
 

@@ -1,5 +1,10 @@
 # SOUP inventory (IEC 62304 §5.3.3–5.3.4, §7.1.3, §8.1.2) — method: docs/SOUP.md
 #
+# Scope: hand-written entries cover DIRECT runtime SOUP (plus anything a class-B/C
+# release relies on, per the safety class in ADR-0002). The per-release SBOM is the
+# authoritative FULL-tree enumeration; low-risk transitive dependencies are covered by
+# the SBOM + the automated anomaly feed instead of hand-written entries (docs/SOUP.md).
+#
 # One entry per SOUP component the product relies on at runtime. Schema per entry:
 #   name:        package/product name as used by the ecosystem (matches SBOM/Dependabot)
 #   version:     unique version designator actually shipped

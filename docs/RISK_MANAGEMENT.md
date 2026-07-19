@@ -21,7 +21,8 @@ harm risk, they are never merged.
 Open an issue with the **Risk** form (it applies `risk` + `risk:open` automatically).
 Describe the risk as *cause → uncertain event → consequence*, pick a category, propose
 likelihood and impact, name an owner if known, and — required — state at least one
-mitigation action. Anyone can raise a risk; triage happens on the board.
+mitigation action ("none known yet — to be proposed at triage", with a one-line why, is
+a valid answer). Anyone can raise a risk; triage happens on the board.
 
 ## 3. Scoring — 5×5 likelihood × impact
 

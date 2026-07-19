@@ -49,6 +49,7 @@ body:
         - clinical-misinterpretation
         - interoperability
         - usability
+        - other (state in description)
     validations:
       required: true
   - type: dropdown
@@ -76,7 +77,7 @@ body:
     id: controls
     attributes:
       label: Risk control measure(s) — state the hierarchy tier per measure
-      description: "Tiers in mandatory order (14971 §7.1): 1 inherently safe design → 2 protective measures → 3 information for safety."
+      description: "Tiers in mandatory order (14971 §7.1): 1 inherently safe design → 2 protective measures → 3 information for safety. 'To be determined at evaluation' is a valid answer for a newly identified hazard — controls are decided when the risk is evaluated (HARM_RISK.md §4–§5)."
       placeholder: |
         1. (tier 1) bind patient context immutably per view — ADR-xxxx
         2. (tier 2) patient banner with name/DOB on every clinical view

@@ -5,7 +5,8 @@ name: template-sync-check
 # opens/updates a tracking issue telling you to run the `template-updater` skill — which
 # reconciles the shared tooling (skills + CI setup) while preserving this repo's content.
 # It does NOT modify files (no clobbering); the human-in-the-loop skill applies updates.
-# Inert in the template repo itself.
+# Inert in the template repo itself. Opt-out in a child repo: set the repository variable
+# TEMPLATE_SYNC_OPTOUT=1 (or delete .arc42-template.json / this workflow).
 
 on:
   schedule:
@@ -26,8 +27,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           TEMPLATE: forschungsgruppe-digital-health/arc42-project-template
+          TEMPLATE_SYNC_OPTOUT: ${{ vars.TEMPLATE_SYNC_OPTOUT }}
         run: |
           set -euo pipefail
+          if [ "${TEMPLATE_SYNC_OPTOUT:-}" = "1" ]; then
+            echo "TEMPLATE_SYNC_OPTOUT=1 — template-sync notifications disabled."; exit 0
+          fi
           if [ ! -f .arc42-template.json ]; then
             echo "::warning::.arc42-template.json missing — cannot determine the template version this repo tracks."; exit 0
           fi

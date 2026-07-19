@@ -45,7 +45,7 @@ field "Impact"      SINGLE_SELECT "1,2,3,4,5"
 field "Score"       NUMBER
 field "Severity"    SINGLE_SELECT "Critical,High,Medium,Low"
 field "Risk Status" SINGLE_SELECT "Open,Mitigating,Mitigated,Accepted,Closed"
-field "Category"    SINGLE_SELECT "schedule,scope,dependency,tech-debt,resource,supply-chain,vulnerability,secret,compliance"
+field "Category"    SINGLE_SELECT "schedule,scope,dependency,tech-debt,resource,supply-chain,vulnerability,secret,compliance,other"
 field "Owner"       TEXT
 field "Review date" DATE
 

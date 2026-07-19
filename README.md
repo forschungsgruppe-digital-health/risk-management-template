@@ -10,8 +10,12 @@ conveniences are Premium) — see [`docs/GITLAB.md`](docs/GITLAB.md).
 
 Derived from a gated, human-in-the-loop setup prompt (see
 [`docs/SETUP_PROMPT.md`](docs/SETUP_PROMPT.md)): nothing here mutates a repository behind
-your back; the scripts are idempotent and skip what already exists, and the automation
-workflow ships **inert until you configure it**.
+your back; the scripts are idempotent and skip what already exists. Shipped automation
+has three disclosed activation models — **risk-automation** is inert until you set its
+repo variable/token; **sbom** + **register-export** run only on your own release/tag
+events; **template-sync-check** opens a monthly advisory issue (opt out via the
+`TEMPLATE_SYNC_OPTOUT=1` variable or by deleting the workflow). Nothing blocks a merge or
+changes code on its own.
 
 ## What's inside
 
