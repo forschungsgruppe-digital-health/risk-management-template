@@ -21,7 +21,7 @@ cd <your-repo>
 
 # 2. Base layer (delivery-risk register) — cp -n never overwrites existing files
 mkdir -p docs scripts .github/ISSUE_TEMPLATE .github/workflows
-cp -n /tmp/rmt/docs/RISK_MANAGEMENT.md docs/
+cp -n /tmp/rmt/docs/RISK_MANAGEMENT.md /tmp/rmt/docs/RECIPES.md docs/
 cp -n /tmp/rmt/RISKS.md .                                # optional in-repo register
 cp -n /tmp/rmt/.github/ISSUE_TEMPLATE/risk.yml .github/ISSUE_TEMPLATE/
 cp -n /tmp/rmt/.github/risk-labels.json .github/

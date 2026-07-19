@@ -119,7 +119,7 @@ erase the knowledge.
 
 - **Register**: GitHub Issues labelled `risk` · board **Risk Register** (Projects v2) —
   fields: Likelihood, Impact, Score, Severity, Risk Status, Category, Owner, Review date.
-- **Method**: this document.
+- **Method**: this document · day-to-day situations: [`RECIPES.md`](RECIPES.md).
 - **Architecture documentation**: [`arc42/`](arc42/README.md) (arc42 v9.0,
   per-section files; §11 = architecture-level risk view).
 - **Issue form**: `.github/ISSUE_TEMPLATE/risk.yml`.

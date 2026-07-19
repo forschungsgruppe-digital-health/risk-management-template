@@ -182,7 +182,8 @@ feedback and incident reports from pilot/production use arrive via the
   (`scripts/setup-labels.sh <owner>/<repo> .github/conformance-labels.json`).
 - **Release review report:** [`HARM_RISK_REPORT.md`](HARM_RISK_REPORT.md) (14971 §9 — one
   per release, three conclusions + sign-off; evidence: the release's register export).
-- **Method:** this document · delivery risks: [`RISK_MANAGEMENT.md`](RISK_MANAGEMENT.md)
+- **Method:** this document · day-to-day situations: [`RECIPES.md`](RECIPES.md)
+  · delivery risks: [`RISK_MANAGEMENT.md`](RISK_MANAGEMENT.md)
   · security risks: [`SECURITY_RISK.md`](SECURITY_RISK.md)
   · standards context: [`standards/CONFORMANCE.md`](standards/CONFORMANCE.md).
 - **On GitLab:** `.gitlab/issue_templates/Harm Risk.md` + scoped `harm-risk::*` labels +
