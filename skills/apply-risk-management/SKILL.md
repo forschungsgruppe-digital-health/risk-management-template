@@ -52,9 +52,9 @@ concept, two entry points.
    it from memory).
 3. **Propose the diff**: files to copy verbatim, files to merge (PR template →
    append the *Traceability* + *Conformance gate* sections; CODEOWNERS → append
-   entries; existing ADR dir → qualification ADR under the next free number, links
-   fixed), files skipped (exist already), scripts to run, manual follow-ups. **Wait for
-   approval.**
+   entries; existing ADR dir → the template's three ADRs under the next free numbers,
+   links fixed), files skipped (exist already), scripts to run, manual follow-ups.
+   **Wait for approval.**
 3b. **High-fidelity preview (both modes, still read-only on `TARGET`).** Prove the plan
    instead of describing it: `git clone` (or `git worktree`) the target to a **throwaway**
    dir, apply the file layer there with `cp -n`, hand-merge PR-template/CODEOWNERS, and
@@ -71,8 +71,9 @@ concept, two entry points.
    proposed diff for human review.
 6. **Verify** with the checklist at the end of `docs/APPLY_TO_EXISTING_REPO.md`; report
    created vs skipped vs merged, and the open manual steps (fill ADR-0001 with the
-   product's real qualification answer + date; HARM_RISK §1 plan table; replace the
-   `soup.yaml` example; set CODEOWNERS owners; set `RISK_PROJECT_URL`).
+   product's real qualification answer + date; fill ADR-0002 with the software safety
+   classification — or its "N/A while not MDSW" default; HARM_RISK §1 plan table; replace
+   the `soup.yaml` example; set CODEOWNERS owners; set `RISK_PROJECT_URL`).
 
 ## Hard rules
 

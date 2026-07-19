@@ -40,11 +40,14 @@ verified 2026-07.
 | Artifact | Purpose |
 |---|---|
 | [`docs/standards/CONFORMANCE.md`](docs/standards/CONFORMANCE.md) | Tiered standards & regulatory index (active / conditional / iff-MDSW / deferred / watch) with verified editions — incl. MDR + MDCG 2019-11 rev. 1, IEC 62304 (+ Ed. 2 timeline), CRA, AI Act, EHDS |
-| [`docs/adr/`](docs/adr/README.md) | MADR-style ADR mechanism + [ADR-0001](docs/adr/0001-mdsw-qualification.md): the **living** medical device software qualification decision with feature-gate re-evaluation triggers |
-| [`docs/HARM_RISK.md`](docs/HARM_RISK.md) | ISO 14971 harm-risk method — separate register: [`harm-risk.yml`](.github/ISSUE_TEMPLATE/harm-risk.yml) form, [labels](.github/conformance-labels.json), [board script](scripts/setup-harm-risk-board.sh) |
+| [`docs/adr/`](docs/adr/README.md) | MADR-style ADR mechanism + three living/template ADRs: [0001 MDSW qualification](docs/adr/0001-mdsw-qualification.md) (feature-gate re-evaluation triggers), [0002 software safety classification](docs/adr/0002-software-safety-classification.md) (IEC 62304 §4.3), [0003 supply-chain pinning](docs/adr/0003-supply-chain-pinning.md) |
+| [`docs/HARM_RISK.md`](docs/HARM_RISK.md) | ISO 14971 harm-risk method — separate register: [`harm-risk.yml`](.github/ISSUE_TEMPLATE/harm-risk.yml) form (§5–§8 chain incl. §7.5/§7.6/disclosure), [labels](.github/conformance-labels.json), [board script](scripts/setup-harm-risk-board.sh) |
+| [`docs/HARM_RISK_REPORT.md`](docs/HARM_RISK_REPORT.md) | ISO 14971 §9 risk-management-report stub — the per-release review record (three §9 conclusions + sign-off) |
+| [`docs/standards/GSPR-CHECKLIST.md`](docs/standards/GSPR-CHECKLIST.md) + [`IEC-62304-COVERAGE.md`](docs/standards/IEC-62304-COVERAGE.md) | MDR Annex I software-GSPR checklist (evidence-mapped) + clause-level 62304 process-coverage map (covered/partial/not-yet) |
 | [`docs/SOUP.md`](docs/SOUP.md) + [`soup.yaml`](soup.yaml) | IEC 62304 SOUP inventory (identification, relied-upon requirements, known-anomaly impact assessments) |
 | [`.github/workflows/sbom.yml`](.github/workflows/sbom.yml) | Per-release SBOM (Syft, CycloneDX default) attached as release asset — inert until a release is published |
-| [`docs/TRACEABILITY.md`](docs/TRACEABILITY.md) | Requirement → design → PR → test linking model, reconstructable from Git; [advisory matrix script](scripts/traceability-matrix.sh) |
+| [`.github/dependabot.yml`](.github/dependabot.yml) + [`renovate.json`](renovate.json) | Keep the pinned CI generators current (Dependabot: GitHub Actions; Renovate: GitLab-CI images) — [ADR-0003](docs/adr/0003-supply-chain-pinning.md) |
+| [`docs/TRACEABILITY.md`](docs/TRACEABILITY.md) | Requirement → design → PR → test linking model ([`requirement.yml`](.github/ISSUE_TEMPLATE/requirement.yml) form as anchor), reconstructable from the project forge; [advisory matrix script](scripts/traceability-matrix.sh) |
 | [`docs/CONFORMANCE_TRANSFER.md`](docs/CONFORMANCE_TRANSFER.md) | What transfers to the future manufacturer vs what stays manufacturer-side (QMS, CE, clinical evaluation); DCO/IP hygiene; handover checklist |
 | [`.github/pull_request_template.md`](.github/pull_request_template.md) + [`CODEOWNERS`](.github/CODEOWNERS) | The per-PR qualification-trigger gate + human review of conformance-critical files |
 | [`docs/CONFORMANCE_EXTENSION_PROMPT.md`](docs/CONFORMANCE_EXTENSION_PROMPT.md) | Gated agent prompt to retrofit this layer onto an existing risk-managed repo |

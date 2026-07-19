@@ -30,20 +30,22 @@ cp -n /tmp/rmt/.github/workflows/risk-automation.yml .github/workflows/  # ships
 
 # 3. Conformance layer (optional — MDR/62304 readiness, see docs/standards/CONFORMANCE.md)
 mkdir -p docs/standards docs/adr
-cp -n /tmp/rmt/docs/standards/CONFORMANCE.md docs/standards/
-cp -rn /tmp/rmt/docs/adr/ docs/adr/                      # renumber 0001 if you have ADRs
-cp -n /tmp/rmt/docs/HARM_RISK.md /tmp/rmt/docs/SOUP.md /tmp/rmt/docs/TRACEABILITY.md \
-      /tmp/rmt/docs/CONFORMANCE_TRANSFER.md docs/
+cp -n /tmp/rmt/docs/standards/*.md docs/standards/       # CONFORMANCE + GSPR-CHECKLIST + IEC-62304-COVERAGE
+cp -rn /tmp/rmt/docs/adr/. docs/adr/                     # ('/.': portable on GNU+BSD) renumber 0001–0003 to your next free numbers + fix cross-links
+cp -n /tmp/rmt/docs/HARM_RISK.md /tmp/rmt/docs/HARM_RISK_REPORT.md /tmp/rmt/docs/SOUP.md \
+      /tmp/rmt/docs/TRACEABILITY.md /tmp/rmt/docs/CONFORMANCE_TRANSFER.md docs/
 cp -n /tmp/rmt/soup.yaml .
-cp -n /tmp/rmt/.github/ISSUE_TEMPLATE/harm-risk.yml .github/ISSUE_TEMPLATE/
+cp -n /tmp/rmt/.github/ISSUE_TEMPLATE/harm-risk.yml /tmp/rmt/.github/ISSUE_TEMPLATE/requirement.yml .github/ISSUE_TEMPLATE/
 cp -n /tmp/rmt/.github/conformance-labels.json .github/
 cp -n /tmp/rmt/scripts/setup-harm-risk-board.sh /tmp/rmt/scripts/traceability-matrix.sh scripts/
 cp -n /tmp/rmt/.github/workflows/sbom.yml .github/workflows/
+cp -n /tmp/rmt/.github/dependabot.yml .github/             # MERGE by hand if one exists (ADR-0003)
+cp -n /tmp/rmt/renovate.json .                             # MERGE by hand if one exists (GitLab-image bumps)
 cp -n /tmp/rmt/.github/pull_request_template.md .github/   # MERGE by hand if one exists
 cp -n /tmp/rmt/.github/CODEOWNERS .github/                 # MERGE by hand if one exists
 
 # 4. Architecture docs (arc42 v9.0, §11 risk-wired) — optional
-cp -rn /tmp/rmt/docs/arc42/ docs/arc42/
+mkdir -p docs/arc42 && cp -rn /tmp/rmt/docs/arc42/. docs/arc42/
 
 # 5. Activate (idempotent)
 ./scripts/setup-labels.sh <owner>/<your-repo>
@@ -53,9 +55,11 @@ cp -rn /tmp/rmt/docs/arc42/ docs/arc42/
 ```
 
 Then: set the repo variable `RISK_PROJECT_URL` (activates the inert automation), fill in
-[ADR-0001](adr/0001-mdsw-qualification.md) and the plan table in
-[`HARM_RISK.md`](HARM_RISK.md) §1, replace the example entry in `soup.yaml`, set owners
-in `.github/CODEOWNERS`, and link `docs/RISK_MANAGEMENT.md` from your README.
+[ADR-0001](adr/0001-mdsw-qualification.md) **and** the safety-classification
+[ADR-0002](adr/0002-software-safety-classification.md) (both renumbered to your scheme) and
+the plan table in [`HARM_RISK.md`](HARM_RISK.md) §1, replace the example entry in
+`soup.yaml`, set owners in `.github/CODEOWNERS`, and link `docs/RISK_MANAGEMENT.md` from
+your README.
 
 ## Collision rules (all paths)
 
@@ -63,7 +67,7 @@ in `.github/CODEOWNERS`, and link `docs/RISK_MANAGEMENT.md` from your README.
 |---|---|
 | labels with the same names | `setup-labels.sh` skips them (never recolors/deletes) |
 | an issue-template `config.yml` | keep yours; the forms coexist with other templates |
-| `docs/adr/` with numbered ADRs | keep your numbering + template; add the qualification ADR under your **next free number** and fix the links to it |
+| `docs/adr/` with numbered ADRs | keep your numbering + template; add the template's **three** ADRs (qualification, safety classification, supply-chain pinning) under your **next free numbers** and fix the links to them |
 | a PR template | **merge**: append the *Traceability* + *Conformance gate* sections |
 | `CODEOWNERS` | **merge**: append the conformance-critical entries |
 | CI workflows named `risk-automation.yml`/`sbom.yml` | do **not** overwrite — wire the equivalent steps into yours per [`CONFORMANCE_EXTENSION_PROMPT.md`](CONFORMANCE_EXTENSION_PROMPT.md) Phase E3 |
@@ -72,9 +76,12 @@ in `.github/CODEOWNERS`, and link `docs/RISK_MANAGEMENT.md` from your README.
 
 ## Verify (any path)
 
-- [ ] `risk` + `harm-risk` issue forms selectable under *New issue*
-- [ ] both label sets exist (`gh label list | grep -E '^(risk|harm-risk|hazard-cat|requirement|soup)'`)
+- [ ] `risk` + `harm-risk` + `requirement` issue forms selectable under *New issue*
+- [ ] both label sets exist (`gh label list | grep -E '^(risk|harm-risk|hazard-cat|requirement|soup|disclose-in-ifu)'`)
 - [ ] boards exist with their fields; views added per the scripts' printed recipes
 - [ ] a test `risk` issue lands on the board (auto-add or `RISK_PROJECT_URL` + workflow)
 - [ ] ADR-0001 reflects **your** product's qualification answer, with a real date
+- [ ] ADR-0002 records **your** software safety classification (or its "N/A while not MDSW" default)
+- [ ] `docs/standards/` carries GSPR-CHECKLIST.md + IEC-62304-COVERAGE.md; `docs/HARM_RISK_REPORT.md` present as the §9 release-review stub
+- [ ] `.github/dependabot.yml` + `renovate.json` present (or consciously skipped/merged — ADR-0003)
 - [ ] `soup.yaml` example replaced; SBOM workflow runs on `workflow_dispatch`

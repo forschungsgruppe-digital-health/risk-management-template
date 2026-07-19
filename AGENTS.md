@@ -26,12 +26,14 @@ file wins.
 - `docs/adr/` — Architecture Decision Records (MADR-style; the ADR ↔ arc42 §9/§11 link is a core feature).
 - `docs/RISK_MANAGEMENT.md` · `RISKS.md` — the method + the optional in-repo register.
 - `docs/HARM_RISK.md` — the **harm-risk** register (ISO 14971 style), **kept separate from the delivery
-  register**.
-- `docs/SOUP.md` · `soup.yaml` — Software of Unknown Provenance (IEC 62304).
+  register**; `docs/HARM_RISK_REPORT.md` — the §9 per-release review record.
+- `docs/SOUP.md` · `soup.yaml` — Software of Unknown Provenance (IEC 62304);
+  `docs/standards/GSPR-CHECKLIST.md` + `IEC-62304-COVERAGE.md` — Annex-I checklist + clause coverage map.
 - `docs/TRACEABILITY.md`, `docs/CONFORMANCE_*`, `docs/standards/` — conformance apparatus.
 - `docs/SETUP_PROMPT.md`, `docs/APPLY_TO_EXISTING_REPO.md` — retrofit an existing repo (prompt or skill).
-- `.github/` (issue forms, labels, `risk-automation.yml`, `sbom.yml`) · `.gitlab/` + `.gitlab-ci.yml`
-  (GitLab twins) · `scripts/` (idempotent `gh`/`glab` setup).
+- `.github/` (issue forms incl. `requirement.yml` + `config.yml`, labels, `risk-automation.yml`,
+  `sbom.yml`, `dependabot.yml`) · `renovate.json` · `.gitlab/` + `.gitlab-ci.yml` (GitLab twins) ·
+  `scripts/` (idempotent `gh`/`glab` setup).
 - `skills/` — agent skills (see catalog); `AGENTS.md` is canonical, wired via `.claude/.codex` symlinks.
 
 ## Conventions

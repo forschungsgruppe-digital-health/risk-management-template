@@ -10,7 +10,7 @@
 # key precisely so a severity label does not evict the lifecycle label under one scope).
 # On Premium/Ultimate GitLab ENFORCES one value per scope; on Free the labels are plain
 # and the single-value rule stays a convention (docs/GITLAB.md § Labels).
-# Names without ':' (risk, harm-risk, requirement, soup-anomaly) stay unchanged.
+# Names without ':' (risk, harm-risk, requirement, soup-anomaly, disclose-in-ifu) stay unchanged.
 #
 # Usage: scripts/setup-labels-gitlab.sh <group/project> [labels-file]
 #   default labels-file: .github/risk-labels.json (delivery risks)
