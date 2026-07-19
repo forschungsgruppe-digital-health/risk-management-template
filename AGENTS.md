@@ -29,6 +29,8 @@ file wins.
   register**; `docs/HARM_RISK_REPORT.md` — the §9 per-release review record.
 - `docs/SOUP.md` · `soup.yaml` — Software of Unknown Provenance (IEC 62304);
   `docs/standards/GSPR-CHECKLIST.md` + `IEC-62304-COVERAGE.md` — Annex-I checklist + clause coverage map.
+- `docs/SECURITY_RISK.md` · `SECURITY.md` — security-risk method (MDCG 2019-16, coupled to the harm
+  register, no third register) + CVD-policy stub.
 - `docs/TRACEABILITY.md`, `docs/CONFORMANCE_*`, `docs/standards/` — conformance apparatus.
 - `docs/SETUP_PROMPT.md`, `docs/APPLY_TO_EXISTING_REPO.md` — retrofit an existing repo (prompt or skill).
 - `.github/` (issue forms incl. `requirement.yml` + `config.yml`, labels, `risk-automation.yml`,

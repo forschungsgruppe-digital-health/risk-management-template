@@ -72,7 +72,9 @@ Re-evaluate this ADR (and record the result here) **before merging** any feature
   calculations;
 - drives or adapts a **care plan / pathway logic** in a way that influences treatment;
 - adds **AI/ML components** whose output is used for decisions with diagnostic or
-  therapeutic purposes (also triggers the AI-Act row of the conformance index);
+  therapeutic purposes (also triggers the AI-Act row of the conformance index; walk
+  **MDCG 2025-6 / AIB 2025-1** — the MDR↔AI-Act interplay guidance — alongside
+  MDCG 2019-11 rev. 1);
 - turns the product into (or embeds it in) an **EHR system** for priority-category data
   (EHDS row);
 - changes the **intended purpose** statement, target users, or claims in any published

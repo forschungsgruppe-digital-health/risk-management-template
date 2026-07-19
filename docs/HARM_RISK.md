@@ -26,7 +26,10 @@ delivery risk may *reference* a harm risk (and vice versa); they are never merge
 | Scope of these activities | <product + life-cycle phases covered> |
 | Responsibilities & authorities | <who owns the file; who may accept residual risk> |
 | Criteria for risk acceptability | the S×P acceptability matrix in §4 (adapt it consciously, **before** scoring) |
+| Policy basis for the acceptability criteria (14971 §4.2) | <who ratified the matrix, derived from which risk policy — record the ratification (e.g. as an ADR); [NEEDS RA/lead INPUT]> |
+| Method & criteria for evaluating **overall** residual risk (14971 §4.4 e) | <how all residual risks are judged *together* pre-release — feeds conclusion 2 of the [§9 report](HARM_RISK_REPORT.md)> |
 | Verification activities | the two verifications per control (§6) |
+| Review requirements (14971 §4.4 f) | <cadence + reviewers of risk-management activities — default: the release review recorded in [HARM_RISK_REPORT.md](HARM_RISK_REPORT.md)> |
 | Production & post-production information | detector feed per §8 + user feedback channel |
 
 ## 2. The 14971 chain — what a harm-risk issue captures
@@ -88,6 +91,14 @@ project lead's call, recorded in the issue.
 at *every* probability — a remote-but-fatal hazard is never merely "investigate". Consider
 extending the same floor to **S 4**. Adjust the floor consciously with the rest of the
 matrix, but keep the conservative choice as the starting default.
+
+**MDR "as far as possible" (AFAP).** If the product is MDSW, MDR **GSPR 2** (via
+**EN ISO 14971:2019+A11:2021**, Annex ZA) tightens this matrix's semantics: `acceptable`
+does **not** exempt a risk from the §5 control hierarchy — risks must be reduced **as far
+as possible without adversely affecting the benefit–risk ratio**, and "not practicable"
+must be justified economically-neutrally (cost alone is not a valid AFAP justification).
+Record the AFAP consideration in the issue when leaving an `acceptable`/`investigate` risk
+uncontrolled. While not MDSW, the matrix semantics above apply unchanged.
 
 ## 5. Risk control — hierarchy is mandatory (14971 §7.1, in this order)
 
