@@ -179,6 +179,9 @@ The 62304 evidence most costly to backfill. Touches CI, so quarantined.
 - **Requirement issue form** `.github/ISSUE_TEMPLATE/requirement.yml` (auto-applies the
   `requirement` label; fields: requirement statement, acceptance criteria, verification
   method, linked design/risk/SOUP) — the traceability anchor.
+- **Intake forms:** `soup-anomaly.yml` (the §7.1.3 anomaly-evaluation record, wired to
+  `soup.yaml`) and `field-feedback.yml` (the 14971 §10 production/post-production intake,
+  label `field-feedback`; triage routes to harm-risk / risk / bug).
 - **Supply-chain pinning** per an ADR (`NNNN-supply-chain-pinning`): pin CI
   actions/images (SHA/version), keep them current via `.github/dependabot.yml`
   (github-actions ecosystem) + `renovate.json` (gitlabci manager, if GitLab CI exists).

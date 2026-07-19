@@ -18,6 +18,8 @@ inline: scoped-label exclusivity **enforcement** (§ Labels), issue **weight** f
 | Raising a risk | issue **form** `.github/ISSUE_TEMPLATE/risk.yml` | **description template** [`.gitlab/issue_templates/Risk.md`](../.gitlab/issue_templates/Risk.md) — markdown sections instead of form fields; the embedded [quick actions](https://docs.gitlab.com/ee/user/project/quick_actions.html) (`/label …`) auto-apply the labels on creation |
 | Harm risk (ISO 14971) | `.github/ISSUE_TEMPLATE/harm-risk.yml` | [`.gitlab/issue_templates/Harm Risk.md`](../.gitlab/issue_templates/Harm%20Risk.md) |
 | Requirement (traceability anchor) | `.github/ISSUE_TEMPLATE/requirement.yml` | [`.gitlab/issue_templates/Requirement.md`](../.gitlab/issue_templates/Requirement.md) |
+| SOUP anomaly (62304 §7.1.3 record) | `.github/ISSUE_TEMPLATE/soup-anomaly.yml` | [`.gitlab/issue_templates/SOUP Anomaly.md`](../.gitlab/issue_templates/SOUP%20Anomaly.md) |
+| Field feedback / incident (14971 §10 intake) | `.github/ISSUE_TEMPLATE/field-feedback.yml` | [`.gitlab/issue_templates/Field Feedback.md`](../.gitlab/issue_templates/Field%20Feedback.md) |
 | CI-generator updates (ADR-0003) | Dependabot ([`.github/dependabot.yml`](../.github/dependabot.yml), github-actions ecosystem) | Renovate ([`renovate.json`](../renovate.json), `gitlabci` manager — bumps the Syft/Trivy image pins; inert until the Renovate app/runner is enabled) |
 | Labels | flat names with `:` (e.g. `risk:open`), created by `scripts/setup-labels.sh` (gh) | **scoped labels** `risk::open` etc., created by [`scripts/setup-labels-gitlab.sh`](../scripts/setup-labels-gitlab.sh) (glab) — the script maps `x:y` → `x::y`. On **Premium/Ultimate** scoped labels are mutually exclusive per scope, which *enforces* the lifecycle/severity single-value rule; on **Free** they are ordinary labels and the rule stays a manual convention (exactly as on GitHub) — the register works either way |
 | Score | Projects v2 number field | Score = L×I, recorded on the issue at triage. **Free:** in the issue description (the Risk template captures L and I) or a colon-free `score-<n>` label. **Premium/Ultimate:** the numeric issue **weight** (`/weight <n>`), which sorts/filters natively |
@@ -56,8 +58,8 @@ git push --mirror git@<your-gitlab-host>:<group>/<name>.git
 The method docs use the canonical flat names (`risk:open`); on GitLab they materialize as
 scoped labels (`risk::open`). Both spellings mean the same state — when a doc says "apply
 `risk-sev:high`", on GitLab that is `risk-sev::high`. Plain labels without a colon
-(`risk`, `harm-risk`, `requirement`, `soup-anomaly`, `disclose-in-ifu`) are identical on
-both platforms.
+(`risk`, `harm-risk`, `requirement`, `soup-anomaly`, `disclose-in-ifu`, `field-feedback`)
+are identical on both platforms.
 Note the deliberate split: severity is `risk-sev:*` (→ `risk-sev::*`), a **separate scope**
 from the lifecycle `risk:*` (→ `risk::*`), so that on Premium a severity label and a
 lifecycle label coexist instead of evicting each other under one `risk::` scope — do not

@@ -37,7 +37,8 @@ cp -n /tmp/rmt/docs/HARM_RISK.md /tmp/rmt/docs/HARM_RISK_REPORT.md /tmp/rmt/docs
       /tmp/rmt/docs/CONFORMANCE_TRANSFER.md docs/
 cp -n /tmp/rmt/SECURITY.md .                             # CVD policy stub — MERGE if one exists
 cp -n /tmp/rmt/soup.yaml .
-cp -n /tmp/rmt/.github/ISSUE_TEMPLATE/harm-risk.yml /tmp/rmt/.github/ISSUE_TEMPLATE/requirement.yml .github/ISSUE_TEMPLATE/
+cp -n /tmp/rmt/.github/ISSUE_TEMPLATE/harm-risk.yml /tmp/rmt/.github/ISSUE_TEMPLATE/requirement.yml \
+      /tmp/rmt/.github/ISSUE_TEMPLATE/soup-anomaly.yml /tmp/rmt/.github/ISSUE_TEMPLATE/field-feedback.yml .github/ISSUE_TEMPLATE/
 cp -n /tmp/rmt/.github/conformance-labels.json .github/
 cp -n /tmp/rmt/scripts/setup-harm-risk-board.sh /tmp/rmt/scripts/traceability-matrix.sh scripts/
 cp -n /tmp/rmt/.github/workflows/sbom.yml /tmp/rmt/.github/workflows/register-export.yml .github/workflows/
@@ -49,11 +50,11 @@ cp -n /tmp/rmt/.github/CODEOWNERS .github/                 # MERGE by hand if on
 # 4. Architecture docs (arc42 v9.0, §11 risk-wired) — optional
 mkdir -p docs/arc42 && cp -rn /tmp/rmt/docs/arc42/. docs/arc42/
 
-# 5. Activate (idempotent)
+# 5. Activate (idempotent; the 2nd board arg links the project to your repo)
 ./scripts/setup-labels.sh <owner>/<your-repo>
 ./scripts/setup-labels.sh <owner>/<your-repo> .github/conformance-labels.json
-./scripts/setup-project-board.sh <owner>
-./scripts/setup-harm-risk-board.sh <owner>
+./scripts/setup-project-board.sh <owner> <owner>/<your-repo>
+./scripts/setup-harm-risk-board.sh <owner> <owner>/<your-repo>
 ```
 
 Then: set the repo variable `RISK_PROJECT_URL` (activates the inert automation), fill in
@@ -78,8 +79,8 @@ your README.
 
 ## Verify (any path)
 
-- [ ] `risk` + `harm-risk` + `requirement` issue forms selectable under *New issue*
-- [ ] both label sets exist (`gh label list | grep -E '^(risk|harm-risk|hazard-cat|requirement|soup|disclose-in-ifu)'`)
+- [ ] `risk` + `harm-risk` + `requirement` + `soup-anomaly` + `field-feedback` issue forms selectable under *New issue*
+- [ ] both label sets exist (`gh label list | grep -E '^(risk|harm-risk|hazard-cat|requirement|soup|disclose-in-ifu|field-feedback)'`)
 - [ ] boards exist with their fields; views added per the scripts' printed recipes
 - [ ] a test `risk` issue lands on the board (auto-add or `RISK_PROJECT_URL` + workflow)
 - [ ] ADR-0001 reflects **your** product's qualification answer, with a real date
