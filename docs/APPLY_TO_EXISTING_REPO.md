@@ -73,7 +73,7 @@ your README.
 | `docs/adr/` with numbered ADRs | keep your numbering + template; add the template's **three** ADRs (qualification, safety classification, supply-chain pinning) under your **next free numbers** and fix the links to them |
 | a PR template | **merge**: append the *Traceability* + *Conformance gate* sections |
 | `CODEOWNERS` | **merge**: append the conformance-critical entries |
-| CI workflows named `risk-automation.yml`/`sbom.yml` | do **not** overwrite — wire the equivalent steps into yours per [`CONFORMANCE_EXTENSION_PROMPT.md`](CONFORMANCE_EXTENSION_PROMPT.md) Phase E3 |
+| CI workflows named `risk-automation.yml`/`sbom.yml`/`register-export.yml` | do **not** overwrite — wire the equivalent steps into yours per [`CONFORMANCE_EXTENSION_PROMPT.md`](CONFORMANCE_EXTENSION_PROMPT.md) Phase E3 |
 | architecture docs | keep yours; optionally adopt only [§11's register hook](arc42/11_technical_risks.md) |
 | a `Risk Register` / `Harm Risk File` board | the board scripts detect by title and skip creation, then only add missing fields |
 
@@ -87,4 +87,4 @@ your README.
 - [ ] ADR-0002 records **your** software safety classification (or its "N/A while not MDSW" default)
 - [ ] `docs/standards/` carries GSPR-CHECKLIST.md + IEC-62304-COVERAGE.md; `docs/HARM_RISK_REPORT.md` present as the §9 release-review stub
 - [ ] `.github/dependabot.yml` + `renovate.json` present (or consciously skipped/merged — ADR-0003)
-- [ ] `soup.yaml` example replaced; SBOM workflow runs on `workflow_dispatch`
+- [ ] `soup.yaml` example replaced; SBOM + register-export workflows run on `workflow_dispatch`

@@ -31,9 +31,11 @@ One requirement per issue — bundles break the chain.
 test files — flagging requirements with **no linked test** (⚠). It is **advisory** (always
 exits 0): at template stage the gap list is review input, not a merge blocker. Projects
 that reach class-B/C ambitions wire it into CI as a warning first, then a gate.
-The script traces **requirement → PR → test** only; the **SOUP → requirement** edge lives
-in `soup.yaml` (`req:`) and the **control → test** edge inside each harm-risk issue — query
-those directly (or extend the script) when a full class-C matrix is needed.
+The script traces **requirement → PR → test**, and — when run from a checkout that has
+`./soup.yaml` in the working directory — also emits the **SOUP → requirement** table from
+the entries' `req:` fields (run it from the repo root; without a local `soup.yaml` that
+section is silently omitted). The **control → test** edge lives inside each harm-risk
+issue — query it directly (or extend the script) when a full class-C matrix is needed.
 
 ## PR-side duties
 

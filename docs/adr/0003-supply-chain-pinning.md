@@ -16,8 +16,12 @@ with the repo's own SBOM/SOUP supply-chain thesis.
 
 ## Decision
 
-1. **Pin** every third-party CI action/image to an explicit version (`actions/checkout` is
-   SHA-pinned, matching [`template-sync-check.yml`](../../.github/workflows/template-sync-check.yml)).
+1. **Pin** every third-party CI action/image to an explicit version — **all** GitHub
+   Actions are SHA-pinned (checkout, sbom-action, add-to-project, upload-artifact),
+   matching the pattern set by
+   [template-sync-check.yml](https://github.com/forschungsgruppe-digital-health/risk-management-template/blob/main/.github/workflows/template-sync-check.yml)
+   (absolute URL on purpose — that workflow is template-infrastructure and not copied
+   into child repos).
 2. **Keep them current with Dependabot** ([`.github/dependabot.yml`](../../.github/dependabot.yml),
    `github-actions` ecosystem, weekly) so the pins do not rot silently.
 
