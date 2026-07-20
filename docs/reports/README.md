@@ -18,3 +18,9 @@ Living, curated documents — the arc42 docs (`docs/arc42/`), the ADRs (`docs/ad
 are **not** reports: skills draft input for them here, and humans merge the accepted parts.
 [`arc42-generator`](../../skills/arc42-generator/SKILL.md) is the exception that writes the arc42 docs
 directly, using `docs-auditor`'s report as its quality gate.
+
+The **compiled Risk Management File** (`docs/risk-management-file/`, generated per release by
+[`build-risk-management-file.py`](../../scripts/build-risk-management-file.py) — ADR-0004) is also **not**
+a report: it is a *deliverable artifact* (a mechanical view of the living records for handover), versioned by
+release, not a dated analysis snapshot. The [`mdr-audit-readiness`](../../skills/mdr-audit-readiness/SKILL.md)
+scorecard, by contrast, **is** a report and lives here.

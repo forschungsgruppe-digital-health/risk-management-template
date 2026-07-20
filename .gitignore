@@ -11,9 +11,19 @@ Thumbs.db
 .vscode/
 *~
 
+# Compiled Risk Management File (ADR-0004): the Markdown master is the intended in-repo
+# archive (committed via the release PR); the derived binaries are release assets, not git.
+docs/risk-management-file/*.docx
+docs/risk-management-file/*.html
+# PDF stays out unless RMF_COMMIT_PDF=true (then `git add -f` in the workflow):
+docs/risk-management-file/*.pdf
+
+# Python bytecode (scripts/build-risk-management-file.py)
+__pycache__/
+*.pyc
+
 # Build / deps (uncomment/extend for your stack)
 # node_modules/
 # dist/
 # build/
 # target/
-# __pycache__/

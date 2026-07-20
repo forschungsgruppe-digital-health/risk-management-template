@@ -28,8 +28,8 @@ delivery risk may *reference* a harm risk (and vice versa); they are never merge
 | Criteria for risk acceptability | the S×P acceptability matrix in §4 (adapt it consciously, **before** scoring) |
 | Policy basis for the acceptability criteria (14971 §4.2) | <who ratified the matrix, derived from which risk policy — record the ratification (e.g. as an ADR); [NEEDS RA/lead INPUT]> |
 | Method & criteria for evaluating **overall** residual risk (14971 §4.4 e) | <how all residual risks are judged *together* pre-release — feeds conclusion 2 of the [§9 report](HARM_RISK_REPORT.md)> |
-| Verification activities | the two verifications per control (§6) |
-| Review requirements (14971 §4.4 f) | <cadence + reviewers of risk-management activities — default: the release review recorded in [HARM_RISK_REPORT.md](HARM_RISK_REPORT.md)> |
+| Verification activities (14971 §4.4 f) | the two verifications per control (§6) |
+| Review requirements (14971 §4.4 c) | <cadence + reviewers of risk-management activities — default: the release review recorded in [HARM_RISK_REPORT.md](HARM_RISK_REPORT.md)> |
 | Production & post-production information | detector feed per §8 + user feedback channel |
 
 ## 2. The 14971 chain — what a harm-risk issue captures
