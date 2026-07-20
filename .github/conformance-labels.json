@@ -13,6 +13,8 @@
   { "name": "hazard-cat:interoperability", "color": "E99695", "description": "Hazard: interface/mapping error distorts meaning" },
   { "name": "hazard-cat:usability", "color": "E99695", "description": "Hazard: use error caused by the interface (IEC 62366-1)" },
 
+  { "name": "use-scenario", "color": "C5DEF5", "description": "Hazard-related use scenario, IEC 62366-1 (see docs/USABILITY.md) — feeds the harm-risk register" },
+
   { "name": "requirement", "color": "0052CC", "description": "Requirement issue — traceability anchor (see docs/TRACEABILITY.md)" },
   { "name": "soup-anomaly", "color": "5319E7", "description": "Known anomaly affecting a SOUP component (see docs/SOUP.md)" },
   { "name": "disclose-in-ifu", "color": "FEF2C0", "description": "Information-for-safety control to surface in the accompanying information/IFU (ISO 14971 §8)" },

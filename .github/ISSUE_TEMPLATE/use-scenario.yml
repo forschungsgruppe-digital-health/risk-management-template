@@ -1,0 +1,97 @@
+name: "Hazard-related use scenario (IEC 62366-1)"
+description: "Document a use error that could lead to harm (IEC 62366-1 §5.4). Feeds the harm-risk register — it is not a separate safety register."
+title: "[USE] <task + use error, one line>"
+labels: ["use-scenario"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A **hazard-related use scenario** (IEC 62366-1 §5.4): a task + use error + context that
+        could reach a hazardous situation. Method: [`docs/USABILITY.md`](../../docs/USABILITY.md).
+        A resulting hazardous situation is scored & controlled as a **harm-risk**
+        (`hazard-cat:usability`) — link it below.
+  - type: textarea
+    id: task
+    attributes:
+      label: Task / user-interface function
+      description: The user task and the safety-related UI element involved (§5.2).
+      placeholder: e.g. selecting the patient whose questionnaire score is shown
+    validations:
+      required: true
+  - type: dropdown
+    id: user-profile
+    attributes:
+      label: User profile
+      description: Analyse each profile separately — error patterns differ (§5.1).
+      options:
+        - lay user (e.g. patient)
+        - professional (e.g. clinician)
+        - administrator / configurator
+        - other (state in description)
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Use environment
+      placeholder: "e.g. ward, interruptions, variable lighting; or patient's home"
+    validations:
+      required: true
+  - type: textarea
+    id: use-error
+    attributes:
+      label: Use error (§5.2)
+      description: The action or lack of action that deviates from the intended/expected result — a slip, a mistake, an unnoticed state, or an uncompletable task.
+      placeholder: e.g. clinician does not notice the patient context changed on tab switch
+    validations:
+      required: true
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Hazard-related use scenario (§5.4)
+      description: The concrete task + use error + context that leads to the hazardous situation.
+    validations:
+      required: true
+  - type: textarea
+    id: hazardous-situation
+    attributes:
+      label: Resulting hazardous situation → harm
+      description: Who is exposed and to what, and the harm that can result — the bridge into ISO 14971.
+    validations:
+      required: true
+  - type: input
+    id: harm-risk-link
+    attributes:
+      label: Linked harm-risk issue
+      description: "The `harm-risk` issue (hazard-cat:usability) where this is scored & controlled. 'to be raised' is valid for a new scenario."
+      placeholder: "#123, or 'to be raised at triage'"
+    validations:
+      required: true
+  - type: textarea
+    id: ui-control
+    attributes:
+      label: UI risk control — state the tier (§5.3 / 14971 §7.1)
+      description: "Mandatory order: 1 inherently safe UI design → 2 protective UI measures → 3 information for safety. A tier-3 control must reach the IFU — apply `disclose-in-ifu` on the harm-risk."
+      placeholder: |
+        1. (tier 1) bind patient context immutably per view
+        2. (tier 2) persistent patient banner (name/DOB) on every clinical view
+    validations:
+      required: true
+  - type: textarea
+    id: formative
+    attributes:
+      label: Formative evaluation findings (§5.7.2 / §5.8)
+      description: "Exploratory testing during design — what use errors were observed and how the design changed. Link notes. 'planned' / 'none yet' is valid early."
+  - type: dropdown
+    id: summative
+    attributes:
+      label: Select for summative evaluation? (§5.5)
+      description: "Should the final validation (§5.9, deferred-to-manufacturer) cover this scenario? Selection is pre-staged now; execution is the manufacturer's."
+      options:
+        - "yes — safety-critical use scenario"
+        - "no — low use-related risk (justify)"
+        - "undecided"
+  - type: input
+    id: owner
+    attributes:
+      label: Proposed owner

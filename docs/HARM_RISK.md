@@ -132,7 +132,8 @@ required field for this analysis ("none identified", with a rationale, is a vali
 1. **Implementation verified** — the control exists in the released product (link the
    PR/test).
 2. **Effectiveness verified** — the control actually reduces the risk (test, analysis,
-   or usability evaluation per IEC 62366-1 where the control depends on user action).
+   or usability evaluation per IEC 62366-1 — [`USABILITY.md`](USABILITY.md) — where the
+   control depends on user action).
 
 Track via the board field `Control verification: None → Implemented → Verified
 effective`.
