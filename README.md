@@ -27,6 +27,7 @@ changes code on its own.
 |---|---|
 | [`docs/RISK_MANAGEMENT.md`](docs/RISK_MANAGEMENT.md) | The method: 5×5 scale with anchors, Score→Severity bands, response rules, lifecycle, roles, review cadence |
 | [`docs/RECIPES.md`](docs/RECIPES.md) | Novice-friendly cookbook — 13 step-by-step recipes with worked examples + common mistakes for typical situations (raise/triage a risk, CVE arrives, field feedback, harm hazard, controls, residual acceptance, risk materialized, release prep, review meeting, qualification trigger, SOUP bump, handover) |
+| [`docs/learning/risk-management-primer.md`](docs/learning/risk-management-primer.md) (+ [DE](docs/learning/risk-management-primer.de.md)) | Standards-grounded novice **primer/lecture** on risk management (general + MDR): concepts, the ISO 14971 process, software/usability/security, MDR GSPRs — every claim clause-cited; examples point at this + the example repo |
 | [`docs/arc42/`](docs/arc42/README.md) | [arc42 v9.0](https://arc42.org) architecture documentation, one file per section — §11 pre-wired to the register (risk mitigation lives in code **and** documentation); unmodified with-help edition vendored as reference |
 | [`.github/ISSUE_TEMPLATE/risk.yml`](.github/ISSUE_TEMPLATE/risk.yml) | Issue form for raising a risk (auto-labels `risk` + `risk:open`) |
 | [`RISKS.md`](RISKS.md) | Optional in-repo register (source of truth via PR + CODEOWNERS, if you prefer files over boards) |
