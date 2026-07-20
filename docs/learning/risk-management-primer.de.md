@@ -6,22 +6,26 @@ hat. Anschließend wird gezeigt, wie das **risk-management-template** und sein
 **[Beispiel-Repository](https://github.com/forschungsgruppe-digital-health/risk-management-template-example)**
 jede Idee in etwas Anklickbares verwandeln.
 
-> **Zur Quellenlage — bitte lesen.**
-> Jede Sachaussage ist im tatsächlichen Text der Normen verankert und nennt die
-> **Klausel** (z. B. *14971 §7.1*), damit Sie sie nachschlagen können. Normen sind
-> **urheberrechtlich geschützt**: diese Einführung gibt sie in einfacher Sprache sinngemäß
-> wieder — sie ist **kein Ersatz** für die Normen selbst, die Sie für echte Arbeit
-> beschaffen müssen. Der Wortlaut der Normen wurde in der **englischen** Fassung geprüft;
-> die **amtliche deutsche Terminologie** richtet sich nach **DIN EN ISO 14971** bzw. der
-> deutschen Sprachfassung der MDR — diese Übersetzung verwendet die üblichen deutschen
-> Fachbegriffe. Der MDR-Wortlaut wurde gegen öffentliche Volltext-Wiedergaben der
-> Verordnung (EU) 2017/745 abgeglichen; **prüfen Sie ihn gegen das
+> **Urheberrecht & Quellen — bitte lesen.**
+> Jede Sachaussage ist im tatsächlichen Text der Normen verankert und nennt die **Klausel**
+> (z. B. *14971 §7.1*), damit Sie sie prüfen können. Die Normen sind **urheberrechtlich
+> geschützte Werke** (© ISO/IEC und ihre nationalen Übernahmegremien). Diese Einführung
+> erklärt sie in **eigenen Worten** und verwendet nur **kurze, mit Quellenangabe versehene
+> Zitate** — je eine Handvoll Wörter, zu Zwecken der Lehre und Erläuterung (Zitatrecht,
+> § 51 UrhG / fair use). Sie gibt **keine Tabellen, Abbildungen, Diagramme oder wesentlichen
+> Teile** einer Norm wieder und ist **kein Ersatz** für sie: Sie müssen die Normen
+> **beschaffen** (siehe §9). Der Normwortlaut wurde in der **englischen** Fassung geprüft;
+> die im Fließtext in Anführungszeichen gesetzten deutschen Formulierungen sind **eigene
+> Übersetzungen der Verfasser zu Lehrzwecken** (die verbindliche deutsche Fassung ist
+> **DIN EN ISO 14971**) — es wird **kein amtlicher deutscher Normtext wiedergegeben**; die
+> Fachterminologie folgt DIN. Der MDR-Wortlaut wurde gegen öffentliche Volltext-Wiedergaben
+> der Verordnung (EU) 2017/745 abgeglichen; **prüfen Sie ihn gegen das
 > [Amtsblatt / EUR-Lex](https://eur-lex.europa.eu/eli/reg/2017/745/oj)**. Dieses Dokument
-> ist **Lehrmaterial, keine Rechts- oder Regulierungsberatung**.
+> ist **Lehrmaterial — keine Rechts-, Regulierungs- oder klinische Beratung**.
 >
 > **Zugrunde gelegte Ausgaben:** ISO 14971:2019 · ISO/TR 24971:2020 ·
 > IEC 62304:2006+A1:2015 · IEC 62366-1:2015+A1:2020 · IEC 82304-1:2016 ·
-> IEC 81001-5-1:2021 · ISO 81001-1:2021 · Verordnung (EU) 2017/745 (MDR), Anhang I.
+> IEC 81001-5-1:2021 · ISO 81001-1:2021 · Verordnung (EU) 2017/745 (MDR), Anhang I. *(Vollständige Angaben in §9.)*
 >
 > *(English version: [`risk-management-primer.md`](risk-management-primer.md).)*
 
@@ -439,7 +443,7 @@ etwas gemeldet") ist der Schritt-für-Schritt-Begleiter [`../RECIPES.md`](../REC
 - **„Jedes Einzelrisiko ist vertretbar, also passt es."** Nicht zwingend — das
   **Gesamt-Restrisiko** ist ein eigener, getrennter Beurteilungsschritt (14971 §8).
 - **„AFAP heißt so niedrig, wie wir es uns leisten können."** Nein — *so weit wie möglich
-  ohne nachteilige Beeinflussung des Nutzen-Risiko-Verhältnisses* (MDR GSPR 2); Kosten
+  ohne nachteilige Beeinflussung des Nutzen-Risiko-Verhältnisses* (MDR, Anhang I, GSPR 2); Kosten
   allein sind keine gültige Begründung.
 - **„Die Norm gibt mir die Risikomatrix."** Nein — Sie legen die Kriterien fest (14971 §1,
   §4.2, §4.4); die Matrizen der TR 24971 sind *Beispiele*, die je Produkt zu begründen sind
@@ -450,7 +454,7 @@ etwas gemeldet") ist der Schritt-für-Schritt-Begleiter [`../RECIPES.md`](../REC
 
 ---
 
-## 8. Glossar & woher Sie die echten Normen bekommen
+## 8. Glossar
 
 **Glossar** (alle ISO 14971:2019 Abschnitt 3, sofern nicht anders angegeben): *Schaden*
 §3.3 · *Gefährdung* §3.4 · *Gefährdungssituation* §3.5 · *Risiko* §3.18 · *Schweregrad*
@@ -461,19 +465,78 @@ etwas gemeldet") ist der Schritt-für-Schritt-Begleiter [`../RECIPES.md`](../REC
 *SOUP* (62304 §3.29) · *Gebrauchsfehler* (62366-1 §3.21) · *Software-Sicherheitsklasse*
 (62304 §4.3) · *Schlüsseleigenschaften: Sicherheit/Wirksamkeit/Security* (81001-1 §3.2.8) ·
 *GSPR/GSLA* — grundlegende Sicherheits- und Leistungsanforderungen (MDR Anhang I) · *AFAP* —
-so weit wie möglich (MDR GSPR 2) · *harmonisierte Norm / Konformitätsvermutung* (MDR +
+so weit wie möglich (MDR, Anhang I, GSPR 2) · *harmonisierte Norm / Konformitätsvermutung* (MDR +
 Amtsblatt).
 
+---
+
+## 9. Zitierweise & Quellenverzeichnis
+
+**Zitierweise.** Quellen werden im Text mit einem **Kurz-Tag + Klausel** zitiert, z. B.
+*(14971 §7.1)* = ISO 14971:2019, Abschnitt 7.1; *(24971 §5.5.2)* = ISO/TR 24971:2020,
+Abschnitt 5.5.2; *(MDR, Anhang I, GSPR 4)* = Verordnung (EU) 2017/745, Anhang I,
+Anforderung 4. Eine Klammer ohne Klausel (z. B. *(62366-1)*) ist ein allgemeiner Verweis
+auf diese Norm. Tags → Quellen:
+
+| Tag | Quelle |
+|---|---|
+| 14971 | [1] ISO 14971:2019 |
+| 24971 | [2] ISO/TR 24971:2020 |
+| 62304 | [3] IEC 62304:2006 + AMD1:2015 |
+| 62366-1 | [4] IEC 62366-1:2015 (+A1:2020) |
+| 82304-1 | [5] IEC 82304-1:2016 |
+| 81001-5-1 | [6] IEC 81001-5-1:2021 |
+| 81001-1 | [7] ISO 81001-1:2021 |
+| MDR | [9] Verordnung (EU) 2017/745 |
+
+**Verifizierung.** Jede Klausel-Angabe und jeder bibliografische Eintrag unten wurde gegen
+die **Primärquelle** geprüft — die Deckblätter und den Klauseltext der Norm-PDFs. Die MDR
+(EU-Recht) wurde gegen öffentliche Volltext-Wiedergaben der Verordnung (EU) 2017/745
+geprüft, da EUR-Lex den automatischen Abruf blockierte; **prüfen Sie den MDR-Wortlaut gegen
+das [Amtsblatt / EUR-Lex](https://eur-lex.europa.eu/eli/reg/2017/745/oj)**. Die im deutschen
+Text in Anführungszeichen gesetzten Normformulierungen sind eigene Übersetzungen (siehe die
+Notiz am Anfang); verbindlich ist die deutsche DIN-Fassung.
+
+### Quellenverzeichnis
+
+1. **ISO 14971:2019(E)**, *Medical devices — Application of risk management to medical
+   devices*. Dritte Ausgabe, 2019-12. International Organization for Standardization (ISO),
+   Genf. Erstellt von ISO/TC 210 mit IEC/SC 62A; ersetzt ISO 14971:2007. EU-harmonisierte
+   Fassung: **EN ISO 14971:2019+A11:2021** (deutsche Übernahme: **DIN EN ISO 14971**) mit
+   der Anhang-ZA/ZB-Zuordnung zur MDR/IVDR.
+2. **ISO/TR 24971:2020(E)**, *Medical devices — Guidance on the application of ISO 14971*.
+   Zweite Ausgabe, 2020-06 (Technischer Bericht). ISO, Genf.
+3. **IEC 62304:2006**, *Medical device software — Software life cycle processes*. Erste
+   Ausgabe, 2006-05. International Electrotechnical Commission (IEC), Genf; konsolidiert mit
+   **IEC 62304:2006/AMD1:2015** (Änderung 1, 2015-06) als Ausgabe 1.1.
+4. **IEC 62366-1:2015**, *Medical devices — Part 1: Application of usability engineering to
+   medical devices*. Ausgabe 1.0, 2015-02. IEC, Genf (mit Änderung 1:2020).
+5. **IEC 82304-1:2016**, *Health software — Part 1: General requirements for product
+   safety*. Ausgabe 1.0, 2016-10. IEC, Genf.
+6. **IEC 81001-5-1:2021**, *Health software and health IT systems safety, effectiveness and
+   security — Part 5-1: Security — Activities in the product life cycle*. Ausgabe 1.0,
+   2021-12. IEC, Genf.
+7. **ISO 81001-1:2021(E)**, *Health software and health IT systems safety, effectiveness
+   and security — Part 1: Principles and concepts*. Erste Ausgabe, 2021-03. ISO, Genf.
+8. **ISO/IEC Guide 63:2019** — laut [1] die Quelle mehrerer ISO-14971-Definitionen (z. B.
+   *Risiko* §3.18, *Sicherheit* §3.26).
+9. **Verordnung (EU) 2017/745** des Europäischen Parlaments und des Rates über
+   Medizinprodukte (**MDR**) — Anhang I, *Grundlegende Sicherheits- und
+   Leistungsanforderungen*. Verbindlicher Text auf
+   [EUR-Lex (ELI reg/2017/745/oj)](https://eur-lex.europa.eu/eli/reg/2017/745/oj).
+10. **Durchführungsbeschluss (EU) 2022/757 der Kommission** (2022) — nahm **EN ISO
+    14971:2019+A11:2021** in die harmonisierten Normen zur MDR auf (Konformitätsvermutung).
+    Prüfen auf EUR-Lex.
+
 **Normen beschaffen** (sie sind urheberrechtlich geschützt; diese Einführung ist kein
-Ersatz): ISO- und IEC-Normen über die offiziellen Kataloge (iso.org, webstore.iec.ch) oder
-Ihr nationales Gremium (z. B. DIN, BSI, ANSI); die MDR ist kostenlos auf
-[EUR-Lex](https://eur-lex.europa.eu/eli/reg/2017/745/oj). Für den EU-Risikomanagement-Weg
-beschaffen Sie **DIN EN ISO 14971:2019+A11:2021** (die Fassung mit der Anhang-Z-Zuordnung)
-und lesen **ISO/TR 24971:2020** daneben für das Wie.
+Ersatz): ISO-/IEC-Normen über die offiziellen Kataloge (iso.org, webstore.iec.ch) oder ein
+nationales Gremium (DIN, BSI, ANSI …); die MDR ist kostenlos auf EUR-Lex. Für den
+EU-Risikomanagement-Weg beschaffen Sie **DIN EN ISO 14971:2019+A11:2021** und lesen
+**ISO/TR 24971:2020** daneben für das Wie.
 
 ---
 
 *Teil des [risk-management-template](https://github.com/forschungsgruppe-digital-health/risk-management-template).
-Lehrmaterial — keine Rechts-, Regulierungs- oder klinische Beratung. Verankert in den oben
-genannten Normausgaben; die Klausel-Verweise erlauben es, jede Aussage gegen die Quelle zu
-prüfen.*
+Lehrmaterial — keine Rechts-, Regulierungs- oder klinische Beratung. Verankert in den
+Normausgaben aus §9; jede Klausel-Angabe wurde gegen die Primärquelle geprüft, sodass Sie
+jede Aussage selbst nachvollziehen können.*

@@ -5,19 +5,22 @@ written for someone who has never done it. It then shows how the **risk-manageme
 and its **[example repo](https://github.com/forschungsgruppe-digital-health/risk-management-template-example)**
 turn each idea into something you can click on.
 
-> **How this document is sourced — please read.**
+> **Copyright & sourcing — please read.**
 > Every factual claim is grounded in the actual text of the standards and cites the
-> **clause** it comes from (e.g. *14971 §7.1*), so you can look it up. Standards are
-> **copyrighted**: this primer paraphrases them in plain language and quotes only a few
-> words where the exact wording matters — it is **not a substitute** for the standards
-> themselves, which you must obtain to do real work. The MDR (EU law) wording was confirmed
-> against public full-text renderings of Regulation (EU) 2017/745; **verify against the
+> **clause** it comes from (e.g. *14971 §7.1*) so you can verify it. The standards are
+> **copyrighted works** (© ISO/IEC and their national adopters). This primer explains them
+> in its **own words** and uses only **short, attributed quotations** — a handful of words
+> each, for education and commentary (the *right of quotation*; e.g. §51 of the German
+> Copyright Act / fair use). It reproduces **no tables, figures, diagrams, or substantial
+> portions** of any standard, and it is **not a substitute** for them: you must **obtain
+> the standards** (see §9) to do real work. The MDR (EU law) wording was confirmed against
+> public full-text renderings of Regulation (EU) 2017/745; **verify against the
 > [Official Journal / EUR-Lex](https://eur-lex.europa.eu/eli/reg/2017/745/oj)** before
-> relying on it. This primer is educational, **not legal or regulatory advice**.
+> relying on it. This primer is educational — **not legal, regulatory, or clinical advice**.
 >
 > **Editions used:** ISO 14971:2019 · ISO/TR 24971:2020 · IEC 62304:2006+A1:2015 ·
 > IEC 62366-1:2015+A1:2020 · IEC 82304-1:2016 · IEC 81001-5-1:2021 · ISO 81001-1:2021 ·
-> Regulation (EU) 2017/745 (MDR), Annex I.
+> Regulation (EU) 2017/745 (MDR), Annex I. *(Full bibliographic entries in §9.)*
 >
 > *(Eine deutsche Fassung: [`risk-management-primer.de.md`](risk-management-primer.de.md).)*
 
@@ -166,9 +169,9 @@ control. Because the criteria were fixed earlier, this is an honest yes/no test,
 negotiation.
 
 **Does the standard give you the scale or the matrix?** No — and this surprises beginners.
-ISO 14971 *"requires manufacturers to establish objective criteria for risk acceptability
-but does not specify acceptable risk levels"* (14971 §1); the criteria come from *your*
-documented policy (§4.2) and plan (§4.4). ISO/TR 24971 *shows* example 3×3 and 5×5 risk
+ISO 14971 requires you to establish *objective* criteria for risk acceptability but
+deliberately does **not** specify what risk level counts as acceptable (14971 §1); the
+criteria come from *your* documented policy (§4.2) and plan (§4.4). ISO/TR 24971 *shows* example 3×3 and 5×5 risk
 matrices but stresses *"this does not imply that this method has general applicability to
 all medical devices"* (TR 24971 §5.5.1) — you choose the levels, define each one, and
 justify the matrix for your device. → *That* is why the template's matrix says
@@ -408,7 +411,7 @@ something"), the step-by-step companion is [`../RECIPES.md`](../RECIPES.md).
 - **"Each risk is acceptable, so we're fine."** Not necessarily — the **overall** residual
   risk is its own separate judgement (14971 §8).
 - **"AFAP means as low as we can afford."** No — *as far as possible without adversely
-  affecting the benefit-risk ratio* (MDR GSPR 2); cost alone is not a valid justification.
+  affecting the benefit-risk ratio* (MDR, Annex I, GSPR 2); cost alone is not a valid justification.
 - **"The standard will give me the risk matrix."** It will not — you set the criteria
   (14971 §1, §4.2, §4.4); TR 24971's matrices are *examples* to justify per device
   (TR 24971 §5.5.1).
@@ -417,7 +420,7 @@ something"), the step-by-step companion is [`../RECIPES.md`](../RECIPES.md).
 
 ---
 
-## 8. Glossary & where to get the real standards
+## 8. Glossary
 
 **Glossary** (all ISO 14971:2019 Clause 3 unless noted): *harm* §3.3 · *hazard* §3.4 ·
 *hazardous situation* §3.5 · *risk* §3.18 · *severity* §3.27 · *residual risk* §3.17 ·
@@ -427,19 +430,73 @@ management file* §3.25 · *benefit* §3.2 · *intended use* §3.6 · *reasonabl
 misuse* §3.15 · *state of the art* §3.28 · *SOUP* (62304 §3.29) · *use error* (62366-1
 §3.21) · *software safety class* (62304 §4.3) · *key properties: safety/effectiveness/
 security* (81001-1 §3.2.8) · *GSPR* — General Safety and Performance Requirements (MDR
-Annex I) · *AFAP* — as far as possible (MDR GSPR 2) · *harmonised standard / presumption of
+Annex I) · *AFAP* — as far as possible (MDR, Annex I, GSPR 2) · *harmonised standard / presumption of
 conformity* (MDR + OJEU).
 
-**Obtain the standards** (they are copyrighted; this primer is not a substitute):
-ISO and IEC standards via the official catalogues (iso.org, webstore.iec.ch) or your
-national body (e.g. DIN, BSI, ANSI); the MDR is free on
-[EUR-Lex](https://eur-lex.europa.eu/eli/reg/2017/745/oj). For the EU risk-management
-route, obtain **EN ISO 14971:2019+A11:2021** (the version with the Annex Z mapping), and
-read **ISO/TR 24971:2020** alongside it for the how-to.
+---
+
+## 9. Citation style & references
+
+**How sources are cited.** In-text citations use a **short tag + clause**, e.g. *(14971
+§7.1)* = ISO 14971:2019, Clause 7.1; *(24971 §5.5.2)* = ISO/TR 24971:2020, Clause 5.5.2;
+*(MDR, Annex I, GSPR 4)* = Regulation (EU) 2017/745, Annex I, requirement 4. A parenthetical
+without a clause (e.g. *(62366-1)*) is a general reference to that standard. Tags → sources:
+
+| Tag | Source |
+|---|---|
+| 14971 | [1] ISO 14971:2019 |
+| 24971 | [2] ISO/TR 24971:2020 |
+| 62304 | [3] IEC 62304:2006 + AMD1:2015 |
+| 62366-1 | [4] IEC 62366-1:2015 (+A1:2020) |
+| 82304-1 | [5] IEC 82304-1:2016 |
+| 81001-5-1 | [6] IEC 81001-5-1:2021 |
+| 81001-1 | [7] ISO 81001-1:2021 |
+| MDR | [9] Regulation (EU) 2017/745 |
+
+**Verification.** Every clause citation and every bibliographic entry below was checked
+against the **primary source** — the standard PDFs' own cover pages and clause text. The
+MDR (EU law) was verified against public full-text renderings of Regulation (EU) 2017/745
+because EUR-Lex blocked automated retrieval; **confirm MDR wording against the
+[Official Journal / EUR-Lex](https://eur-lex.europa.eu/eli/reg/2017/745/oj)**.
+
+### References
+
+1. **ISO 14971:2019(E)**, *Medical devices — Application of risk management to medical
+   devices*. Third edition, 2019-12. International Organization for Standardization (ISO),
+   Geneva. Prepared by ISO/TC 210 with IEC/SC 62A; cancels and replaces ISO 14971:2007. EU
+   harmonised form: **EN ISO 14971:2019+A11:2021** (adds the Annex ZA/ZB mapping to the
+   MDR / IVDR).
+2. **ISO/TR 24971:2020(E)**, *Medical devices — Guidance on the application of ISO 14971*.
+   Second edition, 2020-06 (Technical Report). ISO, Geneva.
+3. **IEC 62304:2006**, *Medical device software — Software life cycle processes*. First
+   edition, 2006-05. International Electrotechnical Commission (IEC), Geneva; consolidated
+   with **IEC 62304:2006/AMD1:2015** (Amendment 1, 2015-06) as Edition 1.1.
+4. **IEC 62366-1:2015**, *Medical devices — Part 1: Application of usability engineering to
+   medical devices*. Edition 1.0, 2015-02. IEC, Geneva (with Amendment 1:2020).
+5. **IEC 82304-1:2016**, *Health software — Part 1: General requirements for product
+   safety*. Edition 1.0, 2016-10. IEC, Geneva.
+6. **IEC 81001-5-1:2021**, *Health software and health IT systems safety, effectiveness and
+   security — Part 5-1: Security — Activities in the product life cycle*. Edition 1.0,
+   2021-12. IEC, Geneva.
+7. **ISO 81001-1:2021(E)**, *Health software and health IT systems safety, effectiveness
+   and security — Part 1: Principles and concepts*. First edition, 2021-03. ISO, Geneva.
+8. **ISO/IEC Guide 63:2019** — cited within [1] as the source of several ISO 14971
+   definitions (e.g. *risk* §3.18, *safety* §3.26).
+9. **Regulation (EU) 2017/745** of the European Parliament and of the Council on medical
+   devices (**MDR**) — Annex I, *General Safety and Performance Requirements*. Authoritative
+   text at [EUR-Lex (ELI reg/2017/745/oj)](https://eur-lex.europa.eu/eli/reg/2017/745/oj).
+10. **Commission Implementing Decision (EU) 2022/757** (2022) — listed **EN ISO
+    14971:2019+A11:2021** among the harmonised standards for the MDR, conferring a
+    presumption of conformity. Verify at EUR-Lex.
+
+**Obtain the standards** (they are copyrighted; this primer is not a substitute): ISO/IEC
+standards via the official catalogues (iso.org, webstore.iec.ch) or a national body (DIN,
+BSI, ANSI, …); the MDR is free on EUR-Lex. For the EU risk-management route, obtain **EN ISO
+14971:2019+A11:2021** and read **ISO/TR 24971:2020** alongside it for the how-to.
 
 ---
 
 *Part of the [risk-management-template](https://github.com/forschungsgruppe-digital-health/risk-management-template).
 Educational material — not legal, regulatory, or clinical advice. Grounded in the standard
-editions listed at the top; clause citations let you verify every statement against the
-source.*
+editions in §9; each clause citation was verified against the primary source, so you can
+check every statement yourself.*
