@@ -2,7 +2,9 @@
 
 How this project **actively** collects and reviews information after release, and feeds it back
 into risk management. ISO 14971 §10 (production & post-production) is the method; for medical-device
-software (MDSW) the MDR **Post-Market Surveillance (PMS)** system (Art. 83–92) is the legal frame.
+software (MDSW) the MDR frame is **Post-Market Surveillance (PMS, Art. 83–86)** plus **Vigilance
+(Art. 87–92)** — this document covers the PMS plan + the §10 feed; the vigilance-reporting specifics
+(Art. 87 serious incidents, Art. 88 trends) are summarised in §5.
 The *execution* of PMS needs a device placed on the market (and EUDAMED access) and is
 **deferred-to-manufacturer** ([`CONFORMANCE_TRANSFER.md`](CONFORMANCE_TRANSFER.md)); the **plan and
 the intake mechanics** are pre-staged here so they are not reconstructed later.

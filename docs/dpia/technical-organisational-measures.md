@@ -4,7 +4,7 @@
 > processing — the concrete mitigations the [DPIA](README.md) §5 risks point at. Fill the
 > **Where implemented** cell with a real pointer (file · ADR · CI gate) and set the **Status**;
 > an `active` DPIA risk whose mitigation cell is empty is a gap to close. Kept current by the
-> [`dpia-officer`](../../skills/dpia-officer/SKILL.md) skill.
+> [`dpia-officer`](https://github.com/forschungsgruppe-digital-health/risk-management-template/blob/main/skills/dpia-officer/SKILL.md) skill.
 >
 > **Status legend:** ✅ implemented & verified · 🟢 implemented · 🟠 partial / verify at go-live ·
 > 🔴 gap · ⏳ planned (milestone). **[DPO/LEGAL INPUT NEEDED]** marks a legal determination.
