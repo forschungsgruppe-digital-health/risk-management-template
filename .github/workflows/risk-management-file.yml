@@ -1,0 +1,124 @@
+name: risk-management-file
+# Per-release DELIVERABLE: compiles the scattered risk-management records into ONE
+# hand-to-auditor document (ISO 14971 §4.5 Risk Management File / §9 Report), via
+# scripts/build-risk-management-file.py + pandoc. Runs only on published releases (or a
+# manual dispatch) — inert otherwise; delete this file to opt out.
+#
+# Outputs:
+#   * release ASSETS: the .pdf (frozen sign-off copy) + .docx (editable QMS copy), attached
+#     to the GitHub Release next to the SBOM + register exports.
+#   * in-repo ARCHIVE: a PR that adds the Markdown master under docs/risk-management-file/
+#     (text, diffable). Set repo variable RMF_COMMIT_PDF=true to also commit the PDF.
+# The generator asserts NO conformity; determinations stay [NEEDS RA INPUT]. See
+# docs/RISK_MANAGEMENT_FILE.md + ADR-0004.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Version label for a manual build (default: git describe)"
+        required: false
+
+permissions:
+  contents: write       # attach assets to the release + push the archive branch
+  issues: read          # export the risk / harm-risk registers
+  pull-requests: write  # open the in-repo archive PR
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (default branch, full history for git describe)
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+
+      - name: Resolve TAG
+        id: tag
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          TAG="${RELEASE_TAG:-$INPUT_TAG}"
+          [ -n "$TAG" ] || TAG="$(git describe --tags --always)"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Building Risk Management File for: $TAG"
+
+      - name: Export risk registers (ISO 14971 §9 evidence)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          FIELDS="number,title,state,labels,body,createdAt,closedAt,comments"
+          gh issue list --repo "$GITHUB_REPOSITORY" --label risk --state all --limit 1000 \
+            --json "$FIELDS" > "risk-register-$TAG.json" || echo "[]" > "risk-register-$TAG.json"
+          gh issue list --repo "$GITHUB_REPOSITORY" --label harm-risk --state all --limit 1000 \
+            --json "$FIELDS" > "harm-risk-register-$TAG.json" || echo "[]" > "harm-risk-register-$TAG.json"
+          echo "risk: $(jq length "risk-register-$TAG.json") · harm-risk: $(jq length "harm-risk-register-$TAG.json")"
+
+      - name: Install pandoc + XeLaTeX
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            pandoc texlive-xetex texlive-fonts-recommended texlive-latex-recommended lmodern
+
+      - name: Compile the Risk Management File
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          python3 scripts/build-risk-management-file.py \
+            --repo . --tag "$TAG" \
+            --register "harm-risk-register-$TAG.json" \
+            --delivery-register "risk-register-$TAG.json" \
+            --out docs/risk-management-file --formats md,docx,pdf
+          ls -la docs/risk-management-file/
+
+      - name: Attach deliverables to the release
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          # Upload each asset independently — a batched upload aborts (attaching nothing) if
+          # the optional PDF is missing, silently dropping the DOCX that WAS built.
+          shopt -s nullglob
+          n=0
+          for f in docs/risk-management-file/*.pdf docs/risk-management-file/*.docx; do
+            gh release upload "$TAG" "$f" --clobber && n=$((n+1)) || echo "could not attach $f"
+          done
+          [ "$n" -gt 0 ] || echo "No PDF/DOCX attached (pandoc/engine issue) — Markdown master still archived via PR."
+
+      - name: Upload artifacts (manual dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b # v4.5.0
+        with:
+          name: risk-management-file
+          path: docs/risk-management-file/*
+
+      - name: Archive the Markdown master in the repo (PR)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.tag.outputs.tag }}
+          RMF_COMMIT_PDF: ${{ vars.RMF_COMMIT_PDF }}
+        run: |
+          BRANCH="rmf/$TAG"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add docs/risk-management-file/*.md
+          # PDF is gitignored (release asset by default); force-add only when opted in
+          [ "${RMF_COMMIT_PDF:-false}" = "true" ] && git add -f docs/risk-management-file/*.pdf || true
+          if git diff --cached --quiet; then
+            echo "No changes to archive."; exit 0
+          fi
+          git commit -m "docs(rmf): compiled Risk Management File for $TAG" -m "Auto-generated by risk-management-file.yml (scripts/build-risk-management-file.py). Deliverable copies (.pdf/.docx) are attached to the $TAG release."
+          # --force-with-lease so a re-run / re-publish on the same tag refreshes the branch
+          # instead of failing the job on a non-fast-forward push.
+          git push -u origin "$BRANCH" --force-with-lease || { echo "archive push failed — assets are still on the release"; exit 0; }
+          gh pr create --base "${{ github.event.repository.default_branch }}" --head "$BRANCH" \
+            --title "docs(rmf): Risk Management File for $TAG" \
+            --body "Compiled ISO 14971 §4.5/§9 Risk Management File for release **$TAG**. The .pdf/.docx deliverables are attached to the release; this PR archives the Markdown master in-repo. Generated by \`scripts/build-risk-management-file.py\` — review + merge (or close if you keep only the release assets). Asserts no conformity; determinations remain [NEEDS RA INPUT]." || \
+            echo "PR not opened (branch protection or an existing PR) — assets still on the release."

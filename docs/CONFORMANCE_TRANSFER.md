@@ -30,6 +30,10 @@ sense, TBD via the dissemination/exploitation plan — adopts it.
 - **Qualification history** — every re-evaluation recorded in ADR-0001.
 - **GSPR checklist** ([`standards/GSPR-CHECKLIST.md`](standards/GSPR-CHECKLIST.md)) — the
   software-side MDR Annex I evidence, pre-staged for the manufacturer's technical file.
+- **Compiled Risk Management File(s)** — each release's single ISO 14971 §4.5/§9 document
+  ([`RISK_MANAGEMENT_FILE.md`](RISK_MANAGEMENT_FILE.md), [ADR-0004](adr/0004-risk-management-file-deliverable.md)):
+  the frozen **PDF/DOCX** deliverable (release assets) + the archived **Markdown masters** —
+  a diffable history of how the file evolved, and the one document to hand a Notified Body.
 
 ## Provenance & IP hygiene (do this while contributions happen)
 

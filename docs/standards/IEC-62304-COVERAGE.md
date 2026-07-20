@@ -13,7 +13,7 @@ standard (2026-07).
 | §4.3 | Software safety classification | **covered** | [ADR-0002](../adr/0002-software-safety-classification.md) — risk-based A/B/C, per software item |
 | §5.1 | Software development planning | not-yet | a class-B/C project adds a software development plan; §5.1.1(c) traceability is modelled in [`TRACEABILITY.md`](../TRACEABILITY.md) |
 | §5.2 | Software requirements analysis | partial | `requirement`-labelled issues ([`TRACEABILITY.md`](../TRACEABILITY.md)) capture requirements; a formal SRS is deferred |
-| §5.3 | Software architectural design | partial | arc42 §5 building-block view; the SOUP boundary in [`SOUP.md`](../SOUP.md) (§5.3.3–5.3.5) |
+| §5.3 | Software architectural design | partial | arc42 §5 building-block view; the SOUP boundary in [`SOUP.md`](../SOUP.md) (§5.3.3–5.3.4; §5.3.5 segregation is architectural, not SOUP) |
 | §5.4 | Software detailed design | not-yet | class C only; not maintained at template stage |
 | §5.5 | Software unit implementation (& verification) | partial | code review + unit tests are project practice; formal unit-verification records deferred |
 | §5.6 | Software integration & integration testing | not-yet | project CI; formal integration records deferred |

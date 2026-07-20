@@ -34,14 +34,16 @@ cp -n /tmp/rmt/docs/standards/*.md docs/standards/       # CONFORMANCE + GSPR-CH
 cp -rn /tmp/rmt/docs/adr/. docs/adr/                     # ('/.': portable on GNU+BSD) renumber 0001–0003 to your next free numbers + fix cross-links
 cp -n /tmp/rmt/docs/HARM_RISK.md /tmp/rmt/docs/HARM_RISK_REPORT.md /tmp/rmt/docs/SOUP.md \
       /tmp/rmt/docs/SECURITY_RISK.md /tmp/rmt/docs/TRACEABILITY.md \
-      /tmp/rmt/docs/CONFORMANCE_TRANSFER.md docs/
+      /tmp/rmt/docs/CONFORMANCE_TRANSFER.md /tmp/rmt/docs/RISK_MANAGEMENT_FILE.md docs/
 cp -n /tmp/rmt/SECURITY.md .                             # CVD policy stub — MERGE if one exists
 cp -n /tmp/rmt/soup.yaml .
 cp -n /tmp/rmt/.github/ISSUE_TEMPLATE/harm-risk.yml /tmp/rmt/.github/ISSUE_TEMPLATE/requirement.yml \
       /tmp/rmt/.github/ISSUE_TEMPLATE/soup-anomaly.yml /tmp/rmt/.github/ISSUE_TEMPLATE/field-feedback.yml .github/ISSUE_TEMPLATE/
 cp -n /tmp/rmt/.github/conformance-labels.json .github/
-cp -n /tmp/rmt/scripts/setup-harm-risk-board.sh /tmp/rmt/scripts/traceability-matrix.sh scripts/
-cp -n /tmp/rmt/.github/workflows/sbom.yml /tmp/rmt/.github/workflows/register-export.yml .github/workflows/
+cp -n /tmp/rmt/scripts/setup-harm-risk-board.sh /tmp/rmt/scripts/traceability-matrix.sh \
+      /tmp/rmt/scripts/build-risk-management-file.py scripts/   # RMF compiler (ADR-0004)
+cp -n /tmp/rmt/.github/workflows/sbom.yml /tmp/rmt/.github/workflows/register-export.yml \
+      /tmp/rmt/.github/workflows/risk-management-file.yml .github/workflows/
 cp -n /tmp/rmt/.github/dependabot.yml .github/             # MERGE by hand if one exists (ADR-0003)
 cp -n /tmp/rmt/renovate.json .                             # MERGE by hand if one exists (GitLab-image bumps)
 cp -n /tmp/rmt/.github/pull_request_template.md .github/   # MERGE by hand if one exists
@@ -88,3 +90,4 @@ your README.
 - [ ] `docs/standards/` carries GSPR-CHECKLIST.md + IEC-62304-COVERAGE.md; `docs/HARM_RISK_REPORT.md` present as the §9 release-review stub
 - [ ] `.github/dependabot.yml` + `renovate.json` present (or consciously skipped/merged — ADR-0003)
 - [ ] `soup.yaml` example replaced; SBOM + register-export workflows run on `workflow_dispatch`
+- [ ] `scripts/build-risk-management-file.py` + `risk-management-file.yml` present (ADR-0004); a `workflow_dispatch` run produces the compiled Risk Management File

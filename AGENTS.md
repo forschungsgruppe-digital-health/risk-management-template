@@ -93,6 +93,13 @@ The portable form is **Agent Skills** (`skills/<name>/SKILL.md`, [agentskills.io
   - **`template-updater`** — reconcile this repo's shared tooling with the latest `arc42-project-template` release (preserving this repo's specialization); *inbound*, paired with `.arc42-template.json` + the `template-sync-check` notifier.
   - **`grilling`** / **`grill-me`** — a relentless interview to stress-test a plan/decision.
 
+Beyond the skills, the conformance layer ships a **Risk Management File generator** —
+`scripts/build-risk-management-file.py` + the `risk-management-file` CI job (GitHub + GitLab) —
+which compiles the scattered risk records into ONE ISO 14971 §4.5/§9 hand-to-auditor document per
+release ([ADR-0004](docs/adr/0004-risk-management-file-deliverable.md), [guide](docs/RISK_MANAGEMENT_FILE.md)).
+Run [`mdr-audit-readiness`](skills/mdr-audit-readiness/SKILL.md) before a release so its Annex J carries
+an honest self-assessment.
+
 **How each tool accesses them:** Claude Code via `.claude/skills/`; Codex/Cursor/Gemini via `.codex/skills/`
 (symlinks → `skills/`); anything else reads this catalog and performs the skill inline.
 

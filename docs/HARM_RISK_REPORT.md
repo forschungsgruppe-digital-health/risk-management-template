@@ -49,4 +49,6 @@ accepted above the plan's acceptability criteria.>
 | Risk-acceptability authority (per the RM plan) | <…> | released / held | <…> |
 
 > Retained as part of the risk-management file; transfers to the future manufacturer
-> ([`CONFORMANCE_TRANSFER.md`](CONFORMANCE_TRANSFER.md)).
+> ([`CONFORMANCE_TRANSFER.md`](CONFORMANCE_TRANSFER.md)). This report is transcluded as §5–§6
+> of the per-release **compiled Risk Management File** ([`RISK_MANAGEMENT_FILE.md`](RISK_MANAGEMENT_FILE.md),
+> ADR-0004) — with the register rendered inline — so the auditor reads one document, not the tree.

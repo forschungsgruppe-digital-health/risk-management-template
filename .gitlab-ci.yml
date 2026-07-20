@@ -1,9 +1,14 @@
-# GitLab CI twin of .github/workflows/{sbom,risk-automation}.yml — same
-# inert-until-configured contract (docs/GITLAB.md has the full mapping).
+# GitLab CI twin of .github/workflows/{sbom,register-export,risk-management-file,risk-automation}.yml
+# — same inert-until-configured contract (docs/GITLAB.md has the full mapping).
 #
 #  - sbom:             runs only on TAGS (or manual web run) — CycloneDX via Syft,
 #                      kept as a job artifact (attach to a release via release-cli
 #                      if you use GitLab releases).
+#  - risk-management-file: per-release DELIVERABLE — compiles the scattered
+#                      risk-management records into ONE hand-to-auditor document
+#                      (ISO 14971 §4.5/§9) via scripts/build-risk-management-file.py +
+#                      pandoc; kept as a job artifact (attach to a GitLab release via
+#                      release-cli if you use them). GitHub twin: risk-management-file.yml.
 #  - vuln-to-register: the Dependabot-bridge equivalent — a SCHEDULED Trivy scan that
 #                      opens deduped `risk` + `risk-cat::vulnerability` issues.
 #                      INERT until BOTH CI/CD variables exist:
@@ -50,8 +55,8 @@ register-export:
       for LBL in risk harm-risk; do
         curl -sf --header "PRIVATE-TOKEN: $RISK_AUTOMATION_TOKEN" --get "$API/issues" \
           --data-urlencode "labels=$LBL" --data-urlencode "state=all" --data "per_page=100" \
-          > "${LBL}-register-${CI_COMMIT_TAG}.json"
-        N=$(jq length "${LBL}-register-${CI_COMMIT_TAG}.json")
+          > "${LBL}-register-${CI_COMMIT_TAG}.json" || echo '[]' > "${LBL}-register-${CI_COMMIT_TAG}.json"
+        N=$(jq 'if type=="array" then length else 0 end' "${LBL}-register-${CI_COMMIT_TAG}.json")
         echo "$LBL: $N issues"
         [ "$N" -ge 100 ] && echo "WARNING: $LBL export hit the 100-issue page limit — snapshot may be TRUNCATED; paginate to get the full register."
       done
@@ -59,6 +64,44 @@ register-export:
   artifacts:
     paths:
       - "*-register-*.json"
+    expire_in: never
+
+risk-management-file:
+  # Per-release Risk Management File deliverable (ISO 14971 §4.5/§9) — GitHub twin:
+  # risk-management-file.yml. Consumes register-export's JSON artifacts when present
+  # (optional); the script degrades gracefully without them. NOTE (parity): register-export
+  # self-skips without RISK_AUTOMATION_TOKEN (CI_JOB_TOKEN cannot list issues), so without the
+  # token this deliverable ships with a "register not bundled" banner instead of the rendered
+  # §5–§7 tables — set the token to embed the registers (the GitHub twin always embeds them via
+  # github.token). Produces .md/.docx/.pdf/.html as job artifacts — attach the .pdf/.docx to a
+  # GitLab release via release-cli if you use GitLab releases. Asserts no conformity;
+  # determinations stay [NEEDS RA INPUT].
+  stage: report
+  image:
+    name: pandoc/latex:3.5 # pandoc + XeLaTeX — bump via Renovate (Dependabot doesn't read .gitlab-ci.yml)
+    entrypoint: [""]
+  needs:
+    - job: register-export
+      artifacts: true
+      optional: true
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_PIPELINE_SOURCE == "web"
+      when: manual
+  variables:
+    GIT_DEPTH: "0" # full history so `git describe` can resolve the version
+  script:
+    - apk add --no-cache python3 git >/dev/null 2>&1 || true
+    - TAG="${CI_COMMIT_TAG:-$CI_COMMIT_SHORT_SHA}"
+    - |
+      python3 scripts/build-risk-management-file.py --repo . --tag "$TAG" \
+        --register "harm-risk-register-$TAG.json" \
+        --delivery-register "risk-register-$TAG.json" \
+        --out docs/risk-management-file --formats md,docx,pdf,html
+    - ls -la docs/risk-management-file/
+  artifacts:
+    paths:
+      - docs/risk-management-file/*
     expire_in: never
 
 vuln-to-register:
