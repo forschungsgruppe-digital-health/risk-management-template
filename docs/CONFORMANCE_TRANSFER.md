@@ -68,8 +68,9 @@ Deliberately **not** maintained here (organizational, not repo artifacts):
 - **Clinical evaluation** execution per MDR Art. 61 / MDCG 2020-1 (the repo carries the
   inputs: intended purpose, risk file, verification evidence)
 - **Summative usability validation** per IEC 62366-1 (formative notes may live here)
-- Post-market surveillance & vigilance (MDR Art. 83–92) — though §10-feed mechanics
-  (detectors → registers) prototype the inputs
+- Post-market surveillance & vigilance (MDR Art. 83–92) — the **PMS plan + §10 feed mechanics**
+  are pre-staged ([`PMS.md`](PMS.md): field-feedback, SBOM/CVE, the periodic-review action); the
+  manufacturer executes the market-side reporting (PSUR, trend/serious-incident via EUDAMED, PMCF)
 
 ## Handover checklist (run at transfer)
 

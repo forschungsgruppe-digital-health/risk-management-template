@@ -45,7 +45,8 @@ cp -n /tmp/rmt/.github/conformance-labels.json .github/
 cp -n /tmp/rmt/scripts/setup-harm-risk-board.sh /tmp/rmt/scripts/traceability-matrix.sh \
       /tmp/rmt/scripts/build-risk-management-file.py scripts/   # RMF compiler (ADR-0004)
 cp -n /tmp/rmt/.github/workflows/sbom.yml /tmp/rmt/.github/workflows/register-export.yml \
-      /tmp/rmt/.github/workflows/risk-management-file.yml .github/workflows/
+      /tmp/rmt/.github/workflows/risk-management-file.yml /tmp/rmt/.github/workflows/pms-review.yml .github/workflows/
+cp -n /tmp/rmt/docs/PMS.md docs/                          # post-market surveillance plan (§10 / MDR Art. 83–92)
 cp -n /tmp/rmt/.github/dependabot.yml .github/             # MERGE by hand if one exists (ADR-0003)
 cp -n /tmp/rmt/renovate.json .                             # MERGE by hand if one exists (GitLab-image bumps)
 cp -n /tmp/rmt/.github/pull_request_template.md .github/   # MERGE by hand if one exists
