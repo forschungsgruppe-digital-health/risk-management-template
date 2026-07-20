@@ -36,11 +36,12 @@ process. You do not maintain this document; you **generate** it. Rationale:
 | Annex C | IEC 62304 §8.1.2 | `soup.yaml` (**SOUP** — software of unknown provenance) + release SBOM |
 | Annex D | MDR Annex I | `docs/standards/GSPR-CHECKLIST.md` (**GSPR** — general safety & performance requirements) |
 | Annex E | IEC 81001-5-1 | `docs/SECURITY_RISK.md` (+ **CVD** — coordinated vulnerability disclosure) |
-| Annex F | §4.5 / IEC 62304 §5.1.1(c) | `docs/TRACEABILITY.md` |
-| Annex G | editions | `docs/standards/CONFORMANCE.md` |
-| Annex H | design history | `docs/adr/` index |
-| Annex I | context | delivery-risk register (kept separate from safety) |
-| Annex J | self-check | latest `mdr-audit-readiness` scorecard |
+| Annex F | IEC 62366-1 | `docs/USABILITY.md` (use-related risk; summative deferred) |
+| Annex G | §4.5 / IEC 62304 §5.1.1(c) | `docs/TRACEABILITY.md` |
+| Annex H | editions | `docs/standards/CONFORMANCE.md` |
+| Annex I | design history | `docs/adr/` index |
+| Annex J | context | delivery-risk register (kept separate from safety) |
+| Annex K | self-check | latest `mdr-audit-readiness` scorecard |
 
 The per-hazard chain (§4) renders each `harm-risk` issue raised via the form as a table:
 hazard → sequence → hazardous situation → harm → S/P → tiered control (§7.1) → new-risks (§7.5)

@@ -33,12 +33,13 @@ mkdir -p docs/standards docs/adr
 cp -n /tmp/rmt/docs/standards/*.md docs/standards/       # CONFORMANCE + GSPR-CHECKLIST + IEC-62304-COVERAGE
 cp -rn /tmp/rmt/docs/adr/. docs/adr/                     # ('/.': portable on GNU+BSD) renumber 0001–0003 to your next free numbers + fix cross-links
 cp -n /tmp/rmt/docs/HARM_RISK.md /tmp/rmt/docs/HARM_RISK_REPORT.md /tmp/rmt/docs/SOUP.md \
-      /tmp/rmt/docs/SECURITY_RISK.md /tmp/rmt/docs/TRACEABILITY.md \
+      /tmp/rmt/docs/SECURITY_RISK.md /tmp/rmt/docs/USABILITY.md /tmp/rmt/docs/TRACEABILITY.md \
       /tmp/rmt/docs/CONFORMANCE_TRANSFER.md /tmp/rmt/docs/RISK_MANAGEMENT_FILE.md docs/
 cp -n /tmp/rmt/SECURITY.md .                             # CVD policy stub — MERGE if one exists
 cp -n /tmp/rmt/soup.yaml .
 cp -n /tmp/rmt/.github/ISSUE_TEMPLATE/harm-risk.yml /tmp/rmt/.github/ISSUE_TEMPLATE/requirement.yml \
-      /tmp/rmt/.github/ISSUE_TEMPLATE/soup-anomaly.yml /tmp/rmt/.github/ISSUE_TEMPLATE/field-feedback.yml .github/ISSUE_TEMPLATE/
+      /tmp/rmt/.github/ISSUE_TEMPLATE/soup-anomaly.yml /tmp/rmt/.github/ISSUE_TEMPLATE/field-feedback.yml \
+      /tmp/rmt/.github/ISSUE_TEMPLATE/use-scenario.yml .github/ISSUE_TEMPLATE/
 cp -n /tmp/rmt/.github/conformance-labels.json .github/
 cp -n /tmp/rmt/scripts/setup-harm-risk-board.sh /tmp/rmt/scripts/traceability-matrix.sh \
       /tmp/rmt/scripts/build-risk-management-file.py scripts/   # RMF compiler (ADR-0004)

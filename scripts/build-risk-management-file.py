@@ -458,11 +458,13 @@ def build_master(repo, tag, hr_issues, dr_issues, date_iso, commit, generator):
                        "docs/standards/GSPR-CHECKLIST.md"))
     parts.append(annex("E", "Security risk management", "IEC 81001-5-1 — security activities, SOUP/vulnerability handling, Coordinated Vulnerability Disclosure",
                        "docs/SECURITY_RISK.md"))
-    parts.append(annex("F", "Traceability model", "ISO 14971 §4.5 / IEC 62304 §5.1.1(c),§7.3 — requirement → design → implementation → test → risk",
+    parts.append(annex("F", "Usability engineering", "IEC 62366-1 — use-related risk; use specification, hazard-related use scenarios, formative evaluation (summative deferred-to-manufacturer)",
+                       "docs/USABILITY.md"))
+    parts.append(annex("G", "Traceability model", "ISO 14971 §4.5 / IEC 62304 §5.1.1(c),§7.3 — requirement → design → implementation → test → risk",
                        "docs/TRACEABILITY.md"))
-    parts.append(annex("G", "Standards & regulatory index", "editions applied and their status",
+    parts.append(annex("H", "Standards & regulatory index", "editions applied and their status",
                        "docs/standards/CONFORMANCE.md"))
-    # Annex H: ADR index
+    # Annex I: ADR index
     adr_dir = os.path.join(repo, "docs", "adr")
     adr_list = ""
     if os.path.isdir(adr_dir):
@@ -471,16 +473,16 @@ def build_master(repo, tag, hr_issues, dr_issues, date_iso, commit, generator):
                 first = (read(os.path.join(adr_dir, f)) or "").splitlines()
                 title = next((l.lstrip("# ").strip() for l in first if l.startswith("#")), f)
                 adr_list += "- **%s** — %s\n" % (f, title)
-    parts.append("## Annex H — Architecture decision records (design history)\n\n"
+    parts.append("## Annex I — Architecture decision records (design history)\n\n"
                  "*Risk-relevant design decisions; each ADR that reduces a risk cites the "
                  "register issue and vice versa.*\n\n" + (adr_list or "*(no ADRs found)*") + "\n")
-    # Annex I: delivery-risk register (context, not safety)
-    parts.append("## Annex I — Delivery-risk register (context)\n\n"
+    # Annex J: delivery-risk register (context, not safety)
+    parts.append("## Annex J — Delivery-risk register (context)\n\n"
                  "*Project/delivery risk (schedule, scope, supply chain) — kept **separate** "
                  "from the safety file above; included for completeness, never merged with "
                  "harm risk.*\n\n" + render_register(dr_issues, "risk", tag) + "\n")
-    # Annex J: audit-readiness self-assessment
-    parts.append("## Annex J — Audit-readiness self-assessment\n\n" +
+    # Annex K: audit-readiness self-assessment
+    parts.append("## Annex K — Audit-readiness self-assessment\n\n" +
                  ("*Latest `mdr-audit-readiness` mock-audit scorecard: `%s`. A self-check of the "
                   "distance to auditable — not a conformity statement.*\n" % latest_audit
                   if latest_audit else
