@@ -9,8 +9,8 @@
 ## Working with Claude Code
 
 - Skills are auto-discovered via `.claude/skills/` (symlinks into `skills/` — edit `skills/` only):
-  `apply-risk-management` + `mdr-audit-readiness` (this repo's own — apply, then mock-audit the result),
-  plus the shared FGDH toolkit `arc42-generator`,
+  `apply-risk-management` + `mdr-audit-readiness` + `dpia-officer` (this repo's own — apply, mock-audit
+  the result, and keep the DPIA/privacy track current), plus the shared FGDH toolkit `arc42-generator`,
   `docs-auditor`, `release-manager`, `branching-strategist`, `dependency-scanner`, `security-scanner`,
   `security-reviewer`, `template-updater`, `grilling`, `grill-me`.
 - **Architecture docs** live at `docs/arc42/` (arc42 v9.0, one file per section, §11 pre-wired to the risk

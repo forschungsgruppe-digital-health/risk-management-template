@@ -18,6 +18,10 @@ sense, TBD via the dissemination/exploitation plan — adopts it.
   [`SECURITY.md`](../SECURITY.md)) and the **62304 coverage map**
   ([`standards/IEC-62304-COVERAGE.md`](standards/IEC-62304-COVERAGE.md)) — the
   covered/partial/not-yet split the manufacturer walks at adoption.
+- **Data Protection Impact Assessment + Art. 32 measures** ([`dpia/`](dpia/README.md)) — the living
+  DPIA and TOM register (GDPR Art. 35/32) transfer to the **data controller** (the operator/organization
+  placing the product into real-data use — may differ from the MDR manufacturer); the legal sign-off
+  (§7) is theirs, not a repo artifact.
 - **Design history**: ADRs ([`adr/`](adr/README.md)) and the arc42 architecture
   documentation ([`arc42/`](arc42/README.md)), risk-linked via
   [§11](arc42/11_technical_risks.md).

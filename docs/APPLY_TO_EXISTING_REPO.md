@@ -36,6 +36,7 @@ cp -n /tmp/rmt/docs/HARM_RISK.md /tmp/rmt/docs/HARM_RISK_REPORT.md /tmp/rmt/docs
       /tmp/rmt/docs/SECURITY_RISK.md /tmp/rmt/docs/USABILITY.md /tmp/rmt/docs/TRACEABILITY.md \
       /tmp/rmt/docs/CONFORMANCE_TRANSFER.md /tmp/rmt/docs/RISK_MANAGEMENT_FILE.md docs/
 cp -n /tmp/rmt/SECURITY.md .                             # CVD policy stub — MERGE if one exists
+mkdir -p docs/dpia && cp -n /tmp/rmt/docs/dpia/*.md docs/dpia/   # DPIA + Art. 32 TOM (GDPR); fill before real data
 cp -n /tmp/rmt/soup.yaml .
 cp -n /tmp/rmt/.github/ISSUE_TEMPLATE/harm-risk.yml /tmp/rmt/.github/ISSUE_TEMPLATE/requirement.yml \
       /tmp/rmt/.github/ISSUE_TEMPLATE/soup-anomaly.yml /tmp/rmt/.github/ISSUE_TEMPLATE/field-feedback.yml \
