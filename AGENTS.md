@@ -84,6 +84,12 @@ The portable form is **Agent Skills** (`skills/<name>/SKILL.md`, [agentskills.io
   drifts, and errors with the real major/minor/observation taxonomy — and separating a *documented*
   deferral (not a finding) from a *silent* gap → dated `docs/reports/` scorecard. `apply` sets the file
   up; this measures how far it is from auditable. Never issues a conformity verdict.
+- **`dpia-officer`** — this repo's own skill (generic canonical; a repo may specialise it): the
+  **privacy** track. A human-in-the-loop watchdog that keeps the living Data Protection Impact
+  Assessment (GDPR Art. 35) + the Art. 32 technical-and-organisational-measures register (`docs/dpia/`)
+  in step with data-protection-relevant change; consults before recording anything legal-impacting;
+  never fabricates legal determinations ([DPO/LEGAL INPUT NEEDED]). Sits alongside the ISO 14971
+  harm-risk + IEC 81001-5-1 security tracks.
 - **Shared FGDH toolkit** (kept identical across repos; single source = the `arc42-project-template`):
   - **`arc42-generator`** — generate/consolidate the arc42 docs (`docs/arc42/`), novice+expert, via `docs-auditor`.
   - **`docs-auditor`** — audit all docs (complete/consistent/error-free/understandable/usable) + fixes; read-only.

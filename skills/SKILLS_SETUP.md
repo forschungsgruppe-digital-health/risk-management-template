@@ -11,6 +11,9 @@ frontmatter, plus Claude-specific extension fields that other agents safely igno
 - **`mdr-audit-readiness`** — this repo's own skill: read-only "mock audit" of the risk-management
   documentation from an MDR/CE Notified-Body lens (verified 14971/62304/62366-1/81001-5-1/MDR clauses);
   the verification counterpart to `apply-risk-management` → dated `docs/reports/` scorecard.
+- **`dpia-officer`** — this repo's own skill (generic canonical): the privacy track — a human-in-the-loop
+  watchdog keeping the living DPIA (GDPR Art. 35) + Art. 32 measures register (`docs/dpia/`) in step with
+  data-protection-relevant change; never fabricates legal determinations.
 - **Shared FGDH toolkit** (kept identical across the FGDH repos; single source = the
   [`arc42-project-template`](https://github.com/forschungsgruppe-digital-health/arc42-project-template)):
   `arc42-generator`, `docs-auditor`, `release-manager`, `branching-strategist`, `dependency-scanner`,
