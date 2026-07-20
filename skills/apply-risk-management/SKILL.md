@@ -74,6 +74,12 @@ concept, two entry points.
    product's real qualification answer + date; fill ADR-0002 with the software safety
    classification — or its "N/A while not MDSW" default; HARM_RISK §1 plan table; replace
    the `soup.yaml` example; set CODEOWNERS owners; set `RISK_PROJECT_URL`).
+7. **Point the user at the readiness check.** The applied result is a *template snapshot*,
+   not yet an auditable file — those manual steps are exactly the device-specific
+   determinations an auditor needs. Recommend running the **`mdr-audit-readiness`** skill
+   (this repo's verification counterpart) to get a per-clause, MDR/CE-auditor-lens scorecard
+   of how far the file is from auditable — it grades the same open steps as major/minor
+   findings and separates documented deferrals (fine) from silent gaps (findings).
 
 ## Hard rules
 
