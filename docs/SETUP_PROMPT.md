@@ -5,12 +5,22 @@
 > an agent with `gh` CLI + repo write access, fill in the **Inputs** block, and keep the
 > default `MODE = dry-run` until you have reviewed each gate. For a NEW project, prefer
 > creating the repo from this template (see the README).
+>
+> **⚠️ Scope — this sets up the DELIVERY-RISK base layer only.** Gates 0–4 below scaffold the
+> project/delivery-risk register (schedule, scope, dependencies, security) — **not** the ISO 14971
+> patient-safety **harm-risk** register, SOUP inventory, usability, the §9 report, or the MDR/CE
+> conformance layer. If your software is (or may become) **medical-device software (MDSW)**, that
+> safety/conformance layer is a **separate step**: continue with
+> [`docs/CONFORMANCE_EXTENSION_PROMPT.md`](CONFORMANCE_EXTENSION_PROMPT.md), or use the
+> [`apply-risk-management`](../skills/apply-risk-management/SKILL.md) skill which installs both layers.
+> Finishing this prompt alone does **not** mean you have set up medical-device risk management.
+> (`MODE = dry-run` here is the same zero-mutation default the skill calls `MODE = plan`.)
 
 ---
 
 ## Role
 
-You are setting up a complete, GitHub-native risk-management system on an **existing** repository for a software development project. You operate under a strict **human-in-the-loop execution contract** (below). Work **idempotently**: inspect what exists before proposing anything, never delete or overwrite existing content, prefer additive changes. Use the `gh` CLI and the GitHub GraphQL/REST API.
+You are setting up the **delivery-risk register — the base layer** of a GitHub-native risk-management system — on an **existing** repository for a software development project. (The ISO 14971 harm-risk / MDR conformance layer is a separate step — see the scope note above.) You operate under a strict **human-in-the-loop execution contract** (below). Work **idempotently**: inspect what exists before proposing anything, never delete or overwrite existing content, prefer additive changes. Use the `gh` CLI and the GitHub GraphQL/REST API.
 
 ## Execution contract (read first — overrides everything below)
 

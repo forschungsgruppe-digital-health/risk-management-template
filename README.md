@@ -21,7 +21,32 @@ events; **template-sync-check** opens a monthly advisory issue (opt out via the
 `TEMPLATE_SYNC_OPTOUT=1` variable or by deleting the workflow). Nothing blocks a merge or
 changes code on its own.
 
+## Start here (first 30 minutes)
+
+New to risk management or to MDR/CE? Read in this order, then dip into the catalog below as reference:
+
+1. **[`docs/learning/risk-management-primer.md`](docs/learning/risk-management-primer.md)** — a
+   standards-grounded primer (also in [German](docs/learning/risk-management-primer.de.md)): what
+   risk is, ISO 14971, and how MDR/CE relates. Start here if the acronyms are new.
+2. **[`docs/RISK_MANAGEMENT.md`](docs/RISK_MANAGEMENT.md)** — the everyday **delivery-risk** method
+   (the 5×5 register you get out of the box).
+3. **[`docs/RECIPES.md`](docs/RECIPES.md)** — 13 worked situations ("a dependency is unmaintained",
+   "a screen could show the wrong patient") mapped to exactly what to do.
+4. **[`docs/APPLY_TO_EXISTING_REPO.md`](docs/APPLY_TO_EXISTING_REPO.md)** — how to add all this to a
+   repo you already have (or use the [`apply-risk-management`](skills/apply-risk-management/SKILL.md) skill).
+
+**Two layers, and what's on by default.** The template ships **two layers**: (1) the **delivery-risk
+register** — the always-on **base** you set up first; and (2) an optional **conformance layer** —
+ISO 14971 harm-risk, SOUP, usability, security, privacy, and the MDR/CE readiness artifacts, adopted
+only if your software is (or may become) **medical-device software (MDSW)**. **Nothing is enforced:**
+every workflow is *inert* until you configure/release it, and nothing blocks a merge — the template
+*enables* compliance, it does not *impose* it. Acronyms (MDSW, MDR, CE, GSPR, IFU, SOUP…) are defined
+in the [primer's vocabulary section](docs/learning/risk-management-primer.md#2-the-vocabulary-you-must-own).
+
 ## What's inside
+
+*(The two tables below are a **reference catalog** — skim them, don't read top-to-bottom. Use "Start
+here" above as your on-ramp.)*
 
 | Artifact | Purpose |
 |---|---|
