@@ -153,6 +153,8 @@ Lifecycle labels: `harm-risk:open` → (controls in progress = board status `Con
 
 ## 8. Production & post-production feed (14971 §10)
 
+The full post-market loop — collect → review → act → feed back — and its MDR Art. 83–92 frame is in
+[`PMS.md`](PMS.md) (with the periodic-review action); this section is the register-facing summary.
 Automated detectors feed this register the same way they feed the delivery register: a
 security alert on a SOUP component with potential safety impact prompts a linked
 `harm-risk` issue (see [`SOUP.md`](SOUP.md) and the risk-automation workflow). User

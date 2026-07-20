@@ -1,0 +1,40 @@
+name: pms-review
+# Post-market surveillance / ISO 14971 §10 periodic review (MDR Art. 84/88). Opens a tracking
+# issue with a §10.2–§10.4 checklist on a cadence, so the feedback loop is actually walked and
+# not just wired. Method: docs/PMS.md; checklist body: .github/pms-review-body.md.
+#
+# INERT UNTIL YOU OPT IN: the schedule fires only when the repo variable PMS_REVIEW_ENABLED=true
+# is set (Settings → Secrets and variables → Actions → Variables). A manual run always works.
+# Enable, not enforce — the adopter chooses when the cadence starts. Delete this file to opt out.
+
+on:
+  schedule:
+    - cron: "0 6 1 1,4,7,10 *" # 06:00 UTC on the 1st of Jan/Apr/Jul/Oct — quarterly
+  workflow_dispatch:
+
+permissions:
+  contents: read # read the checklist body file
+  issues: write
+
+jobs:
+  open-review:
+    runs-on: ubuntu-latest
+    # schedule runs only when opted in; manual dispatch always runs
+    if: ${{ github.event_name == 'workflow_dispatch' || vars.PMS_REVIEW_ENABLED == 'true' }}
+    steps:
+      - name: Checkout (for the checklist body)
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Open the PMS / §10 review issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          DATE="$(date -u +%Y-%m-%d)"
+          # ensure the label exists (idempotent) so issue creation never fails on a missing label
+          gh label create pms-review --repo "$GITHUB_REPOSITORY" \
+            --color 1D76DB --description "Post-market surveillance / ISO 14971 §10 periodic review" --force >/dev/null 2>&1 || true
+          gh issue create --repo "$GITHUB_REPOSITORY" \
+            --title "[PMS] Post-market surveillance review — $DATE" \
+            --label pms-review \
+            --body-file .github/pms-review-body.md
+          echo "Opened the PMS review issue for $DATE."
