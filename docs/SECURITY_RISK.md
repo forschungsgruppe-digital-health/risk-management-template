@@ -23,7 +23,7 @@ credential stuffing (threat) via missing rate limit (vulnerability) → confiden
 breach (impact)*. Score in the register's 5×5: **L** = likelihood of successful
 exploitation (consider exposure, attacker capability, existing controls); **I** = security
 impact on confidentiality / integrity / availability of the product and its data. STRIDE
-(the [`security-reviewer`](../skills/security-reviewer/SKILL.md) skill's threat-model
+(the [`security-reviewer`](https://github.com/forschungsgruppe-digital-health/risk-management-template/blob/main/skills/security-reviewer/SKILL.md) skill's threat-model
 pass) and the CI scanners feed this analysis; detectors feed, never decide.
 
 ## 2. Coupling rules — security ↔ safety (MDCG 2019-16 §3.2)

@@ -86,8 +86,9 @@ activate the MDSW tier in [`CONFORMANCE.md`](../standards/CONFORMANCE.md) and cl
 **MDR Annex VIII Rule 11**: decision-support / diagnostic-or-therapeutic software is
 **class IIa** by default, **IIb** if it may cause serious deterioration of health or a
 surgical intervention, **III** if it may cause death or an irreversible deterioration of
-health; software intended to monitor physiological processes is **IIa**, **IIb** where
-variations could result in immediate danger; **all other** software is **class I**. Record
+health; software intended to monitor physiological processes is **IIa**, **IIb** where it is for
+monitoring **vital** physiological parameters whose variations could result in immediate danger to
+the patient; **all other** software is **class I**. Record
 the resulting **device class** — which is *distinct* from the IEC 62304 **software safety
 class** (A/B/C) decided in [ADR-0002](0002-software-safety-classification.md). Then
 evaluate the German **DiGA** fast-track (§ 33a SGB V / DiGAV; requires MDSW class I or IIa)

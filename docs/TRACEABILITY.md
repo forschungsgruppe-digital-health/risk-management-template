@@ -19,7 +19,7 @@ ISO/IEC/IEEE 29148:2018 (singular, verifiable, unambiguous).
 | Implementation → **test** | the PR that closes a requirement contains (or links) the verifying tests; name tests so the requirement is findable (e.g. `REQ-42` in the test name or a `Verifies: #42` line in the PR body) |
 | Requirement ↔ **risk** | a requirement mitigating a registered risk links the `risk`/`harm-risk` issue and vice versa |
 | **SOUP** → requirement | a `soup.yaml` entry names the requirement its use is justified by (`req:` field) — closing the IEC 62304 §5.3.3 / §7.1.3 loop |
-| **risk control** → test | a harm-risk control's *effectiveness* verification (§7.2) links its test/PR inside the issue; a delivery-risk mitigation likewise |
+| **risk control** → test | a harm-risk control's *effectiveness* verification (ISO 14971 §7.2; the IEC 62304 software edge is §7.3) links its test/PR inside the issue; a delivery-risk mitigation likewise |
 
 One requirement per issue — bundles break the chain.
 

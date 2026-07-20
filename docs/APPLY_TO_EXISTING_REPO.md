@@ -31,7 +31,7 @@ cp -n /tmp/rmt/.github/workflows/risk-automation.yml .github/workflows/  # ships
 # 3. Conformance layer (optional — MDR/62304 readiness, see docs/standards/CONFORMANCE.md)
 mkdir -p docs/standards docs/adr
 cp -n /tmp/rmt/docs/standards/*.md docs/standards/       # CONFORMANCE + GSPR-CHECKLIST + IEC-62304-COVERAGE
-cp -rn /tmp/rmt/docs/adr/. docs/adr/                     # ('/.': portable on GNU+BSD) renumber 0001–0003 to your next free numbers + fix cross-links
+cp -rn /tmp/rmt/docs/adr/. docs/adr/                     # ('/.': portable on GNU+BSD) renumber 0001–0004 to your next free numbers + fix cross-links
 cp -n /tmp/rmt/docs/HARM_RISK.md /tmp/rmt/docs/HARM_RISK_REPORT.md /tmp/rmt/docs/SOUP.md \
       /tmp/rmt/docs/SECURITY_RISK.md /tmp/rmt/docs/USABILITY.md /tmp/rmt/docs/TRACEABILITY.md \
       /tmp/rmt/docs/CONFORMANCE_TRANSFER.md /tmp/rmt/docs/RISK_MANAGEMENT_FILE.md docs/
@@ -78,7 +78,7 @@ your README.
 |---|---|
 | labels with the same names | `setup-labels.sh` skips them (never recolors/deletes) |
 | an issue-template `config.yml` | keep yours; the forms coexist with other templates |
-| `docs/adr/` with numbered ADRs | keep your numbering + template; add the template's **three** ADRs (qualification, safety classification, supply-chain pinning) under your **next free numbers** and fix the links to them |
+| `docs/adr/` with numbered ADRs | keep your numbering + template; add the template's **four** ADRs (qualification, safety classification, supply-chain pinning, risk-management-file deliverable) under your **next free numbers** and fix the links to them |
 | a PR template | **merge**: append the *Traceability* + *Conformance gate* sections |
 | `CODEOWNERS` | **merge**: append the conformance-critical entries |
 | CI workflows named `risk-automation.yml`/`sbom.yml`/`register-export.yml` | do **not** overwrite — wire the equivalent steps into yours per [`CONFORMANCE_EXTENSION_PROMPT.md`](CONFORMANCE_EXTENSION_PROMPT.md) Phase E3 |

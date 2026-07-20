@@ -16,7 +16,7 @@ process. You do not maintain this document; you **generate** it. Rationale:
 - **Is not:** a claim of conformity. Unfilled `<…>` / `[RA]` (regulatory-affairs decision)
   placeholders **show through** — the generator fabricates nothing. It does **not** replace a
   **NB** (Notified Body) assessment or an **ISO 13485** (quality-management-system, QMS)
-  internal audit. It pairs with the [`mdr-audit-readiness`](../skills/mdr-audit-readiness/SKILL.md)
+  internal audit. It pairs with the [`mdr-audit-readiness`](https://github.com/forschungsgruppe-digital-health/risk-management-template/blob/main/skills/mdr-audit-readiness/SKILL.md)
   scorecard, which measures how far the file is from auditable.
 
 ## Structure (mapped to the standards)
@@ -82,5 +82,5 @@ Both are **inert until you cut a release**; delete the workflow/job to opt out.
 The compiled file per release is a first-class **conformance-transfer** artifact
 ([`CONFORMANCE_TRANSFER.md`](CONFORMANCE_TRANSFER.md)): each release's PDF is a frozen snapshot
 of the risk-management state at that version, and the Markdown masters give the manufacturer a
-diffable history of how the file evolved. Run [`mdr-audit-readiness`](../skills/mdr-audit-readiness/SKILL.md)
+diffable history of how the file evolved. Run [`mdr-audit-readiness`](https://github.com/forschungsgruppe-digital-health/risk-management-template/blob/main/skills/mdr-audit-readiness/SKILL.md)
 before a release so Annex J carries an honest self-assessment of the distance to auditable.

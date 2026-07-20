@@ -70,7 +70,7 @@ body:
   - type: textarea
     id: ui-control
     attributes:
-      label: UI risk control — state the tier (§5.3 / 14971 §7.1)
+      label: UI risk control — state the tier (IEC 62366-1 §4.1.2 / ISO 14971 §7.1 order)
       description: "Mandatory order: 1 inherently safe UI design → 2 protective UI measures → 3 information for safety. A tier-3 control must reach the IFU — apply `disclose-in-ifu` on the harm-risk."
       placeholder: |
         1. (tier 1) bind patient context immutably per view

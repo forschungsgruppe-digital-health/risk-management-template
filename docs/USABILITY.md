@@ -46,7 +46,7 @@ this document + the `use-scenario` issues + the linked harm-risks + the design d
 | §5.7 Establish **UI evaluation plan** (5.7.2 formative / 5.7.3 summative) | how the interface will be evaluated | §6 below |
 | §5.8 Design + implement + **formative** evaluation | iterative, exploratory testing during design | §6 below; findings loop back as `use-scenario`/harm-risk updates |
 | §5.9 **Summative** evaluation (validation of safe use) | final objective evidence of safe use | **deferred-to-manufacturer** ([`CONFORMANCE_TRANSFER.md`](CONFORMANCE_TRANSFER.md)) |
-| §5.10 **User interface of unknown provenance (UIUP)** | reused UI you did not develop under this process | §7 below |
+| §5.10 **User interface of unknown provenance (UOUP)** | reused UI you did not develop under this process | §7 below |
 
 ## 3. Use specification (§5.1)
 
@@ -84,7 +84,8 @@ use-related risk, the control tiers are:
 1. **Inherently safe UI design** — make the error impossible or harmless by construction (e.g.
    bind patient context immutably per view; disable an unsafe action in an unsafe state).
 2. **Protective measures** — in the UI or its environment (confirmation for irreversible actions,
-   a persistent patient banner, alarms — mind alarm fatigue, a §7.5 new risk).
+   a persistent patient banner, alarms — mind alarm fatigue, a new risk from the control per
+   ISO 14971 §7.5).
 3. **Information for safety** — labels, warnings, instructions, training (weakest; flag
    `disclose-in-ifu` so it reaches the accompanying information / instructions-for-use).
 
@@ -100,12 +101,12 @@ use-related risk, the control tiers are:
   needs a production-equivalent build and representative users); pre-stage its **inputs** here (the
   selected scenarios, user profiles, use environments) so it is not reconstructed later.
 
-## 7. User interface of unknown provenance — UIUP (§5.10 / Annex C)
+## 7. User interface of unknown provenance — UOUP (§5.10 / Annex C)
 
-A user interface (or UI component) you reuse but did not develop under this process is a **UIUP** —
+A user interface (or UI component) you reuse but did not develop under this process is a **UOUP** —
 the usability analogue of SOUP ([`SOUP.md`](SOUP.md)). Treat it like SOUP: identify it, state what
 safe-use behaviour you rely on, review available post-production/known-use-problem information, and
-carry any use-related hazard it introduces into the harm-risk register. Note UIUP components
+carry any use-related hazard it introduces into the harm-risk register. Note UOUP components
 alongside their code dependency in [`soup.yaml`](../soup.yaml) (a comment or a `ui: true` marker) or
 in the `use-scenario` issue.
 

@@ -65,7 +65,7 @@ Notified Body or an ISO 13485 internal audit; it is the deliverable they read.
   (diffable). Transfers cleanly to the manufacturer ([`CONFORMANCE_TRANSFER.md`](../CONFORMANCE_TRANSFER.md)).
 - **Placeholders are visible:** because nothing is fabricated, an unfilled repo produces a
   document full of `[NEEDS INPUT]` — which is *correct* (it shows the real state) and pairs with
-  the [`mdr-audit-readiness`](../../skills/mdr-audit-readiness/SKILL.md) scorecard that measures
+  the [`mdr-audit-readiness`](https://github.com/forschungsgruppe-digital-health/risk-management-template/blob/main/skills/mdr-audit-readiness/SKILL.md) scorecard that measures
   the distance to auditable.
 - **Toolchain:** pandoc + a LaTeX engine are needed for PDF; the CI installs them
   (GitHub: apt `texlive-xetex`; GitLab: the `pandoc/latex` image). Locally the script degrades

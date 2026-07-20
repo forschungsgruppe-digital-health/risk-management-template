@@ -4,7 +4,7 @@
 > result in a high risk* to the rights and freedoms of natural persons (Art. 35(1)), in particular
 > for large-scale processing of special-category data such as **health data** (Art. 9, Art. 35(3)).
 > Fill this per project **before you process real personal data**; keep it in step with the system
-> via the [`dpia-officer`](../../skills/dpia-officer/SKILL.md) skill. Legal determinations (lawful
+> via the [`dpia-officer`](https://github.com/forschungsgruppe-digital-health/risk-management-template/blob/main/skills/dpia-officer/SKILL.md) skill. Legal determinations (lawful
 > basis, necessity/proportionality, residual-risk acceptance, sign-off) are **[DPO/LEGAL INPUT
 > NEEDED]** — this template does not decide them. **Synthetic-only data is out of scope.**
 
@@ -98,7 +98,7 @@ Concrete gates that must be closed before real personal data is processed:
 - [ ] §7 DPO advice recorded and controller sign-off obtained → then bump to v1.0
 
 ## 9. Review log & change triggers
-Append one row per evaluation (the [`dpia-officer`](../../skills/dpia-officer/SKILL.md) skill does
+Append one row per evaluation (the [`dpia-officer`](https://github.com/forschungsgruppe-digital-health/risk-management-template/blob/main/skills/dpia-officer/SKILL.md) skill does
 this automatically after each data-surface change):
 
 | Date | Version | Change | By |

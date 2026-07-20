@@ -117,7 +117,7 @@ its clause, and **how this template does it**.
   front* so later decisions cannot be bent to fit a result.
   → *Template:* [`../HARM_RISK.md`](../HARM_RISK.md) **§1** is that plan table, with rows for
   the policy basis (§4.2), the overall-residual method (§4.4 e) and review requirements
-  (§4.4 f) — filled in per project.
+  (§4.4 c) — filled in per project.
 - **The risk-management FILE** (14971 §4.5) — the evidence trail that, *for each hazard*,
   lets a reviewer trace analysis → evaluation → control + its verification → residual
   result. → *Template:* the register itself (GitHub issues), plus the §9 report and the

@@ -52,7 +52,7 @@ concept, two entry points.
    it from memory).
 3. **Propose the diff**: files to copy verbatim, files to merge (PR template →
    append the *Traceability* + *Conformance gate* sections; CODEOWNERS → append
-   entries; existing ADR dir → the template's three ADRs under the next free numbers,
+   entries; existing ADR dir → the template's four ADRs under the next free numbers,
    links fixed), files skipped (exist already), scripts to run, manual follow-ups.
    **Wait for approval.**
 3b. **High-fidelity preview (both modes, still read-only on `TARGET`).** Prove the plan

@@ -132,7 +132,7 @@ dieses Template ihn umsetzt**.
   spätere Entscheidungen nicht an ein Ergebnis angepasst werden können.
   → *Template:* [`../HARM_RISK.md`](../HARM_RISK.md) **§1** ist diese Plantabelle, mit
   Zeilen für die Politik-Grundlage (§4.2), die Gesamt-Restrisiko-Methode (§4.4 e) und die
-  Überprüfungsanforderungen (§4.4 f) — je Projekt auszufüllen.
+  Überprüfungsanforderungen (§4.4 c) — je Projekt auszufüllen.
 - **Die Risikomanagement-AKTE** (14971 §4.5) — die Nachweiskette, die es *für jede
   Gefährdung* erlaubt, Analyse → Bewertung → Beherrschung + deren Verifizierung → Restrisiko
   nachzuverfolgen. → *Template:* das Register selbst (GitHub-Issues) plus der §9-Bericht und
