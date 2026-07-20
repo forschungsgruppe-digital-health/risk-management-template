@@ -1,0 +1,51 @@
+name: risk-lint
+# Advisory drift/consistency lint for the risk-management artifacts — WARN-ONLY (never fails a
+# build; enable, not enforce). Runs the two checks the mdr-audit-readiness skill inspired:
+#   * soup-sbom-diff.sh   — soup.yaml (IEC 62304 §8.1.2) vs a freshly generated SBOM
+#   * check-harm-risk.sh  — harm-risk register completeness/consistency (§7.2/§7.3/§7.5/§8)
+# Results go to the job summary. Delete this file to opt out.
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read # check-harm-risk reads the harm-risk register
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Generate an SBOM (CycloneDX) for the SOUP diff
+        uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610 # v0.24.0
+        with:
+          format: cyclonedx-json
+          output-file: sbom.cdx.json
+          artifact-name: risk-lint-sbom.cdx.json
+
+      - name: SOUP ↔ SBOM drift (advisory)
+        run: |
+          {
+            echo "## risk-lint — SOUP ↔ SBOM drift"
+            echo '```'
+            bash scripts/soup-sbom-diff.sh soup.yaml sbom.cdx.json 2>&1 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Harm-risk register completeness (advisory)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "## risk-lint — harm-risk register completeness"
+            echo '```'
+            bash scripts/check-harm-risk.sh "$GITHUB_REPOSITORY" 2>&1 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Note
+        run: echo "risk-lint is advisory (warn-only) — see the job summary; nothing is blocked."

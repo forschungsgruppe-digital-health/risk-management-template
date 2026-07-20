@@ -43,9 +43,12 @@ cp -n /tmp/rmt/.github/ISSUE_TEMPLATE/harm-risk.yml /tmp/rmt/.github/ISSUE_TEMPL
       /tmp/rmt/.github/ISSUE_TEMPLATE/use-scenario.yml .github/ISSUE_TEMPLATE/
 cp -n /tmp/rmt/.github/conformance-labels.json .github/
 cp -n /tmp/rmt/scripts/setup-harm-risk-board.sh /tmp/rmt/scripts/traceability-matrix.sh \
-      /tmp/rmt/scripts/build-risk-management-file.py scripts/   # RMF compiler (ADR-0004)
+      /tmp/rmt/scripts/build-risk-management-file.py \
+      /tmp/rmt/scripts/soup-sbom-diff.sh /tmp/rmt/scripts/check-harm-risk.sh scripts/   # RMF compiler (ADR-0004) + drift lints
 cp -n /tmp/rmt/.github/workflows/sbom.yml /tmp/rmt/.github/workflows/register-export.yml \
-      /tmp/rmt/.github/workflows/risk-management-file.yml /tmp/rmt/.github/workflows/pms-review.yml .github/workflows/
+      /tmp/rmt/.github/workflows/risk-management-file.yml /tmp/rmt/.github/workflows/pms-review.yml \
+      /tmp/rmt/.github/workflows/risk-lint.yml .github/workflows/
+cp -n /tmp/rmt/.github/pms-review-body.md .github/          # checklist body for pms-review.yml
 cp -n /tmp/rmt/docs/PMS.md docs/                          # post-market surveillance plan (§10 / MDR Art. 83–92)
 cp -n /tmp/rmt/.github/dependabot.yml .github/             # MERGE by hand if one exists (ADR-0003)
 cp -n /tmp/rmt/renovate.json .                             # MERGE by hand if one exists (GitLab-image bumps)
