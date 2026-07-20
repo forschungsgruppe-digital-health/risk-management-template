@@ -39,6 +39,7 @@ changes code on its own.
 | [`docs/APPLY_TO_EXISTING_REPO.md`](docs/APPLY_TO_EXISTING_REPO.md) | How to apply the template to an **existing** repo: agent skill, gated prompts, or manual copy — with collision rules and a verify checklist |
 | [`docs/GITLAB.md`](docs/GITLAB.md) | **GitLab support**: the full GitHub ↔ GitLab mapping + [`.gitlab/`](.gitlab/) issue/MR templates & CODEOWNERS, [scoped-label](scripts/setup-labels-gitlab.sh) + [board-list](scripts/setup-boards-gitlab.sh) scripts (glab), and the inert-until-configured [`.gitlab-ci.yml`](.gitlab-ci.yml) (SBOM on tags, scheduled Trivy→register) |
 | [`skills/apply-risk-management/`](skills/apply-risk-management/SKILL.md) | Portable [Agent Skill](https://agentskills.io) that performs that retrofit (inventory → proposed diff → additive apply) |
+| [`skills/mdr-audit-readiness/`](skills/mdr-audit-readiness/SKILL.md) | Its **verification counterpart**: a read-only "mock audit" of the risk-management docs from an MDR/CE Notified-Body lens (verified 14971/62304/62366-1/81001-5-1/MDR clauses) → dated `docs/reports/` scorecard of gaps, drifts & errors, with the major/minor/observation taxonomy. Deferral ≠ omission; never a conformity verdict |
 
 ### Conformance-readiness layer (optional)
 

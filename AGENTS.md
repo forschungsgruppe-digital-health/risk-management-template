@@ -78,6 +78,12 @@ The portable form is **Agent Skills** (`skills/<name>/SKILL.md`, [agentskills.io
 
 - **`apply-risk-management`** — this repo's own skill: retrofit risk management onto an existing repo
   (inventory → proposed diff → additive apply). *Outbound* (applies this template to others).
+- **`mdr-audit-readiness`** — this repo's own skill and the **verification counterpart** to the above:
+  a read-only "mock audit" of the risk-management documentation through an MDR/CE Notified-Body auditor's
+  lens (verified ISO 14971 / IEC 62304 / 62366-1 / 81001-5-1 / MDR Annex I clauses), classifying gaps,
+  drifts, and errors with the real major/minor/observation taxonomy — and separating a *documented*
+  deferral (not a finding) from a *silent* gap → dated `docs/reports/` scorecard. `apply` sets the file
+  up; this measures how far it is from auditable. Never issues a conformity verdict.
 - **Shared FGDH toolkit** (kept identical across repos; single source = the `arc42-project-template`):
   - **`arc42-generator`** — generate/consolidate the arc42 docs (`docs/arc42/`), novice+expert, via `docs-auditor`.
   - **`docs-auditor`** — audit all docs (complete/consistent/error-free/understandable/usable) + fixes; read-only.
