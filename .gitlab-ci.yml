@@ -1,4 +1,4 @@
-# GitLab CI twin of .github/workflows/{sbom,register-export,risk-management-file,pms-review,risk-automation}.yml
+# GitLab CI twin of .github/workflows/{sbom,register-export,risk-management-file,pms-review,risk-lint,risk-automation}.yml
 # — same inert-until-configured contract (docs/GITLAB.md has the full mapping).
 #
 #  - sbom:             runs only on TAGS (or manual web run) — CycloneDX via Syft,
@@ -137,6 +137,30 @@ vuln-to-register:
           --data-urlencode "description=Automated register entry for a $sev finding: **$title** (\`$pkg\`). Triage per docs/RISK_MANAGEMENT.md (score, owner, decide). If it can affect patient safety, raise a linked harm-risk issue (docs/HARM_RISK.md)." >/dev/null
         echo "opened issue for $id/$pkg"
       done
+
+risk-lint:
+  # Advisory drift/consistency lint — GitHub twin: risk-lint.yml. Runs soup-sbom-diff (SOUP↔SBOM,
+  # consuming the `sbom` job's artifact when present, else degraded listing). The harm-risk
+  # completeness lint (check-harm-risk.sh) is GitHub-gh-based; a GitLab issues-API port is a
+  # follow-up (docs/GITLAB.md). WARN-ONLY via allow_failure.
+  stage: report
+  image:
+    name: alpine:3.21
+    entrypoint: [""]
+  needs:
+    - job: sbom
+      artifacts: true
+      optional: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "web"
+      when: manual
+  script:
+    - apk add --no-cache bash jq >/dev/null 2>&1 || true
+    - SBOM="$(ls sbom-*.cdx.json 2>/dev/null | head -1 || true)"
+    - bash scripts/soup-sbom-diff.sh soup.yaml "${SBOM:-}" || true
+    - echo "Note — the harm-risk completeness lint (scripts/check-harm-risk.sh) is GitHub-gh-based; a GitLab issues-API port is a documented follow-up (docs/GITLAB.md)."
+  allow_failure: true
 
 pms-review:
   # Post-market surveillance / ISO 14971 §10 periodic review — GitHub twin: pms-review.yml.
